@@ -30,6 +30,10 @@ public:
     Matrix(const natural rows_number, 
            const natural columns_number, 
            const std::vector<CUSTOM_TYPE> &element_values);
+    void setColumnsNumber(const natural columns_number)
+    {
+        
+    }
     void setRowsNumber(const natural rows_number)
     {
         natural old_rows_number = getRowsNumber();
