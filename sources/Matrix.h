@@ -10,6 +10,8 @@ class Matrix {
     FRIEND_TEST(TestMatrixConstructor, DefaultConstructor);
     FRIEND_TEST(TestMatrixConstructor, DefaultMatrix1x1);
     FRIEND_TEST(TestMatrixConstructor, DefaultMatrix2x2);
+    FRIEND_TEST(TestMatrixSetRowsNumber, set3RowsForNewMatrix);
+    FRIEND_TEST(TestMatrixIsElementIndexInRange, TestCase);
 public:
     Matrix(const natural rows_number          = 0, 
            const natural columns_number       = 0, 

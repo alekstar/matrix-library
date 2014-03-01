@@ -27,3 +27,24 @@ TEST(TestMatrixConstructor, DefaultMatrix2x2)
     EXPECT_EQ(0, matrix.elements_.at(1).at(0));
     EXPECT_EQ(0, matrix.elements_.at(1).at(1));
 }
+
+TEST(TestMatrixSetRowsNumber, set3RowsForNewMatrix)
+{
+    Matrix<int> matrix;
+    matrix.setRowsNumber(3);
+    EXPECT_EQ(3, matrix.elements_.size());
+    EXPECT_EQ(0, matrix.elements_.at(0).size());
+    EXPECT_EQ(0, matrix.elements_.at(1).size());
+    EXPECT_EQ(0, matrix.elements_.at(2).size());
+}
+
+TEST(TestMatrixIsElementIndexInRange, TestCase)
+{
+    Matrix<int> matrix(2, 3);
+    EXPECT_TRUE(matrix.isElementIndexInRange(0, 0));
+    EXPECT_TRUE(matrix.isElementIndexInRange(1, 2));
+    EXPECT_FALSE(matrix.isElementIndexInRange(-1, -2));
+    EXPECT_FALSE(matrix.isElementIndexInRange(2, 3));
+    EXPECT_FALSE(matrix.isElementIndexInRange(3, 2));
+    EXPECT_FALSE(matrix.isElementIndexInRange(1, 5));
+}
