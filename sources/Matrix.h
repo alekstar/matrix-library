@@ -61,6 +61,14 @@ public:
             elements_.at(row_number).at(column_number) = value;
         }
     }
+    CUSTOM_TYPE getElement(const natural row_number, 
+                           const natural column_number) const
+    {
+        if(isElementIndexInRange(row_number, column_number))
+        {
+            return elements_.at(row_number).at(column_number);
+        }
+    }
 private:
     std::vector<std::vector<CUSTOM_TYPE> > elements_;
 };
