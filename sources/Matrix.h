@@ -71,6 +71,14 @@ public:
     }
 private:
     std::vector<std::vector<CUSTOM_TYPE> > elements_;
+    bool isElementIndexInRange(const natural row_number, 
+                               const natural column_number) const
+    {
+        return row_number       < getRowsNumber() &&
+               row_number       >= 0 &&
+               column_number    < getColumnsNumber() &&
+               column_number    >= 0;
+    }
 };
 
 #endif	/* MATRIX_H */
