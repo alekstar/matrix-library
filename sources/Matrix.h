@@ -34,6 +34,10 @@ public:
     {
         
     }
+    natural getColumnsNumber() const
+    {
+        return elements_.at(0).size();
+    }
     void setRowsNumber(const natural rows_number)
     {
         natural old_rows_number = getRowsNumber();
