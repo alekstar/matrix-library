@@ -48,6 +48,10 @@ public:
             (*i).resize(getColumnsNumber());
         }
     }
+    natural getRowsNumber() const
+    {
+        return elements_.size();
+    }
 private:
     std::vector<std::vector<CUSTOM_TYPE> > elements_;
 };
