@@ -27,6 +27,16 @@ public:
             }
         }
     }
+    void setRowsNumber(const natural rows_number)
+    {
+        natural old_rows_number = getRowsNumber();
+        elements_.resize(rows_number);
+        typename std::vector<std::vector<CUSTOM_TYPE> >::iterator i;
+        for(i = elements_.begin() + old_rows_number; i != elements_.end(); ++i)
+        {
+            (*i).resize(getColumnsNumber());
+        }
+    }
 private:
     std::vector<std::vector<CUSTOM_TYPE> > elements_;
 };
