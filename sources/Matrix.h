@@ -15,7 +15,7 @@ public:
            const natural columns_number       = 0, 
            const CUSTOM_TYPE initialize_value = 0)
     {
-        elements_.resize(rows_number);
+        setRowsNumber(rows_number);
         typename std::vector<std::vector<CUSTOM_TYPE> >::iterator i;
         for(i = elements_.begin(); i != elements_.end(); ++i)
         {
