@@ -11,7 +11,9 @@ class Matrix {
     FRIEND_TEST(TestMatrixConstructor, DefaultMatrix1x1);
     FRIEND_TEST(TestMatrixConstructor, DefaultMatrix2x2);
 public:
-    Matrix(natural rows_number = 0, natural columns_number = 0)
+    Matrix(natural rows_number          = 0, 
+           natural columns_number       = 0, 
+           CUSTOM_TYPE initialize_value = 0)
     {
         elements_.resize(rows_number);
         typename std::vector<std::vector<CUSTOM_TYPE> >::iterator i;
