@@ -69,6 +69,14 @@ public:
             return elements_.at(row_number).at(column_number);
         }
     }
+    void setElementsFromVector(const std::vector<CUSTOM_TYPE> &element_values);
+    void getElementsToVector(std::vector<CUSTOM_TYPE> &elements_vector) const;
+    Matrix<CUSTOM_TYPE>& operator*(const CUSTOM_TYPE value);
+    Matrix<CUSTOM_TYPE>& operator*(const std::vector<CUSTOM_TYPE> &operand);
+    Matrix<CUSTOM_TYPE>& operator*(const Matrix<CUSTOM_TYPE> &operand);
+    Matrix<CUSTOM_TYPE>& operator+(const Matrix<CUSTOM_TYPE> &operand);
+    Matrix<CUSTOM_TYPE>& operator-(const Matrix<CUSTOM_TYPE> &operand);
+    Matrix<CUSTOM_TYPE>& operator==(const Matrix<CUSTOM_TYPE> &operand);
 private:
     std::vector<std::vector<CUSTOM_TYPE> > elements_;
     bool isElementIndexInRange(const natural row_number, 
