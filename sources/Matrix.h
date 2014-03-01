@@ -20,6 +20,11 @@ public:
         for(i = elements_.begin(); i != elements_.end(); ++i)
         {
             (*i).resize(columns_number);
+            typename std::vector<CUSTOM_TYPE>::iterator j;
+            for(j = (*i).begin(); j != (*i).end(); ++j)
+            {
+                *j = initialize_value;
+            }
         }
     }
 private:
