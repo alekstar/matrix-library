@@ -52,6 +52,15 @@ public:
     {
         return elements_.size();
     }
+    void setElement(const CUSTOM_TYPE value, 
+                    const natural row_number, 
+                    const natural column_number)
+    {
+        if(isElementIndexInRange(row_number, column_number))
+        {
+            elements_.at(row_number).at(column_number) = value;
+        }
+    }
 private:
     std::vector<std::vector<CUSTOM_TYPE> > elements_;
 };
