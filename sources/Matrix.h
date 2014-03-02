@@ -33,10 +33,19 @@ public:
     Matrix(const natural rows_number, 
            const natural columns_number, 
            const std::vector<CUSTOM_TYPE> &element_values);
-    void setColumnsNumber(const natural columns_number)
+    
+    void setColumnsNumber(const natural columns_number,
+                          const CUSTOM_TYPE initialize_value = 0)
     {
-        
+        typename std::vector<std::vector<CUSTOM_TYPE> >::iterator columns_iterator;
+        for(columns_iterator = elements_.begin(); 
+            columns_iterator != elements_.end(); ++columns_iterator)
+        {
+            columns_iterator->resize(columns_number, initialize_value);
+        }
+        columns_number_ = columns_number;
     }
+    
     natural getColumnsNumber() const
     {
         return elements_.at(0).size();
