@@ -13,6 +13,9 @@ class Matrix {
     FRIEND_TEST(TestMatrixSetRowsNumber, set3RowsForNewMatrix);
     FRIEND_TEST(TestMatrixIsElementIndexInRange, TestCase);
     FRIEND_TEST(TestMatrixSetElement, SomeRandomElementsInMatrix3x4);
+    FRIEND_TEST(TestMatrixSetColumnsNumber, set3ColumnsForMatrix2x2);
+    FRIEND_TEST(TestMatrixSetColumnsNumber, 
+                set3ColumnsForMatrix2x2WithNotZeroElements);
 public:
     Matrix(const natural rows_number          = 0, 
            const natural columns_number       = 0, 
