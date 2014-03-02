@@ -18,18 +18,12 @@ public:
            const natural columns_number       = 0, 
            const CUSTOM_TYPE initialize_value = 0)
     {
-        setRowsNumber(rows_number);
-        typename std::vector<std::vector<CUSTOM_TYPE> >::iterator i;
-        for(i = elements_.begin(); i != elements_.end(); ++i)
-        {
-            (*i).resize(columns_number);
-            typename std::vector<CUSTOM_TYPE>::iterator j;
-            for(j = (*i).begin(); j != (*i).end(); ++j)
-            {
-                *j = initialize_value;
-            }
-        }
+        rows_number_ = 0;
+        columns_number_ = 0;
+        setRowsNumber(rows_number, initialize_value);
+        setColumnsNumber(columns_number, initialize_value);
     }
+    
     Matrix(const natural rows_number, 
            const natural columns_number, 
            const std::vector<CUSTOM_TYPE> &element_values);
@@ -74,6 +68,7 @@ public:
             elements_.at(row_number).at(column_number) = value;
         }
     }
+    
     CUSTOM_TYPE getElement(const natural row_number, 
                            const natural column_number) const
     {
@@ -82,6 +77,7 @@ public:
             return elements_.at(row_number).at(column_number);
         }
     }
+    
     void setElementsFromVector(const std::vector<CUSTOM_TYPE> &element_values);
     void getElementsToVector(std::vector<CUSTOM_TYPE> &elements_vector) const;
     Matrix<CUSTOM_TYPE>& operator*(const CUSTOM_TYPE value);
