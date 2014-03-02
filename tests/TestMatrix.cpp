@@ -61,3 +61,16 @@ TEST(TestMatrixSetElement, SomeRandomElementsInMatrix3x4)
     EXPECT_EQ(0, matrix.elements_.at(1).at(0));
     EXPECT_EQ(0, matrix.elements_.at(1).at(2));
 }
+
+TEST(TestMatrixGetElement, SomeRandomElementsInMatrix3x4)
+{
+    Matrix<int> matrix(2, 3);
+    matrix.setElement(4, 1, 1);
+    EXPECT_EQ(4, matrix.getElement(1, 1));
+    matrix.setElement(10, 0, 1);
+    EXPECT_EQ(10, matrix.getElement(0, 1));
+    EXPECT_EQ(0, matrix.getElement(0, 0));
+    EXPECT_EQ(0, matrix.getElement(0, 2));
+    EXPECT_EQ(0, matrix.getElement(1, 0));
+    EXPECT_EQ(0, matrix.getElement(1, 2));
+}
