@@ -48,3 +48,16 @@ TEST(TestMatrixIsElementIndexInRange, TestCase)
     EXPECT_FALSE(matrix.isElementIndexInRange(3, 2));
     EXPECT_FALSE(matrix.isElementIndexInRange(1, 5));
 }
+
+TEST(TestMatrixSetElement, SomeRandomElementsInMatrix3x4)
+{
+    Matrix<int> matrix(2, 3);
+    matrix.setElement(4, 1, 1);
+    EXPECT_EQ(4, matrix.elements_.at(1).at(1));
+    matrix.setElement(10, 0, 1);
+    EXPECT_EQ(10, matrix.elements_.at(0).at(1));
+    EXPECT_EQ(0, matrix.elements_.at(0).at(0));
+    EXPECT_EQ(0, matrix.elements_.at(0).at(2));
+    EXPECT_EQ(0, matrix.elements_.at(1).at(0));
+    EXPECT_EQ(0, matrix.elements_.at(1).at(2));
+}
