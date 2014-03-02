@@ -59,10 +59,12 @@ public:
                                                   initialize_value));
         rows_number_ = rows_number;
     }
+    
     natural getRowsNumber() const
     {
-        return elements_.size();
+        return rows_number_;
     }
+    
     void setElement(const CUSTOM_TYPE value, 
                     const natural row_number, 
                     const natural column_number)
