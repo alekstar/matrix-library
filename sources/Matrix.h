@@ -90,6 +90,8 @@ public:
     Matrix<CUSTOM_TYPE>& operator-(const Matrix<CUSTOM_TYPE> &operand);
     Matrix<CUSTOM_TYPE>& operator==(const Matrix<CUSTOM_TYPE> &operand);
 private:
+    natural rows_number_;
+    natural columns_number_;
     std::vector<std::vector<CUSTOM_TYPE> > elements_;
     bool isElementIndexInRange(const natural row_number, 
                                const natural column_number) const
