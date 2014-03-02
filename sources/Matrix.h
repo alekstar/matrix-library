@@ -47,8 +47,8 @@ public:
     }
     
     natural getColumnsNumber() const
-    {
-        return elements_.at(0).size();
+    {   
+        return columns_number_;
     }
     void setRowsNumber(const natural rows_number)
     {
