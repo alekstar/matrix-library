@@ -50,15 +50,14 @@ public:
     {   
         return columns_number_;
     }
-    void setRowsNumber(const natural rows_number)
+    
+    void setRowsNumber(const natural rows_number,
+                       const CUSTOM_TYPE initialize_value = 0)
     {
-        natural old_rows_number = getRowsNumber();
-        elements_.resize(rows_number);
-        typename std::vector<std::vector<CUSTOM_TYPE> >::iterator i;
-        for(i = elements_.begin() + old_rows_number; i != elements_.end(); ++i)
-        {
-            (*i).resize(getColumnsNumber());
-        }
+        elements_.resize(rows_number, 
+                         std::vector<CUSTOM_TYPE>(getColumnsNumber(), 
+                                                  initialize_value));
+        rows_number_ = rows_number;
     }
     natural getRowsNumber() const
     {
