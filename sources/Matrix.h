@@ -2,6 +2,7 @@
 #define	MATRIX_H
 #include <vector>
 #include <gtest/gtest_prod.h>
+#include <iostream>
 #include <iterator>
 using std::vector;
 
@@ -20,6 +21,22 @@ class Matrix {
                 set3ColumnsForMatrix2x2WithNotZeroElements);
     FRIEND_TEST(TestMatrixGetElementsToCopyFromVector, AllCases);
 public:
+    friend std::ostream& operator<<(std::ostream &result, Matrix<CUSTOM_TYPE> matrix)
+    {
+        std::ostream_iterator<CUSTOM_TYPE> output_stream(result, "\t");
+        typename std::vector<std::vector<CUSTOM_TYPE> >::iterator rows_iterator;
+        for(rows_iterator = matrix.elements_.begin();
+            rows_iterator != matrix.elements_.end();
+            ++rows_iterator)
+        {
+            std::copy(rows_iterator->begin(), 
+                      rows_iterator->end(), 
+                      output_stream);
+            result << std::endl;
+        }
+        return result;
+    }
+    
     Matrix(const natural rows_number          = 0, 
            const natural columns_number       = 0, 
            const CUSTOM_TYPE initialize_value = 0)
