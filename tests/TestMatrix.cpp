@@ -120,3 +120,19 @@ TEST(TestMatrixGetElementsToCopyFromVector, AllCases)
               matrix.getNumberOfElementsToCopyFromVector(test_vector_iterator, 
                                                          test_vector.end()));
 }
+
+TEST(TestMatrixSetElementsFromVector, VectorWith5Elements)
+{
+    Matrix<int> matrix(3, 3);
+    std::vector<int> test_vector(5, 7);
+    matrix.setElementsFromVector(test_vector);
+    EXPECT_EQ(7, matrix.getElement(0, 0));
+    EXPECT_EQ(7, matrix.getElement(0, 1));
+    EXPECT_EQ(7, matrix.getElement(0, 2));
+    EXPECT_EQ(7, matrix.getElement(1, 0));
+    EXPECT_EQ(7, matrix.getElement(1, 1));
+    EXPECT_EQ(0, matrix.getElement(1, 2));
+    EXPECT_EQ(0, matrix.getElement(2, 0));
+    EXPECT_EQ(0, matrix.getElement(2, 1));
+    EXPECT_EQ(0, matrix.getElement(2, 2));
+}
