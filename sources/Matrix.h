@@ -56,7 +56,7 @@ public:
                        const CUSTOM_TYPE initialize_value = 0)
     {
         elements_.resize(rows_number, 
-                         std::vector<CUSTOM_TYPE>(getColumnsNumber(), 
+                         vector<CUSTOM_TYPE>(getColumnsNumber(), 
                                                   initialize_value));
         rows_number_ = rows_number;
     }
