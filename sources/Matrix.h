@@ -2,6 +2,7 @@
 #define	MATRIX_H
 #include <vector>
 #include <gtest/gtest_prod.h>
+using std::vector;
 
 typedef std::size_t natural;
 
@@ -29,12 +30,13 @@ public:
     
     Matrix(const natural rows_number, 
            const natural columns_number, 
-           const std::vector<CUSTOM_TYPE> &element_values);
+           const vector<CUSTOM_TYPE> &element_values);
     
     void setColumnsNumber(const natural columns_number,
                           const CUSTOM_TYPE initialize_value = 0)
     {
-        typename std::vector<std::vector<CUSTOM_TYPE> >::iterator columns_iterator;
+        typename 
+            vector<vector<CUSTOM_TYPE> >::iterator columns_iterator;
         for(columns_iterator = elements_.begin(); 
             columns_iterator != elements_.end(); ++columns_iterator)
         {
@@ -84,7 +86,7 @@ public:
     void setElementsFromVector(const std::vector<CUSTOM_TYPE> &element_values);
     void getElementsToVector(std::vector<CUSTOM_TYPE> &elements_vector) const;
     Matrix<CUSTOM_TYPE>& operator*(const CUSTOM_TYPE value);
-    Matrix<CUSTOM_TYPE>& operator*(const std::vector<CUSTOM_TYPE> &operand);
+    Matrix<CUSTOM_TYPE>& operator*(const vector<CUSTOM_TYPE> &operand);
     Matrix<CUSTOM_TYPE>& operator*(const Matrix<CUSTOM_TYPE> &operand);
     Matrix<CUSTOM_TYPE>& operator+(const Matrix<CUSTOM_TYPE> &operand);
     Matrix<CUSTOM_TYPE>& operator-(const Matrix<CUSTOM_TYPE> &operand);
@@ -92,7 +94,7 @@ public:
 private:
     natural rows_number_;
     natural columns_number_;
-    std::vector<std::vector<CUSTOM_TYPE> > elements_;
+    vector<vector<CUSTOM_TYPE> > elements_;
     bool isElementIndexInRange(const natural row_number, 
                                const natural column_number) const
     {
