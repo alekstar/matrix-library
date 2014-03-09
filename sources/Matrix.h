@@ -2,6 +2,7 @@
 #define	MATRIX_H
 #include <vector>
 #include <gtest/gtest_prod.h>
+#include <iterator>
 using std::vector;
 
 typedef std::size_t natural;
@@ -83,8 +84,25 @@ public:
         }
     }
     
-    void setElementsFromVector(const std::vector<CUSTOM_TYPE> &element_values);
-    void getElementsToVector(std::vector<CUSTOM_TYPE> &elements_vector) const;
+    void setElementsFromVector(const vector<CUSTOM_TYPE> &element_values)
+    {
+        typename vector<CUSTOM_TYPE>::const_iterator vector_iterator = 
+            element_values.begin();
+        typename vector<vector<CUSTOM_TYPE> >::iterator rows_iterator;
+        for(rows_iterator = elements_.begin(); 
+            rows_iterator != elements_.end();
+            rows_iterator++)
+        {
+            natural elements_to_copy = 
+                getNumberOfElementsToCopyFromVector(vector_iterator,
+                                                    element_values.end());
+            std::copy(vector_iterator, 
+                      vector_iterator + elements_to_copy, 
+                      rows_iterator->begin());
+            vector_iterator += elements_to_copy;
+        }
+    }
+    void getElementsToVector(vector<CUSTOM_TYPE> &elements_vector) const;
     Matrix<CUSTOM_TYPE>& operator*(const CUSTOM_TYPE value);
     Matrix<CUSTOM_TYPE>& operator*(const vector<CUSTOM_TYPE> &operand);
     Matrix<CUSTOM_TYPE>& operator*(const Matrix<CUSTOM_TYPE> &operand);
@@ -102,6 +120,21 @@ private:
                row_number       >= 0 &&
                column_number    < getColumnsNumber() &&
                column_number    >= 0;
+    }
+    natural getNumberOfElementsToCopyFromVector(
+              typename vector<CUSTOM_TYPE>::const_iterator vector_iterator,
+              typename vector<CUSTOM_TYPE>::const_iterator vector_end_iterator)
+    {
+        natural elements_last = vector_end_iterator - vector_iterator;
+        natural elements_to_copy = 0;
+        if(elements_last < getColumnsNumber())
+        {
+            elements_to_copy = elements_last;
+        }
+        else
+        {
+            elements_to_copy = getColumnsNumber();
+        }
     }
 };
 
