@@ -18,6 +18,7 @@ class Matrix {
     FRIEND_TEST(TestMatrixSetColumnsNumber, set3ColumnsForMatrix2x2);
     FRIEND_TEST(TestMatrixSetColumnsNumber, 
                 set3ColumnsForMatrix2x2WithNotZeroElements);
+    FRIEND_TEST(TestMatrixGetElementsToCopyFromVector, AllCases);
 public:
     Matrix(const natural rows_number          = 0, 
            const natural columns_number       = 0, 

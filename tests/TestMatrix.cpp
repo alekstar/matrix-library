@@ -106,3 +106,17 @@ TEST(TestMatrixSetColumnsNumber, set3ColumnsForMatrix2x2WithNotZeroElements)
     EXPECT_EQ(1,  matrix.getElement(1, 1));
     EXPECT_EQ(0,  matrix.getElement(1, 2));
 }
+
+TEST(TestMatrixGetElementsToCopyFromVector, AllCases)
+{
+    Matrix<int> matrix(4, 4);
+    std::vector<int> test_vector(5, 7);
+    std::vector<int>::iterator test_vector_iterator = test_vector.begin();
+    EXPECT_EQ(4, 
+              matrix.getNumberOfElementsToCopyFromVector(test_vector_iterator, 
+                                                         test_vector.end()));
+    test_vector_iterator += matrix.getColumnsNumber();
+    EXPECT_EQ(1, 
+              matrix.getNumberOfElementsToCopyFromVector(test_vector_iterator, 
+                                                         test_vector.end()));
+}
