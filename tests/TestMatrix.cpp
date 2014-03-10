@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 #include "../sources/Matrix.h"
 #include <vector>
+#include <string>
 
 TEST(TestMatrixConstructor, DefaultConstructor)
 {
@@ -165,3 +166,15 @@ TEST(TestMatrixPutToStreamOperator, MatrixWithFiveSevens)
     std::string expected_matrix_string = "7\t7\t7\t\n7\t7\t0\t\n0\t0\t0\t\n";
     EXPECT_EQ(actual_matrix_string, expected_matrix_string);
 }
+
+TEST(TestMatrixPutToStreamOperator, Matrix0x0)
+{
+    Matrix<int> matrix(0, 0);
+    std::stringstream matrix_stringstream;
+    matrix_stringstream << matrix;
+    std::string actual_matrix_string;
+    actual_matrix_string = matrix_stringstream.str();
+    std::string expected_matrix_string = "";
+    EXPECT_EQ(actual_matrix_string, expected_matrix_string);
+}
+
