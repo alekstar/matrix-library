@@ -137,6 +137,22 @@ TEST(TestMatrixSetElementsFromVector, VectorWith5Elements)
     EXPECT_EQ(0, matrix.getElement(2, 2));
 }
 
+TEST(TestMatrixSetElementsFromVector, VectorWithMoreElementsThanInMatrix)
+{
+    Matrix<int> matrix(3, 3);
+    std::vector<int> test_vector(10, 3);
+    matrix.setElementsFromVector(test_vector);
+    EXPECT_EQ(3, matrix.getElement(0, 0));
+    EXPECT_EQ(3, matrix.getElement(0, 1));
+    EXPECT_EQ(3, matrix.getElement(0, 2));
+    EXPECT_EQ(3, matrix.getElement(1, 0));
+    EXPECT_EQ(3, matrix.getElement(1, 1));
+    EXPECT_EQ(3, matrix.getElement(1, 2));
+    EXPECT_EQ(3, matrix.getElement(2, 0));
+    EXPECT_EQ(3, matrix.getElement(2, 1));
+    EXPECT_EQ(3, matrix.getElement(2, 2));
+}
+
 TEST(TestMatrixPutToStreamOperator, MatrixWithFiveSevens)
 {
     Matrix<int> matrix(3, 3);
