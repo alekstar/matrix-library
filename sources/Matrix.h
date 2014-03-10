@@ -21,7 +21,8 @@ class Matrix {
                 set3ColumnsForMatrix2x2WithNotZeroElements);
     FRIEND_TEST(TestMatrixGetElementsToCopyFromVector, AllCases);
 public:
-    friend std::ostream& operator<<(std::ostream &result, Matrix<CUSTOM_TYPE> matrix)
+    friend std::ostream& operator<<(std::ostream &result, 
+                                    Matrix<CUSTOM_TYPE> matrix)
     {
         std::ostream_iterator<CUSTOM_TYPE> output_stream(result, "\t");
         typename std::vector<std::vector<CUSTOM_TYPE> >::iterator rows_iterator;
