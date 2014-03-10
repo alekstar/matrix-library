@@ -136,3 +136,16 @@ TEST(TestMatrixSetElementsFromVector, VectorWith5Elements)
     EXPECT_EQ(0, matrix.getElement(2, 1));
     EXPECT_EQ(0, matrix.getElement(2, 2));
 }
+
+TEST(TestMatrixPutToStreamOperator, MatrixWithFiveSevens)
+{
+    Matrix<int> matrix(3, 3);
+    std::vector<int> test_vector(5, 7);
+    matrix.setElementsFromVector(test_vector);
+    std::stringstream matrix_stringstream;
+    matrix_stringstream << matrix;
+    std::string actual_matrix_string;
+    actual_matrix_string = matrix_stringstream.str();
+    std::string expected_matrix_string = "7\t7\t7\t\n7\t7\t0\t\n0\t0\t0\t\n";
+    EXPECT_EQ(actual_matrix_string, expected_matrix_string);
+}
