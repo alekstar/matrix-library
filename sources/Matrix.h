@@ -42,10 +42,10 @@ public:
            const natural columns_number       = 0, 
            const CUSTOM_TYPE initialize_value = 0)
     {
-        rows_number_ = 0;
+        rows_number_    = 0;
         columns_number_ = 0;
-        setRowsNumber(rows_number, initialize_value);
-        setColumnsNumber(columns_number, initialize_value);
+        setRowsNumber       (rows_number,       initialize_value);
+        setColumnsNumber    (columns_number,    initialize_value);
     }
     
     Matrix(const natural rows_number, 
