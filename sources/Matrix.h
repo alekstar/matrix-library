@@ -65,12 +65,12 @@ public:
     void setColumnsNumber(const natural columns_number,
                           const CUSTOM_TYPE initialize_value = 0)
     {
-        typename 
-            vector<vector<CUSTOM_TYPE> >::iterator columns_iterator;
-        for(columns_iterator = elements_.begin(); 
-            columns_iterator != elements_.end(); ++columns_iterator)
+        RowsIterator rows_iterator;
+        for(rows_iterator = elements_.begin(); 
+            rows_iterator != elements_.end(); 
+            ++rows_iterator)
         {
-            columns_iterator->resize(columns_number, initialize_value);
+            rows_iterator->resize(columns_number, initialize_value);
         }
         columns_number_ = columns_number;
     }
