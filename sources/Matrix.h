@@ -4,6 +4,8 @@
 #include <gtest/gtest_prod.h>
 #include <iostream>
 #include <iterator>
+#include <functional>
+#include <algorithm>
 using std::vector;
 
 typedef std::size_t natural;
@@ -132,7 +134,21 @@ public:
         }
     }
     void getElementsToVector(vector<CUSTOM_TYPE> &elements_vector) const;
-    Matrix<CUSTOM_TYPE>& operator*(const CUSTOM_TYPE value);
+    Matrix<CUSTOM_TYPE>& operator*(const CUSTOM_TYPE value)
+    {
+        RowsIterator rows_iterator;
+        for(rows_iterator = elements_.begin(); 
+            rows_iterator != elements_.end();
+            rows_iterator++)
+        {
+            std::transform(rows_iterator->begin(), 
+                           rows_iterator->end(),
+                           rows_iterator->begin(),
+                           std::bind1st(std::multiplies<CUSTOM_TYPE>(), value));
+        }
+        
+        return *this;
+    }
     Matrix<CUSTOM_TYPE>& operator*(const vector<CUSTOM_TYPE> &operand);
     Matrix<CUSTOM_TYPE>& operator*(const Matrix<CUSTOM_TYPE> &operand);
     Matrix<CUSTOM_TYPE>& operator+(const Matrix<CUSTOM_TYPE> &operand);
