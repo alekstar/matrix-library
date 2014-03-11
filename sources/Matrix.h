@@ -21,11 +21,13 @@ class Matrix {
                 set3ColumnsForMatrix2x2WithNotZeroElements);
     FRIEND_TEST(TestMatrixGetElementsToCopyFromVector, AllCases);
 public:
+    typedef typename vector<vector<CUSTOM_TYPE> >::iterator RowsIterator;
+    
     friend std::ostream& operator<<(std::ostream &result, 
                                     Matrix<CUSTOM_TYPE> matrix)
     {
         std::ostream_iterator<CUSTOM_TYPE> output_stream(result, "\t");
-        typename std::vector<std::vector<CUSTOM_TYPE> >::iterator rows_iterator;
+        RowsIterator rows_iterator;
         for(rows_iterator = matrix.elements_.begin();
             rows_iterator != matrix.elements_.end();
             ++rows_iterator)
@@ -115,7 +117,7 @@ public:
     {
         typename vector<CUSTOM_TYPE>::const_iterator vector_iterator = 
             element_values.begin();
-        typename vector<vector<CUSTOM_TYPE> >::iterator rows_iterator;
+        RowsIterator rows_iterator;
         for(rows_iterator = elements_.begin(); 
             rows_iterator != elements_.end();
             rows_iterator++)
@@ -140,6 +142,7 @@ private:
     natural rows_number_;
     natural columns_number_;
     vector<vector<CUSTOM_TYPE> > elements_;
+    
     bool isElementIndexInRange(const natural row_number, 
                                const natural column_number) const
     {
@@ -148,6 +151,7 @@ private:
                column_number    < getColumnsNumber() &&
                column_number    >= 0;
     }
+    
     natural getNumberOfElementsToCopyFromVector(
               typename vector<CUSTOM_TYPE>::const_iterator vector_iterator,
               typename vector<CUSTOM_TYPE>::const_iterator vector_end_iterator)
