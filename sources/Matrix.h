@@ -133,10 +133,6 @@ public:
         return *this;
     }
     Matrix<CUSTOM_TYPE>& operator*(const vector<CUSTOM_TYPE> &operand);
-    Matrix<CUSTOM_TYPE>& operator*(const Matrix<CUSTOM_TYPE> &operand);
-    Matrix<CUSTOM_TYPE>& operator+(const Matrix<CUSTOM_TYPE> &operand);
-    Matrix<CUSTOM_TYPE>& operator-(const Matrix<CUSTOM_TYPE> &operand);
-    Matrix<CUSTOM_TYPE>& operator==(const Matrix<CUSTOM_TYPE> &operand);
 private:
     natural rows_number_;
     natural columns_number_;
@@ -185,6 +181,22 @@ std::ostream& operator<<(std::ostream &result,
     }
     return result;
 }
+
 template <typename MATRIX_VALUE_TYPE>
+Matrix<MATRIX_VALUE_TYPE> operator*(const Matrix<MATRIX_VALUE_TYPE> &left, 
+                                     const Matrix<MATRIX_VALUE_TYPE> &right);
+
+template <typename MATRIX_VALUE_TYPE>
+Matrix<MATRIX_VALUE_TYPE> operator+(const Matrix<MATRIX_VALUE_TYPE> &left, 
+                                     const Matrix<MATRIX_VALUE_TYPE> &right);
+
+template <typename MATRIX_VALUE_TYPE>
+Matrix<MATRIX_VALUE_TYPE> operator-(const Matrix<MATRIX_VALUE_TYPE> &left, 
+                                     const Matrix<MATRIX_VALUE_TYPE> &right);
+
+template <typename MATRIX_VALUE_TYPE>
+bool operator==(const Matrix<MATRIX_VALUE_TYPE> &left, 
+                const Matrix<MATRIX_VALUE_TYPE> &right);
+
 #endif	/* MATRIX_H */
 
