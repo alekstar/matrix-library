@@ -47,6 +47,15 @@ public:
         setElementsFromVector(element_values);
     }
     
+    Matrix(const vector<CUSTOM_TYPE> &vector_to_convert)
+    {
+        rows_number_    = 0;
+        columns_number_ = 0;
+        setRowsNumber(vector_to_convert.size());
+        setColumnsNumber(1);
+        setElementsFromVector(vector_to_convert);
+    }
+    
     void setColumnsNumber(const natural columns_number,
                           const CUSTOM_TYPE initialize_value = 0)
     {
