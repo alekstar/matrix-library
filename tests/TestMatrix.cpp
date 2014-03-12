@@ -226,3 +226,27 @@ TEST(MatrixIsMultiplyPossible, AllCasesWithVector)
     EXPECT_FALSE(matrix2x2.isMultiplyPossibleWith(vector_with_size3));
 }
 
+TEST(MatrixConstructor, ConstructorFromVectorOf5Elements)
+{
+    std::vector<int> test_vector;
+    test_vector.push_back(1);
+    test_vector.push_back(15);
+    test_vector.push_back(-23);
+    test_vector.push_back(0);
+    test_vector.push_back(-1);
+    Matrix<int> matrix(test_vector);
+    EXPECT_EQ(1, matrix.getColumnsNumber());
+    EXPECT_EQ(5, matrix.getRowsNumber());
+    EXPECT_EQ(1, matrix.getElement(0, 0));
+    EXPECT_EQ(15, matrix.getElement(1, 0));
+    EXPECT_EQ(-23, matrix.getElement(2, 0));
+    EXPECT_EQ(0, matrix.getElement(3, 0));
+    EXPECT_EQ(-1, matrix.getElement(4, 0));
+    std::stringstream matrix_stringstream;
+    matrix_stringstream << matrix;
+    std::string actual_matrix_string;
+    actual_matrix_string = matrix_stringstream.str();
+    std::string expected_matrix_string = 
+        "1\t\n15\t\n-23\t\n0\t\n-1\t\n";
+    EXPECT_EQ(expected_matrix_string, actual_matrix_string);
+}
