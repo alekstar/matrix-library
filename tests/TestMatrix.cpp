@@ -217,3 +217,12 @@ TEST(MatrixMultiplyWithOneValue, ValueIsOneAndHalf)
     EXPECT_EQ(6,    matrix.getElement(1, 1));
 }
 
+TEST(MatrixIsMultiplyPossible, AllCases)
+{
+    Matrix<int> matrix2x2(2, 2);
+    std::vector<int> vector_with_size2(2);
+    std::vector<int> vector_with_size3(3);
+    EXPECT_TRUE(matrix2x2.isMultiplyPossibleWith(vector_with_size2));
+    EXPECT_FALSE(matrix2x2.isMultiplyPossibleWith(vector_with_size3));
+}
+
