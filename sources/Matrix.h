@@ -25,23 +25,6 @@ class Matrix {
 public:
     typedef typename vector<vector<CUSTOM_TYPE> >::iterator RowsIterator;
     
-    friend std::ostream& operator<<(std::ostream &result, 
-                                    Matrix<CUSTOM_TYPE> matrix)
-    {
-        std::ostream_iterator<CUSTOM_TYPE> output_stream(result, "\t");
-        RowsIterator rows_iterator;
-        for(rows_iterator = matrix.elements_.begin();
-            rows_iterator != matrix.elements_.end();
-            ++rows_iterator)
-        {
-            std::copy(rows_iterator->begin(), 
-                      rows_iterator->end(), 
-                      output_stream);
-            result << std::endl;
-        }
-        return result;
-    }
-    
     Matrix(const natural rows_number          = 0, 
            const natural columns_number       = 0, 
            const CUSTOM_TYPE initialize_value = 0)
@@ -185,5 +168,23 @@ private:
     }
 };
 
+
+template <typename MATRIX_VALUE_TYPE>
+std::ostream& operator<<(std::ostream &result, 
+                         Matrix<MATRIX_VALUE_TYPE> matrix)
+{
+    for(natural row_index = 0; row_index < matrix.getRowsNumber(); ++row_index)
+    {
+        for(natural column_index = 0; 
+            column_index < matrix.getColumnsNumber(); 
+            ++column_index)
+        {
+            result << matrix.getElement(row_index, column_index) << "\t";
+        }
+        result << std::endl;
+    }
+    return result;
+}
+template <typename MATRIX_VALUE_TYPE>
 #endif	/* MATRIX_H */
 
