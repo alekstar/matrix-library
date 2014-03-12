@@ -217,7 +217,7 @@ TEST(MatrixMultiplyWithOneValue, ValueIsOneAndHalf)
     EXPECT_EQ(6,    matrix.getElement(1, 1));
 }
 
-TEST(MatrixIsMultiplyPossible, AllCases)
+TEST(MatrixIsMultiplyPossible, AllCasesWithVector)
 {
     Matrix<int> matrix2x2(2, 2);
     std::vector<int> vector_with_size2(2);
