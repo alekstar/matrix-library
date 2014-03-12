@@ -201,3 +201,19 @@ TEST(MatrixMultiplyWithOneValue, ValueIs2)
     EXPECT_EQ(6, matrix.getElement(1, 0));
     EXPECT_EQ(8, matrix.getElement(1, 1));
 }
+
+TEST(MatrixMultiplyWithOneValue, ValueIsOneAndHalf)
+{
+    std::vector<double> values;
+    values.push_back(1.0);
+    values.push_back(2.0);
+    values.push_back(3.0);
+    values.push_back(4.0);
+    Matrix<double> matrix(2, 2, values);
+    matrix = matrix * 1.5;
+    EXPECT_EQ(1.5,  matrix.getElement(0, 0));
+    EXPECT_EQ(3,    matrix.getElement(0, 1));
+    EXPECT_EQ(4.5,  matrix.getElement(1, 0));
+    EXPECT_EQ(6,    matrix.getElement(1, 1));
+}
+
