@@ -204,6 +204,20 @@ private:
         }
         return result;
     }
+    
+    vector<CUSTOM_TYPE> getColumnVector(const natural column_number)
+    {
+        vector<CUSTOM_TYPE> result;
+        if(column_number < 0 || column_number >= getColumnsNumber())
+        {
+            return result;
+        }
+        for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
+        {
+            result.push_back(getElement(row_index, column_number));
+        }
+        return result;
+    }
 };
 
 template <typename MATRIX_VALUE_TYPE>
