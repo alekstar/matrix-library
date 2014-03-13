@@ -150,6 +150,11 @@ private:
     natural columns_number_;
     vector<vector<CUSTOM_TYPE> > elements_;
     
+    bool isMultiplyPossibleWith(const Matrix<CUSTOM_TYPE>& matrix_operand) const
+    {
+        return getColumnsNumber() == matrix_operand.getRowsNumber();
+    }
+    
     bool isElementIndexInRange(const natural row_number, 
                                const natural column_number) const
     {
