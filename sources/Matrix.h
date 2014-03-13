@@ -24,6 +24,7 @@ class Matrix {
     FRIEND_TEST(TestMatrixGetElementsToCopyFromVector, AllCases);
     FRIEND_TEST(MatrixIsMultiplyPossible, AllCasesWithVector);
     FRIEND_TEST(MatrixGetRowVector, Matrix0x0);
+    FRIEND_TEST(MatrixGetRowVector, Matrix1x1);
 public:
     typedef typename vector<vector<CUSTOM_TYPE> >::iterator RowsIterator;
     typedef typename vector<CUSTOM_TYPE>::const_iterator VectorConstIterator;
