@@ -130,22 +130,6 @@ public:
     }
     
     void getElementsToVector(vector<CUSTOM_TYPE> &elements_vector) const;
-    Matrix<CUSTOM_TYPE>& operator*(const CUSTOM_TYPE value)
-    {
-        RowsIterator rows_iterator;
-        for(rows_iterator = elements_.begin(); 
-            rows_iterator != elements_.end();
-            rows_iterator++)
-        {
-            std::transform(rows_iterator->begin(), 
-                           rows_iterator->end(),
-                           rows_iterator->begin(),
-                           std::bind1st(std::multiplies<CUSTOM_TYPE>(), value));
-        }
-        
-        return *this;
-    }
-    Matrix<CUSTOM_TYPE>& operator*(const vector<CUSTOM_TYPE> &operand);
 private:
     natural rows_number_;
     natural columns_number_;
@@ -183,6 +167,26 @@ private:
     }
 };
 
+template <typename MATRIX_VALUE_TYPE>
+Matrix<MATRIX_VALUE_TYPE> operator*(const Matrix<MATRIX_VALUE_TYPE>& matrix, 
+                                    const MATRIX_VALUE_TYPE value)
+{   
+    Matrix<MATRIX_VALUE_TYPE> result(matrix.getRowsNumber(), 
+                                     matrix.getColumnsNumber());
+    for(natural row_index = 0; row_index < matrix.getRowsNumber(); ++row_index)
+    {
+        for(natural column_index = 0; 
+            column_index < matrix.getColumnsNumber(); 
+            ++column_index)
+        {
+            MATRIX_VALUE_TYPE current_element = 
+                matrix.getElement(row_index, column_index);
+            result.setElement(current_element * value, row_index, column_index);
+        }
+    }
+
+    return result;
+}
 
 template <typename MATRIX_VALUE_TYPE>
 std::ostream& operator<<(std::ostream &result, 
