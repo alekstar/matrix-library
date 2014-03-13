@@ -186,6 +186,20 @@ TEST(MatrixConstructor, ConstructorFromVectorWithMatrix0x0)
     EXPECT_EQ(0, matrix.getColumnsNumber());
 }
 
+TEST(MatrixConstructor, ConstructorFromVectorWithMatrix2x2)
+{
+    std::vector<int> values;
+    values.push_back(1);
+    values.push_back(2);
+    values.push_back(3);
+    values.push_back(4);
+    Matrix<int> matrix(2, 2, values);
+    EXPECT_EQ(1, matrix.getElement(0, 0));
+    EXPECT_EQ(2, matrix.getElement(0, 1));
+    EXPECT_EQ(3, matrix.getElement(1, 0));
+    EXPECT_EQ(4, matrix.getElement(1, 1));
+}
+
 TEST(MatrixMultiplyWithOneValue, ValueIs2)
 {
     std::vector<int> values;
