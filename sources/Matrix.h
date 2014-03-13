@@ -24,6 +24,8 @@ class Matrix {
     FRIEND_TEST(TestMatrixGetElementsToCopyFromVector, AllCases);
 public:
     typedef typename vector<vector<CUSTOM_TYPE> >::iterator RowsIterator;
+    typedef typename vector<CUSTOM_TYPE>::const_iterator VectorConstIterator;
+    
     
     Matrix(const natural rows_number          = 0, 
            const natural columns_number       = 0, 
@@ -107,24 +109,25 @@ public:
         }
     }
     
-    void setElementsFromVector(const vector<CUSTOM_TYPE> &element_values)
+    void setElementsFromVector(const vector<CUSTOM_TYPE> &elements)
     {
-        typename vector<CUSTOM_TYPE>::const_iterator vector_iterator = 
-            element_values.begin();
+        VectorConstIterator elements_iterator = 
+            elements.begin();
         RowsIterator rows_iterator;
         for(rows_iterator = elements_.begin(); 
             rows_iterator != elements_.end();
             rows_iterator++)
         {
             natural elements_to_copy = 
-                getNumberOfElementsToCopyFromVector(vector_iterator,
-                                                    element_values.end());
-            std::copy(vector_iterator, 
-                      vector_iterator + elements_to_copy, 
+                getNumberOfElementsToCopyFromVector(elements_iterator,
+                                                    elements.end());
+            std::copy(elements_iterator, 
+                      elements_iterator + elements_to_copy, 
                       rows_iterator->begin());
-            vector_iterator += elements_to_copy;
+            elements_iterator += elements_to_copy;
         }
     }
+    
     void getElementsToVector(vector<CUSTOM_TYPE> &elements_vector) const;
     Matrix<CUSTOM_TYPE>& operator*(const CUSTOM_TYPE value)
     {
