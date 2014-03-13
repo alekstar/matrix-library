@@ -27,7 +27,6 @@ public:
     typedef typename vector<vector<CUSTOM_TYPE> >::iterator RowsIterator;
     typedef typename vector<CUSTOM_TYPE>::const_iterator VectorConstIterator;
     
-    
     Matrix(const natural rows_number          = 0, 
            const natural columns_number       = 0, 
            const CUSTOM_TYPE initialize_value = 0)
@@ -130,6 +129,30 @@ public:
     }
     
     void getElementsToVector(vector<CUSTOM_TYPE> &elements_vector) const;
+        
+    Matrix<CUSTOM_TYPE> operator*(const CUSTOM_TYPE value) {
+        Matrix<CUSTOM_TYPE> result(getRowsNumber(),
+                                         getColumnsNumber());
+        for(natural row_index = 0; row_index < getRowsNumber(); ++row_index) {
+            for(natural column_index = 0;
+                column_index < getColumnsNumber();
+                ++column_index) {
+                CUSTOM_TYPE current_element =
+                    getElement(row_index, column_index);
+                result.setElement(current_element * value, 
+                                  row_index, 
+                                  column_index);
+            }
+        }
+
+        return result;
+    }
+    
+    vector<CUSTOM_TYPE> operator*(const vector<CUSTOM_TYPE> &operand);
+    Matrix<CUSTOM_TYPE> operator*(const Matrix<CUSTOM_TYPE> &operand);
+    Matrix<CUSTOM_TYPE> operator+(const Matrix<CUSTOM_TYPE> &operand);
+    Matrix<CUSTOM_TYPE> operator-(const Matrix<CUSTOM_TYPE> &operand);
+    bool operator==(const Matrix<CUSTOM_TYPE> &operand);
 private:
     natural rows_number_;
     natural columns_number_;
@@ -168,27 +191,6 @@ private:
 };
 
 template <typename MATRIX_VALUE_TYPE>
-Matrix<MATRIX_VALUE_TYPE> operator*(const Matrix<MATRIX_VALUE_TYPE>& matrix, 
-                                    const MATRIX_VALUE_TYPE value)
-{   
-    Matrix<MATRIX_VALUE_TYPE> result(matrix.getRowsNumber(), 
-                                     matrix.getColumnsNumber());
-    for(natural row_index = 0; row_index < matrix.getRowsNumber(); ++row_index)
-    {
-        for(natural column_index = 0; 
-            column_index < matrix.getColumnsNumber(); 
-            ++column_index)
-        {
-            MATRIX_VALUE_TYPE current_element = 
-                matrix.getElement(row_index, column_index);
-            result.setElement(current_element * value, row_index, column_index);
-        }
-    }
-
-    return result;
-}
-
-template <typename MATRIX_VALUE_TYPE>
 std::ostream& operator<<(std::ostream &result, 
                          Matrix<MATRIX_VALUE_TYPE> matrix)
 {
@@ -204,22 +206,6 @@ std::ostream& operator<<(std::ostream &result,
     }
     return result;
 }
-
-template <typename MATRIX_VALUE_TYPE>
-Matrix<MATRIX_VALUE_TYPE> operator*(const Matrix<MATRIX_VALUE_TYPE> &left, 
-                                     const Matrix<MATRIX_VALUE_TYPE> &right);
-
-template <typename MATRIX_VALUE_TYPE>
-Matrix<MATRIX_VALUE_TYPE> operator+(const Matrix<MATRIX_VALUE_TYPE> &left, 
-                                     const Matrix<MATRIX_VALUE_TYPE> &right);
-
-template <typename MATRIX_VALUE_TYPE>
-Matrix<MATRIX_VALUE_TYPE> operator-(const Matrix<MATRIX_VALUE_TYPE> &left, 
-                                     const Matrix<MATRIX_VALUE_TYPE> &right);
-
-template <typename MATRIX_VALUE_TYPE>
-bool operator==(const Matrix<MATRIX_VALUE_TYPE> &left, 
-                const Matrix<MATRIX_VALUE_TYPE> &right);
 
 #endif	/* MATRIX_H */
 
