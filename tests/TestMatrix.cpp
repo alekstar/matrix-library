@@ -283,3 +283,20 @@ TEST(MatrixGetRowVector, Matrix1x1)
     EXPECT_EQ(15, vector_of_1st_row.at(0));
     EXPECT_EQ(0, vector_of_2nd_row.size());
 }
+
+TEST(MatrixGetRowVector, Matrix2x2)
+{
+    Matrix<int> matrix(2, 2);
+    matrix.setElement(15,   0, 0);
+    matrix.setElement(-100, 0, 1);
+    matrix.setElement(1,    1, 0);
+    matrix.setElement(123,  1, 1);
+    vector<int> vector_of_1st_row = matrix.getRowVector(0);
+    vector<int> vector_of_2nd_row = matrix.getRowVector(1);
+    EXPECT_EQ(2,    vector_of_1st_row.size());
+    EXPECT_EQ(15,   vector_of_1st_row.at(0));
+    EXPECT_EQ(-100, vector_of_1st_row.at(1));
+    EXPECT_EQ(2,    vector_of_2nd_row.size());
+    EXPECT_EQ(1,    vector_of_2nd_row.at(0));
+    EXPECT_EQ(123,  vector_of_2nd_row.at(1));
+}
