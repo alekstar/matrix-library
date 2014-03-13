@@ -188,6 +188,22 @@ private:
             elements_to_copy = getColumnsNumber();
         }
     }
+    
+    vector<CUSTOM_TYPE> getRowVector(const natural row_number)
+    {
+        vector<CUSTOM_TYPE> result;
+        if(row_number < 0 || row_number >= getRowsNumber())
+        {
+            return result;
+        }
+        for(natural column_index = 0; 
+            column_index < getColumnsNumber(); 
+            ++column_index)
+        {
+            result.push_back(getElement(row_number, column_index));
+        }
+        return result;
+    }
 };
 
 template <typename MATRIX_VALUE_TYPE>
