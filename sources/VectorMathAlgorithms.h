@@ -5,11 +5,11 @@
 namespace vectorMathAlogirthms
 {
     template<typename CUSTOM_TYPE>
-    std::vector<CUSTOM_TYPE> makeScalarMultiplication(
+    CUSTOM_TYPE makeScalarMultiplication(
         const std::vector<CUSTOM_TYPE> &left,
         const std::vector<CUSTOM_TYPE> &right)
     {
-        std::vector<CUSTOM_TYPE> result;
+        CUSTOM_TYPE result = 0;
         if(left.size() != right.size())
         {
             return result;
@@ -20,8 +20,9 @@ namespace vectorMathAlogirthms
             left_index < left.end() && right_index < right.end();
             ++left_index, ++right_index)
         {
-            result.push_back((*left_index)*(*right_index));
+            result += (*left_index)*(*right_index);
         }
+        return result;
     }
 }
 
