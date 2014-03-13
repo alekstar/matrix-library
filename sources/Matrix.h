@@ -37,14 +37,14 @@ public:
     
     Matrix(const natural rows_number, 
            const natural columns_number, 
-           const vector<CUSTOM_TYPE> &element_values,
+           const vector<CUSTOM_TYPE>& elements,
            const CUSTOM_TYPE initialize_value = 0)
     {
         rows_number_    = 0;
         columns_number_ = 0;
         setRowsNumber       (rows_number,       initialize_value);
         setColumnsNumber    (columns_number,    initialize_value);
-        setElementsFromVector(element_values);
+        setElementsFromVector(elements);
     }
     
     Matrix(const vector<CUSTOM_TYPE> &vector_to_convert)
