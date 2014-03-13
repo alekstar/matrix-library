@@ -181,8 +181,7 @@ TEST(TestMatrixPutToStreamOperator, Matrix0x0)
 TEST(MatrixConstructor, ConstructorFromVectorWithMatrix0x0)
 {
     std::vector<int> test_vector(10, 3);
-    Matrix<int> matrix(0, 0);
-    matrix.setElementsFromVector(test_vector);
+    Matrix<int> matrix(0, 0, test_vector);
     EXPECT_EQ(0, matrix.getRowsNumber());
     EXPECT_EQ(0, matrix.getColumnsNumber());
 }
