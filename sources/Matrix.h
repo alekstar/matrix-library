@@ -160,10 +160,11 @@ private:
     }
     
     natural getNumberOfElementsToCopyFromVector(
-              typename vector<CUSTOM_TYPE>::const_iterator vector_iterator,
-              typename vector<CUSTOM_TYPE>::const_iterator vector_end_iterator)
+              VectorConstIterator current_element_iterator,
+              VectorConstIterator vector_end_iterator)
     {
-        natural elements_last = vector_end_iterator - vector_iterator;
+        natural elements_last = 
+            vector_end_iterator - current_element_iterator;
         natural elements_to_copy = 0;
         if(elements_last < getColumnsNumber())
         {
