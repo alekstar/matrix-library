@@ -263,3 +263,12 @@ TEST(MatrixConstructor, ConstructorFromVectorOf5Elements)
         "1\t\n15\t\n-23\t\n0\t\n-1\t\n";
     EXPECT_EQ(expected_matrix_string, actual_matrix_string);
 }
+
+TEST(MatrixGetRowVector, Matrix0x0)
+{
+    Matrix<int> matrix;
+    vector<int> vector_of_1st_row = matrix.getRowVector(0);
+    vector<int> vector_of_2nd_row = matrix.getRowVector(1);
+    EXPECT_EQ(0, vector_of_1st_row.size());
+    EXPECT_EQ(0, vector_of_2nd_row.size());
+}
