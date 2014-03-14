@@ -300,3 +300,40 @@ TEST(MatrixGetRowVector, Matrix2x2)
     EXPECT_EQ(1,    vector_of_2nd_row.at(0));
     EXPECT_EQ(123,  vector_of_2nd_row.at(1));
 }
+
+TEST(MatrixMultiplicateWithAnotherMatrix, Matrices2x2)
+{
+    Matrix<int> matrix1(2, 2);
+    matrix1.setElement(1, 0, 0);
+    matrix1.setElement(2, 0, 1);
+    matrix1.setElement(3, 1, 0);
+    matrix1.setElement(4, 1, 1);
+    Matrix<int> matrix2(2, 2);
+    matrix2.setElement(5, 0, 0);
+    matrix2.setElement(6, 0, 1);
+    matrix2.setElement(7, 1, 0);
+    matrix2.setElement(8, 1, 1);
+    Matrix<int> result = matrix1 * matrix2;
+
+    EXPECT_EQ(2, matrix1.getRowsNumber());
+    EXPECT_EQ(2, matrix1.getColumnsNumber());
+    EXPECT_EQ(1, matrix1.getElement(0, 0));
+    EXPECT_EQ(2, matrix1.getElement(0, 1));
+    EXPECT_EQ(3, matrix1.getElement(1, 0));
+    EXPECT_EQ(4, matrix1.getElement(1, 1));
+
+    EXPECT_EQ(2, matrix2.getRowsNumber());
+    EXPECT_EQ(2, matrix2.getColumnsNumber());
+    EXPECT_EQ(5, matrix2.getElement(0, 0));
+    EXPECT_EQ(6, matrix2.getElement(0, 1));
+    EXPECT_EQ(7, matrix2.getElement(1, 0));
+    EXPECT_EQ(8, matrix2.getElement(1, 1));
+
+    EXPECT_EQ(2, result.getRowsNumber());
+    EXPECT_EQ(2, result.getColumnsNumber());
+    EXPECT_EQ(19, result.getElement(0, 0));
+    EXPECT_EQ(22, result.getElement(0, 1));
+    EXPECT_EQ(43, result.getElement(1, 0));
+    EXPECT_EQ(50, result.getElement(1, 1));
+}
+
