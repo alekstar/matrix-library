@@ -1,1 +1,1 @@
-Class Matrix where included basic operations with matrices.
+Class Matrix where basic operations with matrices are included.
