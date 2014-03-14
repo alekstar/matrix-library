@@ -205,6 +205,11 @@ public:
         return result;
     }
     
+    bool isEmpty()
+    {
+        return getRowsNumber() == 0 || getColumnsNumber() == 0;
+    }
+    
     Matrix<CUSTOM_TYPE> operator-(const Matrix<CUSTOM_TYPE> &operand);
     bool operator==(const Matrix<CUSTOM_TYPE> &operand);
 private:
