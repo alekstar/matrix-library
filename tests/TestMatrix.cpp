@@ -337,7 +337,7 @@ TEST(MatrixMultiplicateWithAnotherMatrix, Matrices2x2)
     EXPECT_EQ(50, result.getElement(1, 1));
 }
 
-TEST(MatrixMultiplicateWithAnotherMatrix, Matrix2x2AndVectorWith2Elements)
+TEST(MatrixMultiplicateWithVector, Matrix2x2AndVectorWith2Elements)
 {
     Matrix<int> matrix(2, 2);
     matrix.setElement(1, 0, 0);
