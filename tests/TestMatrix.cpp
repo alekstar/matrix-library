@@ -337,3 +337,31 @@ TEST(MatrixMultiplicateWithAnotherMatrix, Matrices2x2)
     EXPECT_EQ(50, result.getElement(1, 1));
 }
 
+TEST(MatrixMultiplicateWithAnotherMatrix, Matrix2x2AndVectorWith2Elements)
+{
+    Matrix<int> matrix(2, 2);
+    matrix.setElement(1, 0, 0);
+    matrix.setElement(2, 0, 1);
+    matrix.setElement(3, 1, 0);
+    matrix.setElement(4, 1, 1);
+    std::vector<int> vector;
+    vector.push_back(5);
+    vector.push_back(6);
+    Matrix<int> result = matrix * Matrix<int>(vector);
+
+    EXPECT_EQ(2, matrix.getRowsNumber());
+    EXPECT_EQ(2, matrix.getColumnsNumber());
+    EXPECT_EQ(1, matrix.getElement(0, 0));
+    EXPECT_EQ(2, matrix.getElement(0, 1));
+    EXPECT_EQ(3, matrix.getElement(1, 0));
+    EXPECT_EQ(4, matrix.getElement(1, 1));
+
+    EXPECT_EQ(2, vector.size());
+    EXPECT_EQ(5, vector.at(0));
+    EXPECT_EQ(6, vector.at(1));
+
+    EXPECT_EQ(2, result.getRowsNumber());
+    EXPECT_EQ(1, result.getColumnsNumber());
+    EXPECT_EQ(17, result.getElement(0, 0));
+    EXPECT_EQ(39, result.getElement(1, 0));
+}
