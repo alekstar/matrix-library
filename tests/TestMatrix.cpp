@@ -389,3 +389,13 @@ TEST(MatrixAddWithAnotherMatrix, Matrices2x2)
     EXPECT_EQ(10, result.getElement(1, 0));
     EXPECT_EQ(12, result.getElement(1, 1));
 }
+
+TEST(MatrixAddWithAnotherMatrix, MatricesWithDifferentSizes)
+{
+    Matrix<int> matrix1(2, 1, 0);
+    Matrix<int> matrix2(2, 2, 1);
+
+    Matrix<int> result = matrix1 + matrix2;
+    EXPECT_EQ(0, result.getRowsNumber());
+    EXPECT_EQ(0, result.getColumnsNumber());
+}
