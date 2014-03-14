@@ -399,3 +399,21 @@ TEST(MatrixAddWithAnotherMatrix, MatricesWithDifferentSizes)
     EXPECT_EQ(0, result.getRowsNumber());
     EXPECT_EQ(0, result.getColumnsNumber());
 }
+
+TEST(MatrixIsEmpty, AllCases)
+{
+    Matrix<int> matrix1;
+    Matrix<int> matrix2(1,  1);
+    Matrix<int> matrix3(0,  0);
+    Matrix<int> matrix4(3,  0);
+    Matrix<int> matrix5(0,  2);
+    Matrix<int> matrix6(5,  7);
+    Matrix<int> matrix7(15, 12);
+    EXPECT_TRUE (matrix1.isEmpty());
+    EXPECT_FALSE(matrix2.isEmpty());
+    EXPECT_TRUE (matrix3.isEmpty());
+    EXPECT_TRUE (matrix4.isEmpty());
+    EXPECT_TRUE (matrix5.isEmpty());
+    EXPECT_FALSE(matrix6.isEmpty());
+    EXPECT_FALSE(matrix7.isEmpty());
+}
