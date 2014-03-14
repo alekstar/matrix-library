@@ -6,6 +6,8 @@
 #include <iterator>
 #include <functional>
 #include <algorithm>
+
+#include "VectorMathAlgorithms.h"
 using std::vector;
 
 typedef std::size_t natural;
@@ -152,7 +154,32 @@ public:
     }
     
     vector<CUSTOM_TYPE> operator*(const vector<CUSTOM_TYPE> &operand);
-    Matrix<CUSTOM_TYPE> operator*(const Matrix<CUSTOM_TYPE> &operand);
+    Matrix<CUSTOM_TYPE> operator*(const Matrix<CUSTOM_TYPE> &operand)
+    {
+        using vectorMathAlogirthms::makeScalarMultiplication;
+        if(getColumnsNumber() != operand.getRowsNumber())
+        {
+            return Matrix<CUSTOM_TYPE>();
+        }
+        Matrix<CUSTOM_TYPE> result(getRowsNumber(), operand.getColumnsNumber());
+        for(natural row_index = 0; 
+            row_index < result.getRowsNumber(); 
+            ++row_index)
+        {
+            for(natural column_index = 0;
+                column_index < result.getColumnsNumber();
+                ++column_index)
+            {
+                result.setElement(
+                    makeScalarMultiplication(
+                        getRowVector(row_index), 
+                        operand.getColumnVector(column_index)), 
+                    row_index, 
+                    column_index);
+            }
+        }
+        return result;
+    }
     Matrix<CUSTOM_TYPE> operator+(const Matrix<CUSTOM_TYPE> &operand);
     Matrix<CUSTOM_TYPE> operator-(const Matrix<CUSTOM_TYPE> &operand);
     bool operator==(const Matrix<CUSTOM_TYPE> &operand);
@@ -192,7 +219,7 @@ private:
         }
     }
     
-    vector<CUSTOM_TYPE> getRowVector(const natural row_number)
+    vector<CUSTOM_TYPE> getRowVector(const natural row_number) const
     {
         vector<CUSTOM_TYPE> result;
         if(row_number < 0 || row_number >= getRowsNumber())
@@ -208,7 +235,7 @@ private:
         return result;
     }
     
-    vector<CUSTOM_TYPE> getColumnVector(const natural column_number)
+    vector<CUSTOM_TYPE> getColumnVector(const natural column_number) const
     {
         vector<CUSTOM_TYPE> result;
         if(column_number < 0 || column_number >= getColumnsNumber())
