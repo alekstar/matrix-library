@@ -597,3 +597,53 @@ TEST(MatrixOperatorPlus, SizesAreNotEqual)
     Matrix<int> result = matrix2x3 + matrix3x3;
     EXPECT_TRUE(result.isNull());
 }
+
+TEST(MatrixOperatorMinus, Matrix3x3MinusMatrix3x3)
+{
+    Matrix<int> first_matrix3x3(3, 3, 2);
+    first_matrix3x3.setElement(5, 0, 0);
+    first_matrix3x3.setElement(-5, 1, 0);
+    first_matrix3x3.setElement(10, 2, 2);
+    Matrix<int> second_matrix3x3(3, 3, 1);
+    second_matrix3x3.setElement(-17, 2, 1);
+    second_matrix3x3.setElement(-5, 0, 0);
+    second_matrix3x3.setElement(123, 1, 1);
+    Matrix<int> result = first_matrix3x3 - second_matrix3x3;
+    EXPECT_EQ( 3,   result.getRowsNumber());
+    EXPECT_EQ( 3,   result.getColumnsNumber());
+    EXPECT_EQ( 10,  result.getElement(0, 0));
+    EXPECT_EQ( 1,   result.getElement(0, 1));
+    EXPECT_EQ( 1,   result.getElement(0, 2));
+    EXPECT_EQ(-6,   result.getElement(1, 0));
+    EXPECT_EQ(-121, result.getElement(1, 1));
+    EXPECT_EQ( 1,   result.getElement(1, 2));
+    EXPECT_EQ( 1,   result.getElement(2, 0));
+    EXPECT_EQ( 19,  result.getElement(2, 1));
+    EXPECT_EQ( 9,   result.getElement(2, 2));
+}
+
+TEST(MatrixOperatorMinus, NullAndEmptyMatrices)
+{
+    Matrix<int> null_matrix;
+    Matrix<int> result_after_plus_of_null_matrixes = null_matrix - null_matrix;
+    EXPECT_TRUE(result_after_plus_of_null_matrixes.isNull());
+    
+    Matrix<int> empty_matrix3x0(3, 0);
+    Matrix<int> empty_matrix0x3(0, 3);
+    Matrix<int> result_after_plus_of_matrix_3x0 = 
+        empty_matrix3x0 - empty_matrix3x0;
+    Matrix<int> result_after_plus_of_matrix_0x3 = 
+        empty_matrix0x3 - empty_matrix0x3;
+    EXPECT_EQ(3, result_after_plus_of_matrix_3x0.getRowsNumber());
+    EXPECT_EQ(0, result_after_plus_of_matrix_3x0.getColumnsNumber());
+    EXPECT_EQ(0, result_after_plus_of_matrix_0x3.getRowsNumber());
+    EXPECT_EQ(3, result_after_plus_of_matrix_0x3.getColumnsNumber());
+}
+
+TEST(MatrixOperatorMinus, SizesAreNotEqual)
+{
+    Matrix<int> matrix2x3(2, 3);
+    Matrix<int> matrix3x3(3, 3);
+    Matrix<int> result = matrix2x3 - matrix3x3;
+    EXPECT_TRUE(result.isNull());
+}
