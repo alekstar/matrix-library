@@ -441,3 +441,11 @@ TEST(MatrixIsZero, NullMatrix)
     Matrix<int> matrix;
     EXPECT_FALSE(matrix.isZeroMatrix());
 }
+
+TEST(MatrixIsZero, EmptyMatrix)
+{
+    Matrix<int> matrix1(3, 0);
+    EXPECT_FALSE(matrix1.isZeroMatrix());
+    Matrix<int> matrix2(0, 5);
+    EXPECT_FALSE(matrix2.isZeroMatrix());
+}
