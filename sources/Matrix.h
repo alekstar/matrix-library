@@ -200,7 +200,23 @@ public:
                                   column_index);
             }
         }
-        
+        return result;
+    }
+    
+    Matrix<CUSTOM_TYPE> operator-()
+    {
+        Matrix<CUSTOM_TYPE> result(getRowsNumber(), getColumnsNumber());
+        for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
+        {
+            for(natural column_index = 0; 
+                column_index < getColumnsNumber(); 
+                ++column_index)
+            {
+                result.setElement(-getElement(row_index, column_index),
+                                  row_index,
+                                  column_index);
+            }
+        }
         return result;
     }
     
