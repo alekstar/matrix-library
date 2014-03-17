@@ -183,8 +183,7 @@ public:
     
     Matrix<CUSTOM_TYPE> operator+(const Matrix<CUSTOM_TYPE> &operand)
     {
-        if(getRowsNumber()      != operand.getRowsNumber()      || 
-           getColumnsNumber()   != operand.getColumnsNumber()   )
+        if(!haveSameSize(operand))
         {
             return Matrix<CUSTOM_TYPE>();
         }
