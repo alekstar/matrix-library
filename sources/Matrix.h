@@ -248,6 +248,16 @@ private:
     natural columns_number_;
     vector<vector<CUSTOM_TYPE> > elements_;
     
+    bool haveSameSize(const Matrix<CUSTOM_TYPE>& operand) const
+    {
+        if(getRowsNumber()      == operand.getRowsNumber()      && 
+           getColumnsNumber()   == operand.getColumnsNumber()   )
+        {
+            return true;
+        }
+        return false;
+    }
+    
     bool isMultiplyPossibleWith(const Matrix<CUSTOM_TYPE>& matrix_operand) const
     {
         return getColumnsNumber() == matrix_operand.getRowsNumber();
