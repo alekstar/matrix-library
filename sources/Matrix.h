@@ -259,7 +259,31 @@ public:
         return true;
     }
     
-    bool operator==(const Matrix<CUSTOM_TYPE> &operand) const;
+    bool operator==(const Matrix<CUSTOM_TYPE> &operand) const
+    {
+        if(!haveSameSize(operand))
+        {
+            return false;
+        }
+        if(this == &operand)
+        {
+            return true;
+        }
+        for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
+        {
+            for(natural column_index = 0; 
+                column_index < getColumnsNumber(); 
+                ++column_index)
+            {
+                if(getElement(row_index, column_index) != 
+                        operand.getElement(row_index, column_index))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 private:
     natural rows_number_;
     natural columns_number_;
