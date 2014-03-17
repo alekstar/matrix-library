@@ -457,3 +457,23 @@ TEST(MatrixIsZero, ZeroMatrix)
     EXPECT_TRUE(matrix1.isZeroMatrix());
     EXPECT_TRUE(matrix2.isZeroMatrix());
 }
+
+TEST(MatrixIsZero, NonZeroMatrix)
+{
+    Matrix<int> matrix1(1, 1);
+    matrix1.setElement(5, 0, 0);
+    Matrix<double> matrix2(2, 2);
+    matrix2.setElement(1.234567, 1, 1);
+    Matrix<int> matrix3(5, 10);
+    matrix3.setElement(5, 4, 5);
+    matrix3.setElement(-10, 2, 7);
+    matrix3.setElement(150, 0, 2);
+    Matrix<int> matrix4(12, 7);
+    matrix4.setElement(-701, 10, 5);
+    matrix4.setElement(1233, 2, 5);
+    matrix4.setElement(45, 11, 6);
+    EXPECT_FALSE(matrix1.isZeroMatrix());
+    EXPECT_FALSE(matrix2.isZeroMatrix());
+    EXPECT_FALSE(matrix3.isZeroMatrix());
+    EXPECT_FALSE(matrix4.isZeroMatrix());
+}
