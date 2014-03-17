@@ -435,3 +435,9 @@ TEST(MatrixIsNull, AllCases)
     EXPECT_FALSE(matrix6.isNull());
     EXPECT_FALSE(matrix7.isNull());
 }
+
+TEST(MatrixIsZero, NullMatrix)
+{
+    Matrix<int> matrix;
+    EXPECT_FALSE(matrix.isZeroMatrix());
+}
