@@ -511,7 +511,7 @@ TEST(MatrixUnaryOperatorMinus, NullMatrix)
     EXPECT_TRUE(negate_of_null_matrix.isNull());
 }
 
-TEST(MatrixUnaryOperatorMinus, ZeroMatrixAllCases)
+TEST(MatrixUnaryOperatorMinus, EmptyMatrixAllCases)
 {
     Matrix<int> matrix_with_zero_rows(0, 5);
     Matrix<int> matrix_with_zero_columns(7, 0);
