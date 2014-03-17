@@ -157,7 +157,7 @@ public:
         using vectorMathAlogirthms::makeScalarMultiplication;
         if(getColumnsNumber() != operand.getRowsNumber())
         {
-            return Matrix<CUSTOM_TYPE>();
+            return getNullMatrix();
         }
         Matrix<CUSTOM_TYPE> result(getRowsNumber(), operand.getColumnsNumber());
         for(natural row_index = 0; 
@@ -183,7 +183,7 @@ public:
     {
         if(!haveSameSize(operand))
         {
-            return Matrix<CUSTOM_TYPE>();
+            return getNullMatrix();
         }
         Matrix<CUSTOM_TYPE> result(getRowsNumber(), getColumnsNumber());
         for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
