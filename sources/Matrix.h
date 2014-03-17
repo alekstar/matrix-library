@@ -215,6 +215,11 @@ public:
         return getRowsNumber() == 0 && getColumnsNumber() == 0;
     }
     
+    bool isSquare()
+    {
+        return getRowsNumber() == getColumnsNumber();
+    }
+    
     Matrix<CUSTOM_TYPE> operator-(const Matrix<CUSTOM_TYPE> &operand);
     bool operator==(const Matrix<CUSTOM_TYPE> &operand);
 private:
