@@ -571,3 +571,21 @@ TEST(MatrixOperatorPlus, Matrix3x3PlusMatrix3x3)
     EXPECT_EQ(-15,  result.getElement(2, 1));
     EXPECT_EQ( 11,  result.getElement(2, 2));
 }
+
+TEST(MatrixOperatorPlus, NullAndEmptyMatrices)
+{
+    Matrix<int> null_matrix;
+    Matrix<int> result_after_plus_of_null_matrixes = null_matrix + null_matrix;
+    EXPECT_TRUE(result_after_plus_of_null_matrixes.isNull());
+    
+    Matrix<int> empty_matrix3x0(3, 0);
+    Matrix<int> empty_matrix0x3(0, 3);
+    Matrix<int> result_after_plus_of_matrix_3x0 = 
+        empty_matrix3x0 + empty_matrix3x0;
+    Matrix<int> result_after_plus_of_matrix_0x3 = 
+        empty_matrix0x3 + empty_matrix0x3;
+    EXPECT_EQ(3, result_after_plus_of_matrix_3x0.getRowsNumber());
+    EXPECT_EQ(0, result_after_plus_of_matrix_3x0.getColumnsNumber());
+    EXPECT_EQ(0, result_after_plus_of_matrix_0x3.getRowsNumber());
+    EXPECT_EQ(3, result_after_plus_of_matrix_0x3.getColumnsNumber());
+}
