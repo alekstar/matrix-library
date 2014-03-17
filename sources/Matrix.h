@@ -217,6 +217,11 @@ public:
         return result;
     }
     
+    Matrix<CUSTOM_TYPE> operator-(const Matrix<CUSTOM_TYPE> &operand) const
+    {
+        return operator+(-operand);
+    }
+    
     bool isEmpty() const
     {
         return getRowsNumber() == 0 || getColumnsNumber() == 0;
@@ -253,7 +258,6 @@ public:
         return true;
     }
     
-    Matrix<CUSTOM_TYPE> operator-(const Matrix<CUSTOM_TYPE> &operand);
     bool operator==(const Matrix<CUSTOM_TYPE> &operand) const;
 private:
     natural rows_number_;
