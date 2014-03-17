@@ -335,6 +335,12 @@ private:
         }
         return result;
     }
+    
+    Matrix<CUSTOM_TYPE> getNullMatrix() const
+    {
+        return Matrix<CUSTOM_TYPE>();
+    }
+    
 };
 
 template <typename MATRIX_VALUE_TYPE>
