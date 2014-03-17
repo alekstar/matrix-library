@@ -28,6 +28,7 @@ class Matrix {
     FRIEND_TEST(MatrixGetRowVector, Matrix0x0);
     FRIEND_TEST(MatrixGetRowVector, Matrix1x1);
     FRIEND_TEST(MatrixGetRowVector, Matrix2x2);
+    FRIEND_TEST(MatrixHaveSameSize, AllCases);
 public:
     typedef typename vector<vector<CUSTOM_TYPE> >::iterator RowsIterator;
     typedef typename vector<CUSTOM_TYPE>::const_iterator VectorConstIterator;
