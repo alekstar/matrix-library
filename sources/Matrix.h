@@ -132,8 +132,6 @@ public:
             elements_iterator += elements_to_copy;
         }
     }
-    
-    void getElementsToVector(vector<CUSTOM_TYPE> &elements_vector) const;
         
     Matrix<CUSTOM_TYPE> operator*(const CUSTOM_TYPE value) {
         Matrix<CUSTOM_TYPE> result(getRowsNumber(),
