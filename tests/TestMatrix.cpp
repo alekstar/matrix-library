@@ -530,3 +530,20 @@ TEST(MatrixUnaryOperatorMinus, EmptyMatrixAllCases)
     EXPECT_EQ(matrix_with_zero_columns.getColumnsNumber(), 
               negate_of_matrix_with_zero_columns.getColumnsNumber());
 }
+
+TEST(MatrixHaveSameSize, AllCases)
+{
+    Matrix<int> null_matrix;
+    Matrix<int> zero_matrix_5x4(5, 4);
+    Matrix<int> non_zero_matrix_5x4(5, 4);
+    non_zero_matrix_5x4.setElement(123, 1, 2);
+    non_zero_matrix_5x4.setElement(-123, 0, 2);
+    non_zero_matrix_5x4.setElement(1, 1, 3);
+    non_zero_matrix_5x4.setElement(2, 2, 3);
+    non_zero_matrix_5x4.setElement(3, 3, 3);
+    non_zero_matrix_5x4.setElement(4, 4, 4);
+    EXPECT_FALSE(null_matrix.haveSameSize(zero_matrix_5x4));
+    EXPECT_FALSE(null_matrix.haveSameSize(non_zero_matrix_5x4));
+    EXPECT_TRUE(zero_matrix_5x4.haveSameSize(non_zero_matrix_5x4));
+    EXPECT_TRUE(non_zero_matrix_5x4.haveSameSize(zero_matrix_5x4));
+}
