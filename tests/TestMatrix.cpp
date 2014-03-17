@@ -547,3 +547,27 @@ TEST(MatrixHaveSameSize, AllCases)
     EXPECT_TRUE(zero_matrix_5x4.haveSameSize(non_zero_matrix_5x4));
     EXPECT_TRUE(non_zero_matrix_5x4.haveSameSize(zero_matrix_5x4));
 }
+
+TEST(MatrixOperatorPlus, Matrix3x3PlusMatrix3x3)
+{
+    Matrix<int> first_matrix3x3(3, 3, 2);
+    first_matrix3x3.setElement(5, 0, 0);
+    first_matrix3x3.setElement(-5, 1, 0);
+    first_matrix3x3.setElement(10, 2, 2);
+    Matrix<int> second_matrix3x3(3, 3, 1);
+    second_matrix3x3.setElement(-17, 2, 1);
+    second_matrix3x3.setElement(-5, 0, 0);
+    second_matrix3x3.setElement(123, 1, 1);
+    Matrix<int> result = first_matrix3x3 + second_matrix3x3;
+    EXPECT_EQ( 3,   result.getRowsNumber());
+    EXPECT_EQ( 3,   result.getColumnsNumber());
+    EXPECT_EQ( 0,   result.getElement(0, 0));
+    EXPECT_EQ( 3,   result.getElement(0, 1));
+    EXPECT_EQ( 3,   result.getElement(0, 2));
+    EXPECT_EQ(-4,   result.getElement(1, 0));
+    EXPECT_EQ( 125, result.getElement(1, 1));
+    EXPECT_EQ( 3,   result.getElement(1, 2));
+    EXPECT_EQ( 3,   result.getElement(2, 0));
+    EXPECT_EQ(-15,  result.getElement(2, 1));
+    EXPECT_EQ( 11,  result.getElement(2, 2));
+}
