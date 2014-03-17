@@ -449,3 +449,11 @@ TEST(MatrixIsZero, EmptyMatrix)
     Matrix<int> matrix2(0, 5);
     EXPECT_FALSE(matrix2.isZeroMatrix());
 }
+
+TEST(MatrixIsZero, ZeroMatrix)
+{
+    Matrix<int> matrix1(1, 1);
+    Matrix<double> matrix2(2, 2);
+    EXPECT_TRUE(matrix1.isZeroMatrix());
+    EXPECT_TRUE(matrix2.isZeroMatrix());
+}
