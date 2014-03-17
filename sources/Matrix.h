@@ -220,6 +220,27 @@ public:
         return getRowsNumber() == getColumnsNumber();
     }
     
+    bool isZeroMatrix()
+    {
+        if(isEmpty())
+        {
+            return false;
+        }
+        for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
+        {
+            for(natural column_index = 0; 
+                column_index < getColumnsNumber(); 
+                ++column_index)
+            {
+                if(getElement(row_index, column_index) != 0)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
     Matrix<CUSTOM_TYPE> operator-(const Matrix<CUSTOM_TYPE> &operand);
     bool operator==(const Matrix<CUSTOM_TYPE> &operand);
 private:
