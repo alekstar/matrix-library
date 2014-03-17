@@ -151,7 +151,7 @@ public:
         return result;
     }
     
-    Matrix<CUSTOM_TYPE> operator*(const Matrix<CUSTOM_TYPE> &operand)
+    Matrix<CUSTOM_TYPE> operator*(const Matrix<CUSTOM_TYPE> &operand) const
     {
         using vectorMathAlogirthms::makeScalarMultiplication;
         if(getColumnsNumber() != operand.getRowsNumber())
@@ -178,7 +178,7 @@ public:
         return result;
     }
     
-    Matrix<CUSTOM_TYPE> operator+(const Matrix<CUSTOM_TYPE> &operand)
+    Matrix<CUSTOM_TYPE> operator+(const Matrix<CUSTOM_TYPE> &operand) const
     {
         if(!haveSameSize(operand))
         {
@@ -200,7 +200,7 @@ public:
         return result;
     }
     
-    Matrix<CUSTOM_TYPE> operator-()
+    Matrix<CUSTOM_TYPE> operator-() const
     {
         Matrix<CUSTOM_TYPE> result(getRowsNumber(), getColumnsNumber());
         for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
@@ -217,22 +217,22 @@ public:
         return result;
     }
     
-    bool isEmpty()
+    bool isEmpty() const
     {
         return getRowsNumber() == 0 || getColumnsNumber() == 0;
     }
     
-    bool isNull()
+    bool isNull() const
     {
         return getRowsNumber() == 0 && getColumnsNumber() == 0;
     }
     
-    bool isSquare()
+    bool isSquare() const
     {
         return getRowsNumber() == getColumnsNumber();
     }
     
-    bool isZeroMatrix()
+    bool isZeroMatrix() const
     {
         if(isEmpty())
         {
@@ -254,7 +254,7 @@ public:
     }
     
     Matrix<CUSTOM_TYPE> operator-(const Matrix<CUSTOM_TYPE> &operand);
-    bool operator==(const Matrix<CUSTOM_TYPE> &operand);
+    bool operator==(const Matrix<CUSTOM_TYPE> &operand) const;
 private:
     natural rows_number_;
     natural columns_number_;
