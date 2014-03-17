@@ -477,3 +477,56 @@ TEST(MatrixIsZero, NonZeroMatrix)
     EXPECT_FALSE(matrix3.isZeroMatrix());
     EXPECT_FALSE(matrix4.isZeroMatrix());
 }
+
+TEST(MatrixUnaryOperatorMinus, SimpleNegateOfNonZeroMatrix2x2)
+{
+    Matrix<int> test_matrix(2, 2);
+    test_matrix.setElement( 15,  0, 0);
+    test_matrix.setElement(-16,  1, 0);
+    test_matrix.setElement( 17,  0, 1);
+    test_matrix.setElement(-115, 1, 1);
+    
+    Matrix<int> negate_test_matrix = -test_matrix;
+    EXPECT_EQ( 15,  test_matrix.getElement(0, 0));
+    EXPECT_EQ(-16,  test_matrix.getElement(1, 0));
+    EXPECT_EQ( 17,  test_matrix.getElement(0, 1));
+    EXPECT_EQ(-115, test_matrix.getElement(1, 1));
+    EXPECT_EQ(2,    test_matrix.getRowsNumber());
+    EXPECT_EQ(2,    test_matrix.getColumnsNumber());
+    
+
+    EXPECT_EQ(-15,  negate_test_matrix.getElement(0, 0));
+    EXPECT_EQ( 16,  negate_test_matrix.getElement(1, 0));
+    EXPECT_EQ(-17,  negate_test_matrix.getElement(0, 1));
+    EXPECT_EQ( 115, negate_test_matrix.getElement(1, 1));
+    EXPECT_EQ(2,    negate_test_matrix.getRowsNumber());
+    EXPECT_EQ(2,    negate_test_matrix.getColumnsNumber());
+}
+
+TEST(MatrixUnaryOperatorMinus, NullMatrix)
+{
+    Matrix<double> null_matrix;
+    Matrix<double> negate_of_null_matrix = -null_matrix;
+    EXPECT_TRUE(null_matrix.isNull());
+    EXPECT_TRUE(negate_of_null_matrix.isNull());
+}
+
+TEST(MatrixUnaryOperatorMinus, ZeroMatrixAllCases)
+{
+    Matrix<int> matrix_with_zero_rows(0, 5);
+    Matrix<int> matrix_with_zero_columns(7, 0);
+    Matrix<int> negate_of_matrix_with_zero_rows = -matrix_with_zero_rows;
+    Matrix<int> negate_of_matrix_with_zero_columns = -matrix_with_zero_columns;
+    EXPECT_EQ(0, matrix_with_zero_rows.getRowsNumber());
+    EXPECT_EQ(5, matrix_with_zero_rows.getColumnsNumber());
+    EXPECT_EQ(7, matrix_with_zero_columns.getRowsNumber());
+    EXPECT_EQ(0, matrix_with_zero_columns.getColumnsNumber());
+    EXPECT_EQ(matrix_with_zero_rows.getRowsNumber(), 
+              negate_of_matrix_with_zero_rows.getRowsNumber());
+    EXPECT_EQ(matrix_with_zero_rows.getColumnsNumber(), 
+              negate_of_matrix_with_zero_rows.getColumnsNumber());
+    EXPECT_EQ(matrix_with_zero_columns.getRowsNumber(), 
+              negate_of_matrix_with_zero_columns.getRowsNumber());
+    EXPECT_EQ(matrix_with_zero_columns.getColumnsNumber(), 
+              negate_of_matrix_with_zero_columns.getColumnsNumber());
+}
