@@ -589,3 +589,11 @@ TEST(MatrixOperatorPlus, NullAndEmptyMatrices)
     EXPECT_EQ(0, result_after_plus_of_matrix_0x3.getRowsNumber());
     EXPECT_EQ(3, result_after_plus_of_matrix_0x3.getColumnsNumber());
 }
+
+TEST(MatrixOperatorPlus, SizesAreNotEqual)
+{
+    Matrix<int> matrix2x3(2, 3);
+    Matrix<int> matrix3x3(3, 3);
+    Matrix<int> result = matrix2x3 + matrix3x3;
+    EXPECT_TRUE(result.isNull());
+}
