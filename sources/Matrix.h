@@ -151,7 +151,6 @@ public:
         return result;
     }
     
-    vector<CUSTOM_TYPE> operator*(const vector<CUSTOM_TYPE> &operand);
     Matrix<CUSTOM_TYPE> operator*(const Matrix<CUSTOM_TYPE> &operand)
     {
         using vectorMathAlogirthms::makeScalarMultiplication;
