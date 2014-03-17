@@ -647,3 +647,16 @@ TEST(MatrixOperatorMinus, SizesAreNotEqual)
     Matrix<int> result = matrix2x3 - matrix3x3;
     EXPECT_TRUE(result.isNull());
 }
+
+TEST(MatrixOperatorIsEqual, AllCases)
+{
+    Matrix<int> matrix3x3_with_10s(3, 3, 10);
+    Matrix<int> matrix3x3_with_11s(3, 3, 11);
+    Matrix<int> matrix2x3_with_10s(2, 3, 10);
+    Matrix<int> another_matrix3x3_with_10s(3, 3, 10);
+    EXPECT_FALSE(matrix3x3_with_10s == matrix3x3_with_11s);
+    EXPECT_FALSE(matrix3x3_with_10s == matrix2x3_with_10s);
+    EXPECT_TRUE(matrix3x3_with_10s == matrix3x3_with_10s);
+    EXPECT_TRUE(matrix3x3_with_10s == another_matrix3x3_with_10s);
+    EXPECT_TRUE(another_matrix3x3_with_10s == matrix3x3_with_10s);
+}
