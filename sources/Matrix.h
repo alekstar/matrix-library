@@ -11,6 +11,7 @@ using std::vector;
 
 #include "natural_type.h"
 #include "VectorMathAlgorithms.h"
+#include "MatrixRowIndexOutOfRange.h"
 
 template<typename CUSTOM_TYPE>
 class Matrix {
@@ -98,11 +99,15 @@ public:
     
     void setElement(const CUSTOM_TYPE value, 
                     const natural row_number, 
-                    const natural column_number)
+                    const natural column_number) throw(MatrixRowIndexOutOfRange)
     {
         if(isElementIndexInRange(row_number, column_number))
         {
             elements_.at(row_number).at(column_number) = value;
+        }
+        else
+        {
+            throw MatrixRowIndexOutOfRange();
         }
     }
     
