@@ -312,6 +312,9 @@ private:
     bool isElementIndexInRange(const natural row_number, 
                                const natural column_number) const
     {
+        return isRowIndexInRange(row_number) &&
+               isColumnIndexInRange(column_number);
+    }
     
     bool isRowIndexInRange(const natural row_number) const
     {
