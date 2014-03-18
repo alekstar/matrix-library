@@ -543,7 +543,7 @@ TEST(MatrixHaveSameSize, AllCases)
     non_zero_matrix_5x4.setElement(1, 1, 3);
     non_zero_matrix_5x4.setElement(2, 2, 3);
     non_zero_matrix_5x4.setElement(3, 3, 3);
-    non_zero_matrix_5x4.setElement(4, 4, 4);
+    non_zero_matrix_5x4.setElement(4, 4, 3);
     EXPECT_FALSE(null_matrix.haveSameSize(zero_matrix_5x4));
     EXPECT_FALSE(null_matrix.haveSameSize(non_zero_matrix_5x4));
     EXPECT_TRUE(zero_matrix_5x4.haveSameSize(non_zero_matrix_5x4));
