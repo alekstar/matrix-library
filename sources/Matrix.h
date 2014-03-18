@@ -10,7 +10,7 @@
 #include "VectorMathAlgorithms.h"
 using std::vector;
 
-typedef std::size_t natural;
+#include "natural_type.h"
 
 template<typename CUSTOM_TYPE>
 class Matrix {
