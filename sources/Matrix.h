@@ -120,7 +120,16 @@ public:
     
     CUSTOM_TYPE getElement(const natural row_number, 
                            const natural column_number) const
+            throw(MatrixRowIndexOutOfRange, MatrixColumnIndexOutOfRange)
     {
+        if(!isRowIndexInRange(row_number))
+        {
+            throw MatrixRowIndexOutOfRange();
+        }
+        if(!isColumnIndexInRange(column_number))
+        {
+            throw MatrixColumnIndexOutOfRange();
+        }
         if(isElementIndexInRange(row_number, column_number))
         {
             return elements_.at(row_number).at(column_number);
