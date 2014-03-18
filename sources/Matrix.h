@@ -1,16 +1,16 @@
 #ifndef MATRIX_H
 #define	MATRIX_H
 #include <vector>
-#include <gtest/gtest_prod.h>
+using std::vector;
 #include <iostream>
 #include <iterator>
 #include <functional>
 #include <algorithm>
 
-#include "VectorMathAlgorithms.h"
-using std::vector;
+#include <gtest/gtest_prod.h>
 
 #include "natural_type.h"
+#include "VectorMathAlgorithms.h"
 
 template<typename CUSTOM_TYPE>
 class Matrix {
