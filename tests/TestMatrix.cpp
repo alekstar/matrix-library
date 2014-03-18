@@ -79,6 +79,9 @@ TEST(TestMatrixGetElement, SomeRandomElementsInMatrix3x4)
     EXPECT_EQ(0, matrix.getElement(0, 2));
     EXPECT_EQ(0, matrix.getElement(1, 0));
     EXPECT_EQ(0, matrix.getElement(1, 2));
+    EXPECT_THROW(matrix.getElement(1, 5), MatrixColumnIndexOutOfRange);
+    EXPECT_THROW(matrix.getElement(5, 2), MatrixRowIndexOutOfRange);
+    EXPECT_THROW(matrix.getElement(5, 5), MatrixRowIndexOutOfRange);
 }
 
 TEST(TestMatrixSetColumnsNumber, set3ColumnsForMatrix2x2)
