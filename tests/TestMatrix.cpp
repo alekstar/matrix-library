@@ -63,6 +63,9 @@ TEST(TestMatrixSetElement, SomeRandomElementsInMatrix3x4)
     EXPECT_EQ(0, matrix.elements_.at(1).at(0));
     EXPECT_EQ(0, matrix.elements_.at(1).at(2));
     EXPECT_THROW(matrix.setElement(2, 2, 2), MatrixRowIndexOutOfRange);
+    EXPECT_THROW(matrix.setElement(112, 1, 5), MatrixColumnIndexOutOfRange);
+    EXPECT_THROW(matrix.setElement(1234, 15, 10), MatrixRowIndexOutOfRange);
+    
 }
 
 TEST(TestMatrixGetElement, SomeRandomElementsInMatrix3x4)
