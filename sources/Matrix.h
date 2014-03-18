@@ -16,6 +16,7 @@ using std::vector;
 
 template<typename CUSTOM_TYPE>
 class Matrix {
+    
     FRIEND_TEST(TestMatrixConstructor, DefaultConstructor);
     FRIEND_TEST(TestMatrixConstructor, DefaultMatrix1x1);
     FRIEND_TEST(TestMatrixConstructor, DefaultMatrix2x2);
@@ -103,10 +104,6 @@ public:
                     const natural column_number) 
             throw(MatrixRowIndexOutOfRange, MatrixColumnIndexOutOfRange)
     {
-        if(isElementIndexInRange(row_number, column_number))
-        {
-            elements_.at(row_number).at(column_number) = value;
-        }
         if(!isRowIndexInRange(row_number))
         {
             throw MatrixRowIndexOutOfRange();
@@ -114,6 +111,10 @@ public:
         if(!isColumnIndexInRange(column_number))
         {
             throw MatrixColumnIndexOutOfRange();
+        }
+        if(isElementIndexInRange(row_number, column_number))
+        {
+            elements_.at(row_number).at(column_number) = value;
         }
     }
     
