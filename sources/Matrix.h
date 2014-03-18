@@ -315,6 +315,10 @@ private:
         return row_number       < getRowsNumber() &&
                row_number       >= 0 &&
                column_number    < getColumnsNumber() &&
+    
+    bool isColumnIndexInRange(const natural column_number) const
+    {
+        return column_number    < getColumnsNumber() &&
                column_number    >= 0;
     }
     
