@@ -11,9 +11,9 @@ using std::vector;
 
 #include "natural_type.h"
 #include "VectorMathAlgorithms.h"
-#include "MatrixRowIndexOutOfRange.h"
-#include "MatrixColumnIndexOutOfRange.h"
-#include "MatricesCantBeMultiplied.h"
+#include "exceptions/RowIndexOutOfRange.h"
+#include "exceptions/ColumnIndexOutOfRange.h"
+#include "exceptions/MatricesCantBeMultiplied.h"
 
 template<typename CUSTOM_TYPE>
 class Matrix {
