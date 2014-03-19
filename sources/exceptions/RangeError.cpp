@@ -1,7 +1,8 @@
 #include <stdexcept>
 
-#include "MatrixRangeError.h"
+#include "RangeError.h"
+using namespace MatrixExceptions;
 
-MatrixRangeError::MatrixRangeError(const std::string& message)
+RangeError::RangeError(const std::string& message)
     :out_of_range(message)
 {}

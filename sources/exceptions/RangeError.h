@@ -3,9 +3,12 @@
 #include <string>
 #include <stdexcept>
 
-class MatrixRangeError: public std::out_of_range {
-public:
-    MatrixRangeError(const std::string& message);
-};
+namespace MatrixExceptions
+{
+    class RangeError: public std::out_of_range {
+    public:
+        RangeError(const std::string& message);
+    };
+}
 
 #endif	/* MATRIXRANGEERROR_H */
