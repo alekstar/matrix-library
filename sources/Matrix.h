@@ -13,6 +13,7 @@ using std::vector;
 #include "VectorMathAlgorithms.h"
 #include "MatrixRowIndexOutOfRange.h"
 #include "MatrixColumnIndexOutOfRange.h"
+#include "MatricesCantBeMultiplied.h"
 
 template<typename CUSTOM_TYPE>
 class Matrix {
@@ -174,11 +175,12 @@ public:
     }
     
     Matrix<CUSTOM_TYPE> operator*(const Matrix<CUSTOM_TYPE> &operand) const
+        throw(MatricesCantBeMultiplied)
     {
         using vectorMathAlogirthms::makeScalarMultiplication;
         if(getColumnsNumber() != operand.getRowsNumber())
         {
-            return getNullMatrix();
+            throw MatricesCantBeMultiplied();
         }
         Matrix<CUSTOM_TYPE> result(getRowsNumber(), operand.getColumnsNumber());
         for(natural row_index = 0; 
