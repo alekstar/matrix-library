@@ -1,9 +1,8 @@
 #ifndef MATRIXROWINDEXOUTOFRANGE_H
 #define	MATRIXROWINDEXOUTOFRANGE_H
-#include <stdexcept>
-#include "natural_type.h"
+#include "MatrixRangeError.h"
 
-class MatrixRowIndexOutOfRange: public std::out_of_range
+class MatrixRowIndexOutOfRange: public MatrixRangeError
 {
 public:
     MatrixRowIndexOutOfRange();

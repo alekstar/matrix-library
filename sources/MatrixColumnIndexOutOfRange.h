@@ -1,8 +1,8 @@
 #ifndef MATRIXCOLUMNINDEXOUTOFRANGE_H
 #define	MATRIXCOLUMNINDEXOUTOFRANGE_H
-#include <stdexcept>
+#include "MatrixRangeError.h"
 
-class MatrixColumnIndexOutOfRange: public std::out_of_range {
+class MatrixColumnIndexOutOfRange: public MatrixRangeError {
 public:
     MatrixColumnIndexOutOfRange();
 };
