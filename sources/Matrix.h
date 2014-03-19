@@ -178,7 +178,7 @@ public:
         throw(MatricesCantBeMultiplied)
     {
         using vectorMathAlogirthms::makeScalarMultiplication;
-        if(getColumnsNumber() != operand.getRowsNumber())
+        if(!isMultiplyPossibleWith(operand))
         {
             throw MatricesCantBeMultiplied();
         }
