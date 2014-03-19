@@ -1,10 +1,13 @@
 #ifndef MATRIXCOLUMNINDEXOUTOFRANGE_H
 #define	MATRIXCOLUMNINDEXOUTOFRANGE_H
-#include "MatrixRangeError.h"
+#include "RangeError.h"
 
-class MatrixColumnIndexOutOfRange: public MatrixRangeError {
-public:
-    MatrixColumnIndexOutOfRange();
-};
-
+namespace MatrixExceptions
+{
+    class ColumnIndexOutOfRange: public RangeError 
+    {
+    public:
+        ColumnIndexOutOfRange();
+    };
+}
 #endif	/* MATRIXCOLUMNINDEXOUTOFRANGE_H */

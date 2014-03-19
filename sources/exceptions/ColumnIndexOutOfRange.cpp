@@ -1,6 +1,8 @@
-#include "MatrixColumnIndexOutOfRange.h"
-#include "MatrixRangeError.h"
+#include "ColumnIndexOutOfRange.h"
+#include "RangeError.h"
 
-MatrixColumnIndexOutOfRange::MatrixColumnIndexOutOfRange()
-    :MatrixRangeError("Index of column is out of range.")
+using namespace MatrixExceptions;
+
+ColumnIndexOutOfRange::ColumnIndexOutOfRange()
+    :RangeError("Index of column is out of range.")
 {}
