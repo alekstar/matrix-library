@@ -1,12 +1,14 @@
 #ifndef MATRIXROWINDEXOUTOFRANGE_H
 #define	MATRIXROWINDEXOUTOFRANGE_H
-#include "MatrixRangeError.h"
+#include "RangeError.h"
 
-class MatrixRowIndexOutOfRange: public MatrixRangeError
+namespace MatrixExceptions
 {
-public:
-    MatrixRowIndexOutOfRange();
-};
+    class RowIndexOutOfRange: public RangeError
+    {
+    public:
+        RowIndexOutOfRange();
+    };
+}
 
 #endif	/* MATRIXROWINDEXOUTOFRANGE_H */
-

@@ -1,5 +1,7 @@
-#include "MatrixRowIndexOutOfRange.h"
+#include "RowIndexOutOfRange.h"
 
-MatrixRowIndexOutOfRange::MatrixRowIndexOutOfRange()
-    :MatrixRangeError("Index of row is out of range.")
+using namespace MatrixExceptions;
+
+RowIndexOutOfRange::RowIndexOutOfRange()
+    :RangeError("Index of row is out of range.")
 {}
