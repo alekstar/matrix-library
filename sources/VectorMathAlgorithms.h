@@ -2,7 +2,7 @@
 #define	VECTORMATHALGORITHMS_H
 #include <vector>
 
-namespace vectorMathAlogirthms
+namespace VectorMathAlogirthms
 {
     template<typename CUSTOM_TYPE>
     CUSTOM_TYPE makeScalarMultiplication(

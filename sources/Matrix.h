@@ -178,7 +178,7 @@ public:
     Matrix<CUSTOM_TYPE> operator*(const Matrix<CUSTOM_TYPE> &operand) const
         throw(MatricesCantBeMultiplied)
     {
-        using vectorMathAlogirthms::makeScalarMultiplication;
+        using VectorMathAlogirthms::makeScalarMultiplication;
         if(!isMultiplyPossibleWith(operand))
         {
             throw MatricesCantBeMultiplied();
