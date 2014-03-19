@@ -14,6 +14,7 @@ using std::vector;
 #include "exceptions/RowIndexOutOfRange.h"
 #include "exceptions/ColumnIndexOutOfRange.h"
 #include "exceptions/MatricesCantBeMultiplied.h"
+using namespace MatrixExceptions;
 
 template<typename CUSTOM_TYPE>
 class Matrix {
@@ -103,15 +104,15 @@ public:
     void setElement(const CUSTOM_TYPE value, 
                     const natural row_number, 
                     const natural column_number) 
-            throw(MatrixRowIndexOutOfRange, MatrixColumnIndexOutOfRange)
+            throw(RowIndexOutOfRange, ColumnIndexOutOfRange)
     {
         if(!isRowIndexInRange(row_number))
         {
-            throw MatrixRowIndexOutOfRange();
+            throw RowIndexOutOfRange();
         }
         if(!isColumnIndexInRange(column_number))
         {
-            throw MatrixColumnIndexOutOfRange();
+            throw ColumnIndexOutOfRange();
         }
         if(isElementIndexInRange(row_number, column_number))
         {
@@ -121,15 +122,15 @@ public:
     
     CUSTOM_TYPE getElement(const natural row_number, 
                            const natural column_number) const
-            throw(MatrixRowIndexOutOfRange, MatrixColumnIndexOutOfRange)
+            throw(RowIndexOutOfRange, ColumnIndexOutOfRange)
     {
         if(!isRowIndexInRange(row_number))
         {
-            throw MatrixRowIndexOutOfRange();
+            throw RowIndexOutOfRange();
         }
         if(!isColumnIndexInRange(column_number))
         {
-            throw MatrixColumnIndexOutOfRange();
+            throw ColumnIndexOutOfRange();
         }
         if(isElementIndexInRange(row_number, column_number))
         {

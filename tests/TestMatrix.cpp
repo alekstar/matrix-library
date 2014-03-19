@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include "../sources/Matrix.h"
-#include "sources/MatrixRowIndexOutOfRange.h"
+#include "sources/RowIndexOutOfRange.h"
 #include <vector>
 #include <string>
 
@@ -62,9 +62,10 @@ TEST(TestMatrixSetElement, SomeRandomElementsInMatrix3x4)
     EXPECT_EQ(0, matrix.elements_.at(0).at(2));
     EXPECT_EQ(0, matrix.elements_.at(1).at(0));
     EXPECT_EQ(0, matrix.elements_.at(1).at(2));
-    EXPECT_THROW(matrix.setElement(2, 2, 2), MatrixRowIndexOutOfRange);
-    EXPECT_THROW(matrix.setElement(112, 1, 5), MatrixColumnIndexOutOfRange);
-    EXPECT_THROW(matrix.setElement(1234, 15, 10), MatrixRowIndexOutOfRange);
+    using namespace MatrixExceptions;
+    EXPECT_THROW(matrix.setElement(2, 2, 2), RowIndexOutOfRange);
+    EXPECT_THROW(matrix.setElement(112, 1, 5), ColumnIndexOutOfRange);
+    EXPECT_THROW(matrix.setElement(1234, 15, 10), RowIndexOutOfRange);
     
 }
 
@@ -79,9 +80,9 @@ TEST(TestMatrixGetElement, SomeRandomElementsInMatrix3x4)
     EXPECT_EQ(0, matrix.getElement(0, 2));
     EXPECT_EQ(0, matrix.getElement(1, 0));
     EXPECT_EQ(0, matrix.getElement(1, 2));
-    EXPECT_THROW(matrix.getElement(1, 5), MatrixColumnIndexOutOfRange);
-    EXPECT_THROW(matrix.getElement(5, 2), MatrixRowIndexOutOfRange);
-    EXPECT_THROW(matrix.getElement(5, 5), MatrixRowIndexOutOfRange);
+    EXPECT_THROW(matrix.getElement(1, 5), ColumnIndexOutOfRange);
+    EXPECT_THROW(matrix.getElement(5, 2), RowIndexOutOfRange);
+    EXPECT_THROW(matrix.getElement(5, 5), RowIndexOutOfRange);
 }
 
 TEST(TestMatrixSetColumnsNumber, set3ColumnsForMatrix2x2)
