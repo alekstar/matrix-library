@@ -1,6 +1,9 @@
 #include <gtest/gtest.h>
 #include "../sources/Matrix.h"
-#include "sources/RowIndexOutOfRange.h"
+#include "sources/exceptions/ColumnIndexOutOfRange.h"
+#include "sources/exceptions/MatricesCantBeMultiplied.h"
+#include "sources/exceptions/RangeError.h"
+#include "sources/exceptions/RowIndexOutOfRange.h"
 #include <vector>
 #include <string>
 
