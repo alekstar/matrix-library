@@ -345,6 +345,13 @@ TEST(MatrixMultiplicateWithAnotherMatrix, Matrices2x2)
     EXPECT_EQ(50, result.getElement(1, 1));
 }
 
+TEST(MatrixMultiplicateWithAnotherMatrix, CantBeMultiplied)
+{
+    Matrix<int> matrix1(1, 2);
+    Matrix<int> matrix2(3, 3);
+    EXPECT_THROW(matrix1 * matrix2, MatricesCantBeMultiplied);
+}   
+
 TEST(MatrixMultiplicateWithVector, Matrix2x2AndVectorWith2Elements)
 {
     Matrix<int> matrix(2, 2);
