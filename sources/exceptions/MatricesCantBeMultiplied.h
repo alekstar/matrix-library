@@ -1,12 +1,14 @@
 #ifndef MATRICESCANTBEMULTIPLIED_H
 #define	MATRICESCANTBEMULTIPLIED_H
-#include <stdexcept>
+#include "MathOperationsError.h"
 
-class MatricesCantBeMultiplied: public std::logic_error {
-public:
-    MatricesCantBeMultiplied();
-private:
-
-};
+namespace MatrixExceptions
+{
+    class MatricesCantBeMultiplied: public MathOperationsError
+    {
+    public:
+        MatricesCantBeMultiplied();
+    };
+}
 
 #endif	/* MATRICESCANTBEMULTIPLIED_H */

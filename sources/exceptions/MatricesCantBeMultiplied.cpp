@@ -1,5 +1,6 @@
 #include "MatricesCantBeMultiplied.h"
+using namespace MatrixExceptions;
 
 MatricesCantBeMultiplied::MatricesCantBeMultiplied()
-    :logic_error("Matrices can't be multiplied.")
+    :MathOperationsError("Matrices can't be multiplied.")
 {}
