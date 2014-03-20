@@ -628,8 +628,7 @@ TEST(MatrixOperatorMinus, SizesAreNotEqual)
 {
     Matrix<int> matrix2x3(2, 3);
     Matrix<int> matrix3x3(3, 3);
-    Matrix<int> result = matrix2x3 - matrix3x3;
-    EXPECT_TRUE(result.isNull());
+    EXPECT_THROW(matrix2x3 + matrix3x3, MatricesCantBeAddedOrSubstracted);
 }
 
 TEST(MatrixOperatorIsEqual, AllCases)
