@@ -385,40 +385,6 @@ TEST(MatrixMultiplicateWithVector, Matrix2x2AndVectorWith2Elements)
     EXPECT_EQ(39, result.getElement(1, 0));
 }
 
-TEST(MatrixAddWithAnotherMatrix, Matrices2x2)
-{
-    Matrix<int> matrix1(2, 2);
-    matrix1.setElement(1, 0, 0);
-    matrix1.setElement(2, 0, 1);
-    matrix1.setElement(3, 1, 0);
-    matrix1.setElement(4, 1, 1);
-    
-    Matrix<int> matrix2(2, 2);
-    matrix2.setElement(5, 0, 0);
-    matrix2.setElement(6, 0, 1);
-    matrix2.setElement(7, 1, 0);
-    matrix2.setElement(8, 1, 1);
-
-    Matrix<int> result = matrix1 + matrix2;
-    
-    EXPECT_EQ(2,  result.getRowsNumber());
-    EXPECT_EQ(2,  result.getColumnsNumber());
-    EXPECT_EQ(6,  result.getElement(0, 0));
-    EXPECT_EQ(8,  result.getElement(0, 1));
-    EXPECT_EQ(10, result.getElement(1, 0));
-    EXPECT_EQ(12, result.getElement(1, 1));
-}
-
-TEST(MatrixAddWithAnotherMatrix, MatricesWithDifferentSizes)
-{
-    Matrix<int> matrix1(2, 1, 0);
-    Matrix<int> matrix2(2, 2, 1);
-
-    Matrix<int> result = matrix1 + matrix2;
-    EXPECT_EQ(0, result.getRowsNumber());
-    EXPECT_EQ(0, result.getColumnsNumber());
-}
-
 TEST(MatrixIsEmpty, AllCases)
 {
     Matrix<int> matrix1;
