@@ -14,6 +14,7 @@ using std::vector;
 #include "exceptions/RowIndexOutOfRange.h"
 #include "exceptions/ColumnIndexOutOfRange.h"
 #include "exceptions/MatricesCantBeMultiplied.h"
+#include "exceptions/MatricesCantBeAddedOrSubstracted.h"
 using namespace MatrixExceptions;
 
 template<typename CUSTOM_TYPE>
@@ -204,10 +205,11 @@ public:
     }
     
     Matrix<CUSTOM_TYPE> operator+(const Matrix<CUSTOM_TYPE> &operand) const
+        throw(MatricesCantBeAddedOrSubstracted)
     {
         if(!haveSameSize(operand))
         {
-            return getNullMatrix();
+            throw MatricesCantBeAddedOrSubstracted();
         }
         Matrix<CUSTOM_TYPE> result(getRowsNumber(), getColumnsNumber());
         for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
