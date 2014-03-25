@@ -8,3 +8,6 @@ Notes:
 
     I decided to use isNull() method to determine if matrix has no rows and 
     columns (number of rows and columns is zero).
+
+Requirements:
+- Google C++ Testing Framework (now I use v1.7.0)
