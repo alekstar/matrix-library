@@ -17,7 +17,7 @@ using std::vector;
 #include "exceptions/MatricesCantBeAddedOrSubstracted.h"
 using namespace MatrixExceptions;
 
-template<typename CUSTOM_TYPE>
+template<typename ELEMENT_TYPE>
 class Matrix {
     
     FRIEND_TEST(TestMatrixConstructor, DefaultConstructor);
@@ -36,12 +36,12 @@ class Matrix {
     FRIEND_TEST(MatrixGetRowVector, Matrix2x2);
     FRIEND_TEST(MatrixHaveSameSize, AllCases);
 public:
-    typedef typename vector<vector<CUSTOM_TYPE> >::iterator RowsIterator;
-    typedef typename vector<CUSTOM_TYPE>::const_iterator VectorConstIterator;
+    typedef typename vector<vector<ELEMENT_TYPE> >::iterator RowsIterator;
+    typedef typename vector<ELEMENT_TYPE>::const_iterator VectorConstIterator;
     
     Matrix(const natural rows_number          = 0, 
            const natural columns_number       = 0, 
-           const CUSTOM_TYPE initialize_value = 0)
+           const ELEMENT_TYPE initialize_value = 0)
     {
         rows_number_    = 0;
         columns_number_ = 0;
@@ -51,8 +51,8 @@ public:
     
     Matrix(const natural rows_number, 
            const natural columns_number, 
-           const vector<CUSTOM_TYPE>& elements,
-           const CUSTOM_TYPE initialize_value = 0)
+           const vector<ELEMENT_TYPE>& elements,
+           const ELEMENT_TYPE initialize_value = 0)
     {
         rows_number_    = 0;
         columns_number_ = 0;
@@ -61,7 +61,7 @@ public:
         setElementsFromVector(elements);
     }
     
-    Matrix(const vector<CUSTOM_TYPE> &vector_to_convert)
+    Matrix(const vector<ELEMENT_TYPE> &vector_to_convert)
     {
         rows_number_    = 0;
         columns_number_ = 0;
@@ -71,7 +71,7 @@ public:
     }
     
     void setColumnsNumber(const natural columns_number,
-                          const CUSTOM_TYPE initialize_value = 0)
+                                  const ELEMENT_TYPE initialize_value = 0)
     {
         RowsIterator rows_iterator;
         for(rows_iterator = elements_.begin(); 
@@ -89,10 +89,10 @@ public:
     }
     
     void setRowsNumber(const natural rows_number,
-                       const CUSTOM_TYPE initialize_value = 0)
+                       const ELEMENT_TYPE initialize_value = 0)
     {
         elements_.resize(rows_number, 
-                         vector<CUSTOM_TYPE>(getColumnsNumber(), 
+                         vector<ELEMENT_TYPE>(getColumnsNumber(), 
                                                   initialize_value));
         rows_number_ = rows_number;
     }
@@ -102,7 +102,7 @@ public:
         return rows_number_;
     }
     
-    void setElement(const CUSTOM_TYPE value, 
+    void setElement(const ELEMENT_TYPE value, 
                     const natural row_index, 
                     const natural column_index) 
             throw(RowIndexOutOfRange, ColumnIndexOutOfRange)
@@ -121,7 +121,7 @@ public:
         }
     }
     
-    CUSTOM_TYPE getElement(const natural row_index, 
+    ELEMENT_TYPE getElement(const natural row_index, 
                            const natural column_index) const
             throw(RowIndexOutOfRange, ColumnIndexOutOfRange)
     {
@@ -139,7 +139,7 @@ public:
         }
     }
     
-    void setElementsFromVector(const vector<CUSTOM_TYPE> &elements)
+    void setElementsFromVector(const vector<ELEMENT_TYPE> &elements)
     {
         VectorConstIterator elements_iterator = 
             elements.begin();
@@ -158,14 +158,14 @@ public:
         }
     }
         
-    Matrix<CUSTOM_TYPE> operator*(const CUSTOM_TYPE value) {
-        Matrix<CUSTOM_TYPE> result(getRowsNumber(),
+    Matrix<ELEMENT_TYPE> operator*(const ELEMENT_TYPE value) {
+        Matrix<ELEMENT_TYPE> result(getRowsNumber(),
                                          getColumnsNumber());
         for(natural row_index = 0; row_index < getRowsNumber(); ++row_index) {
             for(natural column_index = 0;
                 column_index < getColumnsNumber();
                 ++column_index) {
-                CUSTOM_TYPE current_element =
+                ELEMENT_TYPE current_element =
                     getElement(row_index, column_index);
                 result.setElement(current_element * value, 
                                   row_index, 
@@ -176,7 +176,7 @@ public:
         return result;
     }
     
-    Matrix<CUSTOM_TYPE> operator*(const Matrix<CUSTOM_TYPE> &operand) const
+    Matrix<ELEMENT_TYPE> operator*(const Matrix<ELEMENT_TYPE> &operand) const
         throw(MatricesCantBeMultiplied)
     {
         using VectorMathAlogirthms::makeScalarMultiplication;
@@ -184,7 +184,7 @@ public:
         {
             throw MatricesCantBeMultiplied();
         }
-        Matrix<CUSTOM_TYPE> result(getRowsNumber(), operand.getColumnsNumber());
+        Matrix<ELEMENT_TYPE> result(getRowsNumber(), operand.getColumnsNumber());
         for(natural row_index = 0; 
             row_index < result.getRowsNumber(); 
             ++row_index)
@@ -204,14 +204,14 @@ public:
         return result;
     }
     
-    Matrix<CUSTOM_TYPE> operator+(const Matrix<CUSTOM_TYPE> &operand) const
+    Matrix<ELEMENT_TYPE> operator+(const Matrix<ELEMENT_TYPE> &operand) const
         throw(MatricesCantBeAddedOrSubstracted)
     {
         if(!haveSameSize(operand))
         {
             throw MatricesCantBeAddedOrSubstracted();
         }
-        Matrix<CUSTOM_TYPE> result(getRowsNumber(), getColumnsNumber());
+        Matrix<ELEMENT_TYPE> result(getRowsNumber(), getColumnsNumber());
         for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
         {
             for(natural column_index = 0; 
@@ -227,9 +227,9 @@ public:
         return result;
     }
     
-    Matrix<CUSTOM_TYPE> operator-() const
+    Matrix<ELEMENT_TYPE> operator-() const
     {
-        Matrix<CUSTOM_TYPE> result(getRowsNumber(), getColumnsNumber());
+        Matrix<ELEMENT_TYPE> result(getRowsNumber(), getColumnsNumber());
         for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
         {
             for(natural column_index = 0; 
@@ -244,7 +244,7 @@ public:
         return result;
     }
     
-    Matrix<CUSTOM_TYPE> operator-(const Matrix<CUSTOM_TYPE> &operand) const
+    Matrix<ELEMENT_TYPE> operator-(const Matrix<ELEMENT_TYPE> &operand) const
     {
         return operator+(-operand);
     }
@@ -285,7 +285,7 @@ public:
         return true;
     }
     
-    bool operator==(const Matrix<CUSTOM_TYPE> &operand) const
+    bool operator==(const Matrix<ELEMENT_TYPE> &operand) const
     {
         if(!haveSameSize(operand))
         {
@@ -313,9 +313,9 @@ public:
 private:
     natural rows_number_;
     natural columns_number_;
-    vector<vector<CUSTOM_TYPE> > elements_;
+    vector<vector<ELEMENT_TYPE> > elements_;
     
-    bool haveSameSize(const Matrix<CUSTOM_TYPE>& operand) const
+    bool haveSameSize(const Matrix<ELEMENT_TYPE>& operand) const
     {
         if(getRowsNumber()      == operand.getRowsNumber()      && 
            getColumnsNumber()   == operand.getColumnsNumber()   )
@@ -325,7 +325,7 @@ private:
         return false;
     }
     
-    bool isMultiplyPossibleWith(const Matrix<CUSTOM_TYPE>& matrix_operand) const
+    bool isMultiplyPossibleWith(const Matrix<ELEMENT_TYPE>& matrix_operand) const
     {
         return getColumnsNumber() == matrix_operand.getRowsNumber();
     }
@@ -366,9 +366,9 @@ private:
         }
     }
     
-    vector<CUSTOM_TYPE> getRowVector(const natural row_number) const
+    vector<ELEMENT_TYPE> getRowVector(const natural row_number) const
     {
-        vector<CUSTOM_TYPE> result;
+        vector<ELEMENT_TYPE> result;
         if(row_number < 0 || row_number >= getRowsNumber())
         {
             return result;
@@ -382,9 +382,9 @@ private:
         return result;
     }
     
-    vector<CUSTOM_TYPE> getColumnVector(const natural column_number) const
+    vector<ELEMENT_TYPE> getColumnVector(const natural column_number) const
     {
-        vector<CUSTOM_TYPE> result;
+        vector<ELEMENT_TYPE> result;
         if(column_number < 0 || column_number >= getColumnsNumber())
         {
             return result;
@@ -396,9 +396,9 @@ private:
         return result;
     }
     
-    Matrix<CUSTOM_TYPE> getNullMatrix() const
+    Matrix<ELEMENT_TYPE> getNullMatrix() const
     {
-        return Matrix<CUSTOM_TYPE>();
+        return Matrix<ELEMENT_TYPE>();
     }
     
 };
