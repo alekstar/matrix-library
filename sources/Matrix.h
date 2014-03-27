@@ -103,39 +103,39 @@ public:
     }
     
     void setElement(const CUSTOM_TYPE value, 
-                    const natural row_number, 
-                    const natural column_number) 
+                    const natural row_index, 
+                    const natural column_index) 
             throw(RowIndexOutOfRange, ColumnIndexOutOfRange)
     {
-        if(!isRowIndexInRange(row_number))
+        if(!isRowIndexInRange(row_index))
         {
             throw RowIndexOutOfRange();
         }
-        if(!isColumnIndexInRange(column_number))
+        if(!isColumnIndexInRange(column_index))
         {
             throw ColumnIndexOutOfRange();
         }
-        if(isElementIndexInRange(row_number, column_number))
+        if(isElementIndexInRange(row_index, column_index))
         {
-            elements_.at(row_number).at(column_number) = value;
+            elements_.at(row_index).at(column_index) = value;
         }
     }
     
-    CUSTOM_TYPE getElement(const natural row_number, 
-                           const natural column_number) const
+    CUSTOM_TYPE getElement(const natural row_index, 
+                           const natural column_index) const
             throw(RowIndexOutOfRange, ColumnIndexOutOfRange)
     {
-        if(!isRowIndexInRange(row_number))
+        if(!isRowIndexInRange(row_index))
         {
             throw RowIndexOutOfRange();
         }
-        if(!isColumnIndexInRange(column_number))
+        if(!isColumnIndexInRange(column_index))
         {
             throw ColumnIndexOutOfRange();
         }
-        if(isElementIndexInRange(row_number, column_number))
+        if(isElementIndexInRange(row_index, column_index))
         {
-            return elements_.at(row_number).at(column_number);
+            return elements_.at(row_index).at(column_index);
         }
     }
     
