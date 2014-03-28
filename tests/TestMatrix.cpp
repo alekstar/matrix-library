@@ -643,3 +643,30 @@ TEST(MatrixOperatorIsEqual, AllCases)
     EXPECT_TRUE(matrix3x3_with_10s == another_matrix3x3_with_10s);
     EXPECT_TRUE(another_matrix3x3_with_10s == matrix3x3_with_10s);
 }
+
+TEST(MatrixConstructor, FromMatrixOfDifferentType)
+{
+    Matrix<double> double_matrix(3, 3);
+    double_matrix.setElement(7.5,       0, 0);
+    double_matrix.setElement(9.7,       0, 1);
+    double_matrix.setElement(1.0,       0, 2);
+    double_matrix.setElement(6.12,      1, 0);
+    double_matrix.setElement(5.87,      1, 1);
+    double_matrix.setElement(2.6457,    1, 2);
+    double_matrix.setElement(4.102,     2, 0);
+    double_matrix.setElement(8.77,      2, 1);
+    double_matrix.setElement(3.123,     2, 2);
+    
+    Matrix<int> int_matrix = double_matrix;
+    
+    EXPECT_TRUE(double_matrix.haveSameSize(int_matrix));
+    EXPECT_EQ(int_matrix.getElement(0, 0), 7);
+    EXPECT_EQ(int_matrix.getElement(0, 1), 9);
+    EXPECT_EQ(int_matrix.getElement(0, 2), 1);
+    EXPECT_EQ(int_matrix.getElement(1, 0), 6);
+    EXPECT_EQ(int_matrix.getElement(1, 1), 5);
+    EXPECT_EQ(int_matrix.getElement(1, 2), 2);
+    EXPECT_EQ(int_matrix.getElement(2, 0), 4);
+    EXPECT_EQ(int_matrix.getElement(2, 1), 8);
+    EXPECT_EQ(int_matrix.getElement(2, 2), 3);
+}
