@@ -122,7 +122,8 @@ public:
         return rows_number_;
     }
     
-    void setElement(const ELEMENT_TYPE value, 
+    template<typename VALUE_TYPE>
+    void setElement(const VALUE_TYPE value, 
                     const natural row_index, 
                     const natural column_index) 
             throw(RowIndexOutOfRange, ColumnIndexOutOfRange)
