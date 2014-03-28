@@ -39,6 +39,7 @@ public:
     typedef typename vector<vector<ELEMENT_TYPE> >::iterator RowsIterator;
     typedef typename vector<ELEMENT_TYPE>::const_iterator VectorConstIterator;
     
+    
     Matrix(const natural rows_number          = 0, 
            const natural columns_number       = 0, 
            const ELEMENT_TYPE initialize_value = 0)
@@ -332,12 +333,9 @@ public:
         }
         return true;
     }
-private:
-    natural rows_number_;
-    natural columns_number_;
-    vector<vector<ELEMENT_TYPE> > elements_;
     
-    bool haveSameSize(const Matrix<ELEMENT_TYPE>& operand) const
+    template <typename OPERAND_ELEMENT_TYPE>
+    bool haveSameSize(const Matrix<OPERAND_ELEMENT_TYPE>& operand) const
     {
         if(getRowsNumber()      == operand.getRowsNumber()      && 
            getColumnsNumber()   == operand.getColumnsNumber()   )
@@ -346,6 +344,10 @@ private:
         }
         return false;
     }
+private:
+    natural rows_number_;
+    natural columns_number_;
+    vector<vector<ELEMENT_TYPE> > elements_;
     
     bool isMultiplyPossibleWith(const Matrix<ELEMENT_TYPE>& matrix_operand) const
     {
