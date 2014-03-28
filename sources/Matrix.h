@@ -160,7 +160,8 @@ public:
         }
     }
     
-    void setElementsFromVector(const vector<ELEMENT_TYPE> &elements)
+    template<typename VECTOR_ELEMENT_TYPE>
+    void setElementsFromVector(const vector<VECTOR_ELEMENT_TYPE> &elements)
     {
         VectorConstIterator elements_iterator = 
             elements.begin();
