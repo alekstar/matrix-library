@@ -35,6 +35,14 @@ class Matrix {
     FRIEND_TEST(MatrixGetRowVector, Matrix1x1);
     FRIEND_TEST(MatrixGetRowVector, Matrix2x2);
     FRIEND_TEST(MatrixHaveSameSize, AllCases);
+    template <typename MATRIX_ELEMENT_TYPE>
+    friend vector<MATRIX_ELEMENT_TYPE> 
+        getRowVector(const Matrix<MATRIX_ELEMENT_TYPE> &matrix, 
+                     const natural row_number);
+    template <typename MATRIX_ELEMENT_TYPE>
+    friend vector<MATRIX_ELEMENT_TYPE> 
+        getColumnVector(const Matrix<MATRIX_ELEMENT_TYPE> &matrix, 
+                        const natural column_number);
 public:
     typedef typename vector<vector<ELEMENT_TYPE> >::iterator RowsIterator;
     typedef typename vector<ELEMENT_TYPE>::const_iterator VectorConstIterator;
