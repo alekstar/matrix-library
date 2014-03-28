@@ -83,6 +83,26 @@ public:
         columns_number_ = columns_number;
     }
     
+    template<typename OPERAND_ELEMENT_TYPE>
+    Matrix(const Matrix<OPERAND_ELEMENT_TYPE> &operand)
+    {
+        setRowsNumber(operand.getRowsNumber());
+        setColumnsNumber(operand.getColumnsNumber());
+        for(natural row_index = 0;
+            row_index < getRowsNumber();
+            ++row_index)
+        {
+            for(natural column_index = 0;
+                column_index < getColumnsNumber();
+                ++column_index)
+            {
+                setElement(operand.getElement(row_index, column_index), 
+                           row_index, 
+                           column_index);
+            }
+        }
+    }
+    
     natural getColumnsNumber() const
     {   
         return columns_number_;
