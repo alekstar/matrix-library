@@ -20,16 +20,16 @@ using namespace MatrixExceptions;
 template<typename ELEMENT_TYPE>
 class Matrix {
     
-    FRIEND_TEST(TestMatrixConstructor, DefaultConstructor);
-    FRIEND_TEST(TestMatrixConstructor, DefaultMatrix1x1);
-    FRIEND_TEST(TestMatrixConstructor, DefaultMatrix2x2);
-    FRIEND_TEST(TestMatrixSetRowsNumber, set3RowsForNewMatrix);
-    FRIEND_TEST(TestMatrixIsElementIndexInRange, TestCase);
-    FRIEND_TEST(TestMatrixSetElement, SomeRandomElementsInMatrix3x4);
-    FRIEND_TEST(TestMatrixSetColumnsNumber, set3ColumnsForMatrix2x2);
-    FRIEND_TEST(TestMatrixSetColumnsNumber, 
+    FRIEND_TEST(MatrixConstructor, DefaultConstructor);
+    FRIEND_TEST(MatrixConstructor, DefaultMatrix1x1);
+    FRIEND_TEST(MatrixConstructor, DefaultMatrix2x2);
+    FRIEND_TEST(MatrixSetRowsNumber, set3RowsForNewMatrix);
+    FRIEND_TEST(MatrixIsElementIndexInRange, TestCase);
+    FRIEND_TEST(MatrixSetElement, SomeRandomElementsInMatrix3x4);
+    FRIEND_TEST(MatrixSetColumnsNumber, set3ColumnsForMatrix2x2);
+    FRIEND_TEST(MatrixSetColumnsNumber, 
                 set3ColumnsForMatrix2x2WithNotZeroElements);
-    FRIEND_TEST(TestMatrixGetElementsToCopyFromVector, AllCases);
+    FRIEND_TEST(MatrixGetElementsToCopyFromVector, AllCases);
     FRIEND_TEST(MatrixIsMultiplyPossible, AllCasesWithVector);
     FRIEND_TEST(MatrixGetRowVector, Matrix0x0);
     FRIEND_TEST(MatrixGetRowVector, Matrix1x1);

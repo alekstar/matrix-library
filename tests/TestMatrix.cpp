@@ -7,13 +7,13 @@
 #include <vector>
 #include <string>
 
-TEST(TestMatrixConstructor, DefaultConstructor)
+TEST(MatrixConstructor, DefaultConstructor)
 {
     Matrix<int> matrix;
     EXPECT_EQ(0, matrix.elements_.size());
 }
 
-TEST(TestMatrixConstructor, DefaultMatrix1x1)
+TEST(MatrixConstructor, DefaultMatrix1x1)
 {
     Matrix<int> matrix(1, 1);
     EXPECT_EQ(1, matrix.elements_.size());
@@ -21,7 +21,7 @@ TEST(TestMatrixConstructor, DefaultMatrix1x1)
     EXPECT_EQ(0, matrix.elements_.at(0).at(0));
 }
 
-TEST(TestMatrixConstructor, DefaultMatrix2x2)
+TEST(MatrixConstructor, DefaultMatrix2x2)
 {
     Matrix<int> matrix(2, 2);
     EXPECT_EQ(2, matrix.elements_.size());
@@ -33,7 +33,7 @@ TEST(TestMatrixConstructor, DefaultMatrix2x2)
     EXPECT_EQ(0, matrix.elements_.at(1).at(1));
 }
 
-TEST(TestMatrixSetRowsNumber, set3RowsForNewMatrix)
+TEST(MatrixSetRowsNumber, set3RowsForNewMatrix)
 {
     Matrix<int> matrix;
     matrix.setRowsNumber(3);
@@ -43,7 +43,7 @@ TEST(TestMatrixSetRowsNumber, set3RowsForNewMatrix)
     EXPECT_EQ(0, matrix.elements_.at(2).size());
 }
 
-TEST(TestMatrixIsElementIndexInRange, TestCase)
+TEST(MatrixIsElementIndexInRange, TestCase)
 {
     Matrix<int> matrix(2, 3);
     EXPECT_TRUE(matrix.isElementIndexInRange(0, 0));
@@ -54,7 +54,7 @@ TEST(TestMatrixIsElementIndexInRange, TestCase)
     EXPECT_FALSE(matrix.isElementIndexInRange(1, 5));
 }
 
-TEST(TestMatrixSetElement, SomeRandomElementsInMatrix3x4)
+TEST(MatrixSetElement, SomeRandomElementsInMatrix3x4)
 {
     Matrix<int> matrix(2, 3);
     matrix.setElement(4, 1, 1);
@@ -72,7 +72,7 @@ TEST(TestMatrixSetElement, SomeRandomElementsInMatrix3x4)
     
 }
 
-TEST(TestMatrixGetElement, SomeRandomElementsInMatrix3x4)
+TEST(MatrixGetElement, SomeRandomElementsInMatrix3x4)
 {
     Matrix<int> matrix(2, 3);
     matrix.setElement(4, 1, 1);
@@ -88,7 +88,7 @@ TEST(TestMatrixGetElement, SomeRandomElementsInMatrix3x4)
     EXPECT_THROW(matrix.getElement(5, 5), RowIndexOutOfRange);
 }
 
-TEST(TestMatrixSetColumnsNumber, set3ColumnsForMatrix2x2)
+TEST(MatrixSetColumnsNumber, set3ColumnsForMatrix2x2)
 {
     Matrix<int> matrix(2, 2);
     matrix.setColumnsNumber(3);
@@ -97,7 +97,7 @@ TEST(TestMatrixSetColumnsNumber, set3ColumnsForMatrix2x2)
     EXPECT_EQ(2, matrix.elements_.size());
 }
 
-TEST(TestMatrixSetColumnsNumber, set3ColumnsForMatrix2x2WithNotZeroElements)
+TEST(MatrixSetColumnsNumber, set3ColumnsForMatrix2x2WithNotZeroElements)
 {
     Matrix<int> matrix(2, 2);
     matrix.setElement(31, 0, 0);
@@ -120,7 +120,7 @@ TEST(TestMatrixSetColumnsNumber, set3ColumnsForMatrix2x2WithNotZeroElements)
     EXPECT_EQ(0,  matrix.getElement(1, 2));
 }
 
-TEST(TestMatrixGetElementsToCopyFromVector, AllCases)
+TEST(MatrixGetElementsToCopyFromVector, AllCases)
 {
     Matrix<int> matrix(4, 4);
     std::vector<int> test_vector(5, 7);
@@ -134,7 +134,7 @@ TEST(TestMatrixGetElementsToCopyFromVector, AllCases)
                                                          test_vector.end()));
 }
 
-TEST(TestMatrixSetElementsFromVector, VectorWith5Elements)
+TEST(MatrixSetElementsFromVector, VectorWith5Elements)
 {
     Matrix<int> matrix(3, 3);
     std::vector<int> test_vector(5, 7);
@@ -150,7 +150,7 @@ TEST(TestMatrixSetElementsFromVector, VectorWith5Elements)
     EXPECT_EQ(0, matrix.getElement(2, 2));
 }
 
-TEST(TestMatrixSetElementsFromVector, VectorWithMoreElementsThanInMatrix)
+TEST(MatrixSetElementsFromVector, VectorWithMoreElementsThanInMatrix)
 {
     Matrix<int> matrix(3, 3);
     std::vector<int> test_vector(10, 3);
@@ -166,7 +166,7 @@ TEST(TestMatrixSetElementsFromVector, VectorWithMoreElementsThanInMatrix)
     EXPECT_EQ(3, matrix.getElement(2, 2));
 }
 
-TEST(TestMatrixPutToStreamOperator, MatrixWithFiveSevens)
+TEST(MatrixPutToStreamOperator, MatrixWithFiveSevens)
 {
     Matrix<int> matrix(3, 3);
     std::vector<int> test_vector(5, 7);
@@ -179,7 +179,7 @@ TEST(TestMatrixPutToStreamOperator, MatrixWithFiveSevens)
     EXPECT_EQ(actual_matrix_string, expected_matrix_string);
 }
 
-TEST(TestMatrixPutToStreamOperator, Matrix0x0)
+TEST(MatrixPutToStreamOperator, Matrix0x0)
 {
     Matrix<int> matrix(0, 0);
     std::stringstream matrix_stringstream;
