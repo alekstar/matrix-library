@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "sources/VectorMathAlgorithms.h"
 
-TEST(TestMakeScalarMultiplication, TwoVectorsWithTwoElements)
+TEST(MakeScalarMultiplication, TwoVectorsWithTwoElements)
 {
     std::vector<int> vector1;
     vector1.push_back(1);
@@ -13,7 +13,7 @@ TEST(TestMakeScalarMultiplication, TwoVectorsWithTwoElements)
                                                                 vector2));
 }
 
-TEST(TestMakeScalarMultiplication, TwoVectorsWithNoneElements)
+TEST(MakeScalarMultiplication, TwoVectorsWithNoneElements)
 {
     std::vector<int> vector1;
     std::vector<int> vector2;
@@ -21,7 +21,7 @@ TEST(TestMakeScalarMultiplication, TwoVectorsWithNoneElements)
                                                                 vector2));
 }
 
-TEST(TestMakeScalarMultiplication, TwoVectorsWithDifferentNumberOfElements)
+TEST(MakeScalarMultiplication, TwoVectorsWithDifferentNumberOfElements)
 {
     std::vector<int> vector1;
     vector1.push_back(1);
