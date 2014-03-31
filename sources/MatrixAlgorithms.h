@@ -20,8 +20,14 @@ namespace MatrixAlgorithms
             row_index < matrix.getRowsNumber();
             ++row_index) 
         {
-            if(vectorHaveOnlyZeros(matrix.getRowVector(row_index)));
+            if(vectorHaveOnlyZeros(matrix.getRowVector(row_index)))
+            {
+                return true;
+            };
         }
+        return false;
+    }
+    
     }
     
     Matrix<double> getUpperTriangularMatrix(const Matrix<double> &matrix)
