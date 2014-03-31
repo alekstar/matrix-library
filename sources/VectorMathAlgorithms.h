@@ -1,7 +1,7 @@
 #ifndef VECTORMATHALGORITHMS_H
 #define	VECTORMATHALGORITHMS_H
 #include <vector>
-
+#include <algorithm>
 namespace VectorMathAlogirthms
 {
     template<typename CUSTOM_TYPE>
@@ -24,6 +24,9 @@ namespace VectorMathAlogirthms
         }
         return result;
     }
+    
+    bool isNotZero(int i);
+    bool vectorHaveOnlyZeros(const std::vector<int>& operand);
 }
 
 #endif	/* VECTORMATHALGORITHMS_H */
