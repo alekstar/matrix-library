@@ -33,4 +33,20 @@ TEST(MakeScalarMultiplication, TwoVectorsWithDifferentNumberOfElements)
     EXPECT_EQ(0, makeScalarMultiplication(vector1,
                                           vector2));
 }
+
+TEST(VectorHaveOnlyZeros, VectorWithOnlyZeros)
+{
+    std::vector<int> vector_with_only_zeros(10, 0);
+    EXPECT_TRUE(vectorHaveOnlyZeros(vector_with_only_zeros));
+}
+
+TEST(VectorHaveOnlyZeros, VectorWithNotOnlyZeros)
+{
+    std::vector<int> vector_with_not_only_zeros;
+    vector_with_not_only_zeros.push_back(1);
+    vector_with_not_only_zeros.push_back(0);
+    vector_with_not_only_zeros.push_back(0);
+    vector_with_not_only_zeros.push_back(0);
+    vector_with_not_only_zeros.push_back(2);
+    EXPECT_FALSE(vectorHaveOnlyZeros(vector_with_not_only_zeros));
 }
