@@ -1,6 +1,6 @@
 #include "MatrixAlgorithms.h"
 
-namespace MathMatrix
+namespace MatrixAlgorithms
 {
     using namespace MatrixExceptions;
     
