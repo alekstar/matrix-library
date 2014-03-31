@@ -6,8 +6,7 @@
 #include <vector>
 #include "VectorMathAlgorithms.h"
 
-
-namespace MathMatrix
+namespace MatrixAlgorithms
 {
     using namespace MatrixExceptions;
     
