@@ -25,8 +25,13 @@ namespace VectorMathAlogirthms
         return result;
     }
     
-    bool isNotZero(int i);
-    bool vectorHaveOnlyZeros(const std::vector<int>& operand);
+    template <typename ELEMENT_TYPE>
+    bool vectorHaveOnlyZeros(const std::vector<ELEMENT_TYPE>& operand) 
+    {
+        return std::count(operand.begin(),
+                          operand.end(),
+                          0.0) == operand.size();
+    }
 }
 
 #endif	/* VECTORMATHALGORITHMS_H */
