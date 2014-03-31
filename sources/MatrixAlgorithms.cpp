@@ -2,8 +2,6 @@
 
 namespace MatrixAlgorithms
 {
-    using namespace MatrixExceptions;
-    
     Matrix<double> getUpperTriangularMatrix(const Matrix<double> &matrix) 
         throw(MatrixIsNotSquare)
     {
@@ -29,7 +27,8 @@ namespace MatrixAlgorithms
                 {   
 
                     double value_to_substract = 
-                        result.getElement(outer_column_index, inner_column_index) * 
+                        result.getElement(outer_column_index, 
+                                          inner_column_index) * 
                         value_to_divide_row;
                     double current_element_value =
                         result.getElement(row_index, inner_column_index) - 
@@ -41,7 +40,7 @@ namespace MatrixAlgorithms
         }
         return result;
     }
-    
+
     double calculateDeterminantViaTriangularMatrix(const Matrix<double> &matrix) 
         throw(MatrixIsNotSquare)
     {
@@ -60,5 +59,4 @@ namespace MatrixAlgorithms
         }
         return determinant;
     }
-    
 }
