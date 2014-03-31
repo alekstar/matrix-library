@@ -352,6 +352,36 @@ public:
         }
         return false;
     }
+    
+    vector<ELEMENT_TYPE> getRowVector(const natural row_number) const
+    {
+        vector<ELEMENT_TYPE> result;
+        if(row_number < 0 || row_number >= getRowsNumber())
+        {
+            return result;
+        }
+        for(natural column_index = 0; 
+            column_index < getColumnsNumber(); 
+            ++column_index)
+        {
+            result.push_back(getElement(row_number, column_index));
+        }
+        return result;
+    }
+    
+    vector<ELEMENT_TYPE> getColumnVector(const natural column_number) const
+    {
+        vector<ELEMENT_TYPE> result;
+        if(column_number < 0 || column_number >= getColumnsNumber())
+        {
+            return result;
+        }
+        for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
+        {
+            result.push_back(getElement(row_index, column_number));
+        }
+        return result;
+    }
 private:
     natural rows_number_;
     natural columns_number_;
@@ -398,36 +428,6 @@ private:
         }
     }
     
-    vector<ELEMENT_TYPE> getRowVector(const natural row_number) const
-    {
-        vector<ELEMENT_TYPE> result;
-        if(row_number < 0 || row_number >= getRowsNumber())
-        {
-            return result;
-        }
-        for(natural column_index = 0; 
-            column_index < getColumnsNumber(); 
-            ++column_index)
-        {
-            result.push_back(getElement(row_number, column_index));
-        }
-        return result;
-    }
-    
-    vector<ELEMENT_TYPE> getColumnVector(const natural column_number) const
-    {
-        vector<ELEMENT_TYPE> result;
-        if(column_number < 0 || column_number >= getColumnsNumber())
-        {
-            return result;
-        }
-        for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
-        {
-            result.push_back(getElement(row_index, column_number));
-        }
-        return result;
-    }
-    
     Matrix<ELEMENT_TYPE> getNullMatrix() const
     {
         return Matrix<ELEMENT_TYPE>();
@@ -453,4 +453,3 @@ std::ostream& operator<<(std::ostream &result,
 }
 
 #endif	/* MATRIX_H */
-
