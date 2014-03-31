@@ -28,6 +28,19 @@ namespace MatrixAlgorithms
         return false;
     }
     
+    template <typename ELEMENT_TYPE>
+    bool haveZeroColumns(const Matrix<ELEMENT_TYPE> &matrix)
+    {
+        for(natural column_index = 0;
+            column_index < matrix.getRowsNumber();
+            ++column_index) 
+        {
+            if(vectorHaveOnlyZeros(matrix.getColumnVector(column_index)))
+            {
+                return true;
+            };
+        }
+        return false;
     }
     
     Matrix<double> getUpperTriangularMatrix(const Matrix<double> &matrix)
