@@ -54,6 +54,10 @@ namespace MatrixAlgorithms
         {
             return DETERMINANT_OF_MATRIX_WITH_ZERO_ROWS_OR_COLUMNS;
         }
+        if(matrix.isNull())
+        {
+            return DETERMINANT_OF_MATRIX_0X0;
+        }
         Matrix<double> triangular_matrix = getUpperTriangularMatrix(matrix);
         double determinant = 1;
         for(natural diagonal_index = 0; 
