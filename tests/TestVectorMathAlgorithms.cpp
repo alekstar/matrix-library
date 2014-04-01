@@ -50,3 +50,9 @@ TEST(VectorHaveOnlyZeros, IntVectorWithNotOnlyZeros)
     vector_with_not_only_zeros.push_back(2);
     EXPECT_FALSE(vectorHaveOnlyZeros(vector_with_not_only_zeros));
 }
+
+TEST(VectorHaveOnlyZeros, DoubleVectorWithOnlyZeros)
+{
+    std::vector<double> vector_with_only_zeros(10, 0.0);
+    EXPECT_TRUE(vectorHaveOnlyZeros(vector_with_only_zeros));
+}
