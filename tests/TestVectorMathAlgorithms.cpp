@@ -34,13 +34,13 @@ TEST(MakeScalarMultiplication, TwoVectorsWithDifferentNumberOfElements)
                                           vector2));
 }
 
-TEST(VectorHaveOnlyZeros, VectorWithOnlyZeros)
+TEST(VectorHaveOnlyZeros, IntVectorWithOnlyZeros)
 {
     std::vector<int> vector_with_only_zeros(10, 0);
     EXPECT_TRUE(vectorHaveOnlyZeros(vector_with_only_zeros));
 }
 
-TEST(VectorHaveOnlyZeros, VectorWithNotOnlyZeros)
+TEST(VectorHaveOnlyZeros, IntVectorWithNotOnlyZeros)
 {
     std::vector<int> vector_with_not_only_zeros;
     vector_with_not_only_zeros.push_back(1);
