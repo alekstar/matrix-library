@@ -152,7 +152,7 @@ public:
     }
     
     ELEMENT_TYPE getElement(const natural row_index, 
-                           const natural column_index) const
+                                   const natural column_index) const
             throw(RowIndexOutOfRange, ColumnIndexOutOfRange)
     {
         if(!isRowIndexInRange(row_index))
@@ -215,7 +215,8 @@ public:
         {
             throw MatricesCantBeMultiplied();
         }
-        Matrix<ELEMENT_TYPE> result(getRowsNumber(), operand.getColumnsNumber());
+        Matrix<ELEMENT_TYPE> result(getRowsNumber(), 
+                                    operand.getColumnsNumber());
         for(natural row_index = 0; 
             row_index < result.getRowsNumber(); 
             ++row_index)
@@ -387,7 +388,8 @@ private:
     natural columns_number_;
     vector<vector<ELEMENT_TYPE> > elements_;
     
-    bool isMultiplyPossibleWith(const Matrix<ELEMENT_TYPE>& matrix_operand) const
+    bool isMultiplyPossibleWith(
+            const Matrix<ELEMENT_TYPE>& matrix_operand) const
     {
         return getColumnsNumber() == matrix_operand.getRowsNumber();
     }
