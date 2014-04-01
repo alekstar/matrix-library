@@ -2,6 +2,8 @@
 
 namespace MatrixAlgorithms
 {
+    const double DETERMINANT_OF_MATRIX_0X0 = 1.0;
+    const double DETERMINANT_OF_MATRIX_WITH_ZERO_ROWS_OR_COLUMNS = 0.0;
     Matrix<double> getUpperTriangularMatrix(const Matrix<double> &matrix) 
         throw(MatrixIsNotSquare)
     {
