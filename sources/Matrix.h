@@ -18,6 +18,12 @@ using std::vector;
 using namespace MatrixExceptions;
 
 template<typename ELEMENT_TYPE>
+class Matrix;
+
+template<typename ELEMENT_TYPE>
+bool isEmpty(const Matrix<ELEMENT_TYPE>& operand);
+
+template<typename ELEMENT_TYPE>
 class Matrix {
     
     FRIEND_TEST(MatrixConstructor, DefaultConstructor);
@@ -281,11 +287,6 @@ public:
         return operator+(-operand);
     }
     
-    bool isEmpty() const
-    {
-        return getRowsNumber() == 0 || getColumnsNumber() == 0;
-    }
-    
     bool isNull() const
     {
         return getRowsNumber() == 0 && getColumnsNumber() == 0;
@@ -298,7 +299,7 @@ public:
     
     bool isZeroMatrix() const
     {
-        if(isEmpty())
+        if(isEmpty(*this))
         {
             return false;
         }
@@ -452,6 +453,12 @@ std::ostream& operator<<(std::ostream &result,
         result << std::endl;
     }
     return result;
+}
+
+template<typename ELEMENT_TYPE>
+bool isEmpty(const Matrix<ELEMENT_TYPE>& operand)
+{
+    return operand.getRowsNumber() == 0 || operand.getColumnsNumber() == 0;
 }
 
 #endif	/* MATRIX_H */
