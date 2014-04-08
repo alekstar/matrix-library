@@ -33,6 +33,10 @@ vector<ELEMENT_TYPE> getRowVector(const Matrix<ELEMENT_TYPE> &matrix,
                                   const natural row_number);
 
 template<typename ELEMENT_TYPE>
+vector<ELEMENT_TYPE> getColumnVector(const Matrix<ELEMENT_TYPE> &matrix, 
+                                     const natural column_number);
+
+template<typename ELEMENT_TYPE>
 class Matrix {
     
     FRIEND_TEST(MatrixConstructor, DefaultConstructor);
@@ -471,6 +475,22 @@ std::vector<ELEMENT_TYPE> getRowVector(const Matrix<ELEMENT_TYPE>& matrix,
         ++column_index)
     {
         result.push_back(matrix.getElement(row_number, column_index));
+    }
+    return result;
+}
+
+template<typename ELEMENT_TYPE>
+vector<ELEMENT_TYPE> getColumnVector(const Matrix<ELEMENT_TYPE> &matrix, 
+                                     const natural column_number)
+{
+    vector<ELEMENT_TYPE> result;
+    if(column_number < 0 || column_number >= matrix.getColumnsNumber())
+    {
+        return result;
+    }
+    for(natural row_index = 0; row_index < matrix.getRowsNumber(); ++row_index)
+    {
+        result.push_back(matrix.getElement(row_index, column_number));
     }
     return result;
 }

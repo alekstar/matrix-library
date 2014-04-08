@@ -38,7 +38,7 @@ namespace MatrixAlgorithms
             column_index < matrix.getRowsNumber();
             ++column_index) 
         {
-            if(vectorHaveOnlyZeros(matrix.getColumnVector(column_index)))
+            if(vectorHaveOnlyZeros(getColumnVector(matrix, column_index)))
             {
                 return true;
             };
