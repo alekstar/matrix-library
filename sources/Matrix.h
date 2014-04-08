@@ -291,11 +291,6 @@ public:
         return operator+(-operand);
     }
     
-    bool isSquare() const
-    {
-        return getRowsNumber() == getColumnsNumber();
-    }
-    
     bool isZeroMatrix() const
     {
         if(isEmpty(*this))
@@ -466,6 +461,12 @@ bool haveSameSize(const Matrix<LEFT_OPERAND_ELEMENT_TYPE>& left_operand,
             return true;
         }
         return false;
+}
+
+template<typename ELEMENT_TYPE>
+bool isSquare(const Matrix<ELEMENT_TYPE>& operand)
+{
+    return operand.getRowsNumber() == operand.getColumnsNumber();
 }
 
 #endif	/* MATRIX_H */
