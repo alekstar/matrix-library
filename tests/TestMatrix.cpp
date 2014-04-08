@@ -670,3 +670,15 @@ TEST(MatrixConstructor, FromMatrixOfDifferentType)
     EXPECT_EQ(int_matrix.getElement(2, 1), 8);
     EXPECT_EQ(int_matrix.getElement(2, 2), 3);
 }
+
+TEST(MatrixIsSquare, AllCases)
+{
+    Matrix<int> square_matrix_2x2(2, 2);
+    Matrix<int> square_matrix_0x0(2, 2);
+    Matrix<int> not_square_matrix_1x0(1, 0);
+    Matrix<int> not_square_matrix_1x3(1, 3);
+    EXPECT_TRUE(isSquare(square_matrix_2x2));
+    EXPECT_TRUE(isSquare(square_matrix_0x0));
+    EXPECT_FALSE(isSquare(not_square_matrix_1x0));
+    EXPECT_FALSE(isSquare(not_square_matrix_1x3));
+}
