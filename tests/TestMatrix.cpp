@@ -394,13 +394,13 @@ TEST(MatrixIsEmpty, AllCases)
     Matrix<int> matrix5(0,  2);
     Matrix<int> matrix6(5,  7);
     Matrix<int> matrix7(15, 12);
-    EXPECT_TRUE (matrix1.isEmpty());
-    EXPECT_FALSE(matrix2.isEmpty());
-    EXPECT_TRUE (matrix3.isEmpty());
-    EXPECT_TRUE (matrix4.isEmpty());
-    EXPECT_TRUE (matrix5.isEmpty());
-    EXPECT_FALSE(matrix6.isEmpty());
-    EXPECT_FALSE(matrix7.isEmpty());
+    EXPECT_TRUE (isEmpty(matrix1));
+    EXPECT_FALSE(isEmpty(matrix2));
+    EXPECT_TRUE (isEmpty(matrix3));
+    EXPECT_TRUE (isEmpty(matrix4));
+    EXPECT_TRUE (isEmpty(matrix5));
+    EXPECT_FALSE(isEmpty(matrix6));
+    EXPECT_FALSE(isEmpty(matrix7));
 }
 
 TEST(MatrixIsNull, AllCases)
