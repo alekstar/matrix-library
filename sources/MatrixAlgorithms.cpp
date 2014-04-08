@@ -7,7 +7,7 @@ namespace MatrixAlgorithms
     Matrix<double> getUpperTriangularMatrix(const Matrix<double> &matrix) 
         throw(MatrixIsNotSquare)
     {
-        if(!matrix.isSquare())
+        if(!isSquare(matrix))
         {
             throw MatrixIsNotSquare();
         }
@@ -46,7 +46,7 @@ namespace MatrixAlgorithms
     double calculateDeterminantViaTriangularMatrix(const Matrix<double> &matrix) 
         throw(MatrixIsNotSquare)
     {
-        if(!matrix.isSquare())
+        if(!isSquare(matrix))
         {
             throw MatrixIsNotSquare();
         }
