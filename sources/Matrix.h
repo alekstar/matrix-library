@@ -24,6 +24,7 @@ template<typename ELEMENT_TYPE>
 bool isEmpty(const Matrix<ELEMENT_TYPE>& operand);
 
 template<typename ELEMENT_TYPE>
+bool haveSameSize(const Matrix<ELEMENT_TYPE>& operand);
 
 template<typename ELEMENT_TYPE>
 class Matrix {
@@ -42,7 +43,6 @@ class Matrix {
     FRIEND_TEST(MatrixGetRowVector, Matrix0x0);
     FRIEND_TEST(MatrixGetRowVector, Matrix1x1);
     FRIEND_TEST(MatrixGetRowVector, Matrix2x2);
-    FRIEND_TEST(MatrixHaveSameSize, AllCases);
     template <typename MATRIX_ELEMENT_TYPE>
     friend vector<MATRIX_ELEMENT_TYPE> 
         getRowVector(const Matrix<MATRIX_ELEMENT_TYPE> &matrix, 
@@ -247,7 +247,7 @@ public:
     Matrix<ELEMENT_TYPE> operator+(const Matrix<ELEMENT_TYPE> &operand) const
         throw(MatricesCantBeAddedOrSubstracted)
     {
-        if(!haveSameSize(operand))
+        if(!haveSameSize(*this, operand))
         {
             throw MatricesCantBeAddedOrSubstracted();
         }
@@ -317,7 +317,7 @@ public:
     
     bool operator==(const Matrix<ELEMENT_TYPE> &operand) const
     {
-        if(!haveSameSize(operand))
+        if(!haveSameSize(*this, operand))
         {
             return false;
         }
@@ -339,17 +339,6 @@ public:
             }
         }
         return true;
-    }
-    
-    template <typename OPERAND_ELEMENT_TYPE>
-    bool haveSameSize(const Matrix<OPERAND_ELEMENT_TYPE>& operand) const
-    {
-        if(getRowsNumber()      == operand.getRowsNumber()      && 
-           getColumnsNumber()   == operand.getColumnsNumber()   )
-        {
-            return true;
-        }
-        return false;
     }
     
     vector<ELEMENT_TYPE> getRowVector(const natural row_number) const
@@ -462,6 +451,19 @@ template<typename ELEMENT_TYPE>
 bool isNull(const Matrix<ELEMENT_TYPE>& operand)
 {
     return operand.getRowsNumber() == 0 && operand.getColumnsNumber() == 0;
+}
+
+template<typename LEFT_OPERAND_ELEMENT_TYPE, 
+         typename RIGHT_OPERAND_ELEMENT_TYPE>
+bool haveSameSize(const Matrix<LEFT_OPERAND_ELEMENT_TYPE>& left_operand,
+                  const Matrix<RIGHT_OPERAND_ELEMENT_TYPE>& right_operand)
+{
+    if(left_operand.getRowsNumber()      == right_operand.getRowsNumber()   && 
+       left_operand.getColumnsNumber()   == right_operand.getColumnsNumber()  )
+        {
+            return true;
+        }
+        return false;
 }
 
 #endif	/* MATRIX_H */
