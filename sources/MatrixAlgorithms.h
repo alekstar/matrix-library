@@ -23,7 +23,7 @@ namespace MatrixAlgorithms
             row_index < matrix.getRowsNumber();
             ++row_index) 
         {
-            if(vectorHaveOnlyZeros(matrix.getRowVector(row_index)))
+            if(vectorHaveOnlyZeros(getRowVector(matrix, row_index)))
             {
                 return true;
             };

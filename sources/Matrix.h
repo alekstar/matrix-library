@@ -29,6 +29,10 @@ bool haveSameSize(const Matrix<LEFT_OPERAND_ELEMENT_TYPE>& left_operand,
                   const Matrix<RIGHT_OPERAND_ELEMENT_TYPE>& right_operand);
 
 template<typename ELEMENT_TYPE>
+vector<ELEMENT_TYPE> getRowVector(const Matrix<ELEMENT_TYPE> &matrix, 
+                                  const natural row_number);
+
+template<typename ELEMENT_TYPE>
 class Matrix {
     
     FRIEND_TEST(MatrixConstructor, DefaultConstructor);
@@ -237,7 +241,7 @@ public:
             {
                 result.setElement(
                     makeScalarMultiplication(
-                        getRowVector(row_index), 
+                        getRowVector(*this, row_index), 
                         operand.getColumnVector(column_index)), 
                     row_index, 
                     column_index);
@@ -315,22 +319,6 @@ public:
             }
         }
         return true;
-    }
-    
-    vector<ELEMENT_TYPE> getRowVector(const natural row_number) const
-    {
-        vector<ELEMENT_TYPE> result;
-        if(row_number < 0 || row_number >= getRowsNumber())
-        {
-            return result;
-        }
-        for(natural column_index = 0; 
-            column_index < getColumnsNumber(); 
-            ++column_index)
-        {
-            result.push_back(getElement(row_number, column_index));
-        }
-        return result;
     }
     
     vector<ELEMENT_TYPE> getColumnVector(const natural column_number) const
@@ -467,6 +455,24 @@ bool isZeroMatrix(const Matrix<ELEMENT_TYPE>& operand)
         }
     }
     return true;
+}
+
+template<typename ELEMENT_TYPE>
+std::vector<ELEMENT_TYPE> getRowVector(const Matrix<ELEMENT_TYPE>& matrix, 
+                                       const natural row_number)
+{
+    vector<ELEMENT_TYPE> result;
+    if(row_number < 0 || row_number >= matrix.getRowsNumber())
+    {
+        return result;
+    }
+    for(natural column_index = 0;
+        column_index < matrix.getColumnsNumber();
+        ++column_index)
+    {
+        result.push_back(matrix.getElement(row_number, column_index));
+    }
+    return result;
 }
 
 #endif	/* MATRIX_H */
