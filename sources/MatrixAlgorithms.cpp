@@ -54,7 +54,7 @@ namespace MatrixAlgorithms
         {
             return DETERMINANT_OF_MATRIX_WITH_ZERO_ROWS_OR_COLUMNS;
         }
-        if(matrix.isNull())
+        if(isNull(matrix))
         {
             return DETERMINANT_OF_MATRIX_0X0;
         }
