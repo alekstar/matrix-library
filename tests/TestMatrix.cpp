@@ -682,3 +682,30 @@ TEST(MatrixIsSquare, AllCases)
     EXPECT_FALSE(isSquare(not_square_matrix_1x0));
     EXPECT_FALSE(isSquare(not_square_matrix_1x3));
 }
+
+TEST(MatrixGetColumnVector, Matrix3x3)
+{
+    Matrix<int> matrix3x3(3, 3);
+    matrix3x3.setElement(7, 0, 0);
+    matrix3x3.setElement(9, 0, 1);
+    matrix3x3.setElement(1, 0, 2);
+    matrix3x3.setElement(6, 1, 0);
+    matrix3x3.setElement(5, 1, 1);
+    matrix3x3.setElement(2, 1, 2);
+    matrix3x3.setElement(4, 2, 0);
+    matrix3x3.setElement(8, 2, 1);
+    matrix3x3.setElement(3, 2, 2);
+    
+    vector<int> first_column = getColumnVector(matrix3x3, 0);
+    vector<int> second_column = getColumnVector(matrix3x3, 1);
+    
+    EXPECT_EQ(3, first_column.size());
+    EXPECT_EQ(7, first_column.at(0));
+    EXPECT_EQ(6, first_column.at(1));
+    EXPECT_EQ(4, first_column.at(2));
+
+    EXPECT_EQ(3, second_column.size());
+    EXPECT_EQ(9, second_column.at(0));
+    EXPECT_EQ(5, second_column.at(1));
+    EXPECT_EQ(8, second_column.at(2));
+}
