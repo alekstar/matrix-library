@@ -24,6 +24,9 @@ template<typename ELEMENT_TYPE>
 bool isEmpty(const Matrix<ELEMENT_TYPE>& operand);
 
 template<typename ELEMENT_TYPE>
+bool isNull(const Matrix<ELEMENT_TYPE>& operand);
+
+template<typename ELEMENT_TYPE>
 class Matrix {
     
     FRIEND_TEST(MatrixConstructor, DefaultConstructor);
@@ -287,11 +290,6 @@ public:
         return operator+(-operand);
     }
     
-    bool isNull() const
-    {
-        return getRowsNumber() == 0 && getColumnsNumber() == 0;
-    }
-    
     bool isSquare() const
     {
         return getRowsNumber() == getColumnsNumber();
@@ -459,6 +457,12 @@ template<typename ELEMENT_TYPE>
 bool isEmpty(const Matrix<ELEMENT_TYPE>& operand)
 {
     return operand.getRowsNumber() == 0 || operand.getColumnsNumber() == 0;
+}
+
+template<typename ELEMENT_TYPE>
+bool isNull(const Matrix<ELEMENT_TYPE>& operand)
+{
+    return operand.getRowsNumber() == 0 && operand.getColumnsNumber() == 0;
 }
 
 #endif	/* MATRIX_H */

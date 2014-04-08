@@ -412,13 +412,13 @@ TEST(MatrixIsNull, AllCases)
     Matrix<int> matrix5(0,  2);
     Matrix<int> matrix6(5,  7);
     Matrix<int> matrix7(15, 12);
-    EXPECT_TRUE (matrix1.isNull());
-    EXPECT_FALSE(matrix2.isNull());
-    EXPECT_TRUE (matrix3.isNull());
-    EXPECT_FALSE(matrix4.isNull());
-    EXPECT_FALSE(matrix5.isNull());
-    EXPECT_FALSE(matrix6.isNull());
-    EXPECT_FALSE(matrix7.isNull());
+    EXPECT_TRUE (isNull(matrix1));
+    EXPECT_FALSE(isNull(matrix2));
+    EXPECT_TRUE (isNull(matrix3));
+    EXPECT_FALSE(isNull(matrix4));
+    EXPECT_FALSE(isNull(matrix5));
+    EXPECT_FALSE(isNull(matrix6));
+    EXPECT_FALSE(isNull(matrix7));
 }
 
 TEST(MatrixIsZero, NullMatrix)
@@ -492,8 +492,8 @@ TEST(MatrixUnaryOperatorMinus, NullMatrix)
 {
     Matrix<double> null_matrix;
     Matrix<double> negate_of_null_matrix = -null_matrix;
-    EXPECT_TRUE(null_matrix.isNull());
-    EXPECT_TRUE(negate_of_null_matrix.isNull());
+    EXPECT_TRUE(isNull(null_matrix));
+    EXPECT_TRUE(isNull(negate_of_null_matrix));
 }
 
 TEST(MatrixUnaryOperatorMinus, EmptyMatrixAllCases)
@@ -561,7 +561,7 @@ TEST(MatrixOperatorPlus, NullAndEmptyMatrices)
 {
     Matrix<int> null_matrix;
     Matrix<int> result_after_plus_of_null_matrixes = null_matrix + null_matrix;
-    EXPECT_TRUE(result_after_plus_of_null_matrixes.isNull());
+    EXPECT_TRUE(isNull(result_after_plus_of_null_matrixes));
     
     Matrix<int> empty_matrix3x0(3, 0);
     Matrix<int> empty_matrix0x3(0, 3);
@@ -610,7 +610,7 @@ TEST(MatrixOperatorMinus, NullAndEmptyMatrices)
 {
     Matrix<int> null_matrix;
     Matrix<int> result_after_plus_of_null_matrixes = null_matrix - null_matrix;
-    EXPECT_TRUE(result_after_plus_of_null_matrixes.isNull());
+    EXPECT_TRUE(isNull(result_after_plus_of_null_matrixes));
     
     Matrix<int> empty_matrix3x0(3, 0);
     Matrix<int> empty_matrix0x3(0, 3);
