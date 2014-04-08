@@ -23,8 +23,10 @@ class Matrix;
 template<typename ELEMENT_TYPE>
 bool isEmpty(const Matrix<ELEMENT_TYPE>& operand);
 
-template<typename ELEMENT_TYPE>
-bool haveSameSize(const Matrix<ELEMENT_TYPE>& operand);
+template<typename LEFT_OPERAND_ELEMENT_TYPE, 
+         typename RIGHT_OPERAND_ELEMENT_TYPE>
+bool haveSameSize(const Matrix<LEFT_OPERAND_ELEMENT_TYPE>& left_operand,
+                  const Matrix<RIGHT_OPERAND_ELEMENT_TYPE>& right_operand);
 
 template<typename ELEMENT_TYPE>
 class Matrix {
