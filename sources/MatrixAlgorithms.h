@@ -13,6 +13,9 @@ namespace MatrixAlgorithms
     using namespace VectorMathAlogirthms;
     using namespace MatrixExceptions;
     
+    const double DETERMINANT_OF_MATRIX_0X0 = 1.0;
+    const double DETERMINANT_OF_MATRIX_WITH_ZERO_ROWS_OR_COLUMNS = 0.0;
+    
     template <typename ELEMENT_TYPE>
     bool haveZeroRows(const Matrix<ELEMENT_TYPE> &matrix) 
     {
