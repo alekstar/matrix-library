@@ -424,23 +424,23 @@ TEST(MatrixIsNull, AllCases)
 TEST(MatrixIsZero, NullMatrix)
 {
     Matrix<int> matrix;
-    EXPECT_FALSE(matrix.isZeroMatrix());
+    EXPECT_FALSE(isZeroMatrix(matrix));
 }
 
 TEST(MatrixIsZero, EmptyMatrix)
 {
     Matrix<int> matrix1(3, 0);
-    EXPECT_FALSE(matrix1.isZeroMatrix());
+    EXPECT_FALSE(isZeroMatrix(matrix1));
     Matrix<int> matrix2(0, 5);
-    EXPECT_FALSE(matrix2.isZeroMatrix());
+    EXPECT_FALSE(isZeroMatrix(matrix2));
 }
 
 TEST(MatrixIsZero, ZeroMatrix)
 {
     Matrix<int> matrix1(1, 1);
     Matrix<double> matrix2(2, 2);
-    EXPECT_TRUE(matrix1.isZeroMatrix());
-    EXPECT_TRUE(matrix2.isZeroMatrix());
+    EXPECT_TRUE(isZeroMatrix(matrix1));
+    EXPECT_TRUE(isZeroMatrix(matrix2));
 }
 
 TEST(MatrixIsZero, NonZeroMatrix)
@@ -457,10 +457,10 @@ TEST(MatrixIsZero, NonZeroMatrix)
     matrix4.setElement(-701, 10, 5);
     matrix4.setElement(1233, 2, 5);
     matrix4.setElement(45, 11, 6);
-    EXPECT_FALSE(matrix1.isZeroMatrix());
-    EXPECT_FALSE(matrix2.isZeroMatrix());
-    EXPECT_FALSE(matrix3.isZeroMatrix());
-    EXPECT_FALSE(matrix4.isZeroMatrix());
+    EXPECT_FALSE(isZeroMatrix(matrix1));
+    EXPECT_FALSE(isZeroMatrix(matrix2));
+    EXPECT_FALSE(isZeroMatrix(matrix3));
+    EXPECT_FALSE(isZeroMatrix(matrix4));
 }
 
 TEST(MatrixUnaryOperatorMinus, SimpleNegateOfNonZeroMatrix2x2)

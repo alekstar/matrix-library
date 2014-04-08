@@ -291,27 +291,6 @@ public:
         return operator+(-operand);
     }
     
-    bool isZeroMatrix() const
-    {
-        if(isEmpty(*this))
-        {
-            return false;
-        }
-        for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
-        {
-            for(natural column_index = 0; 
-                column_index < getColumnsNumber(); 
-                ++column_index)
-            {
-                if(getElement(row_index, column_index) != 0)
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    
     bool operator==(const Matrix<ELEMENT_TYPE> &operand) const
     {
         if(!haveSameSize(*this, operand))
@@ -467,6 +446,27 @@ template<typename ELEMENT_TYPE>
 bool isSquare(const Matrix<ELEMENT_TYPE>& operand)
 {
     return operand.getRowsNumber() == operand.getColumnsNumber();
+}
+
+template<typename ELEMENT_TYPE>
+bool isZeroMatrix(const Matrix<ELEMENT_TYPE>& operand)
+{
+    if(isEmpty(operand)) 
+    {
+        return false;
+    }
+    for(natural row_index = 0; row_index < operand.getRowsNumber(); ++row_index) 
+    {
+        for(natural column_index = 0;
+            column_index < operand.getColumnsNumber();
+            ++column_index) {
+            if(operand.getElement(row_index, column_index) != 0) 
+            {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 #endif	/* MATRIX_H */
