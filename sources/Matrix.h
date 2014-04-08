@@ -24,7 +24,6 @@ template<typename ELEMENT_TYPE>
 bool isEmpty(const Matrix<ELEMENT_TYPE>& operand);
 
 template<typename ELEMENT_TYPE>
-bool isNull(const Matrix<ELEMENT_TYPE>& operand);
 
 template<typename ELEMENT_TYPE>
 class Matrix {
