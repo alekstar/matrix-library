@@ -709,3 +709,12 @@ TEST(MatrixGetColumnVector, Matrix3x3)
     EXPECT_EQ(5, second_column.at(1));
     EXPECT_EQ(8, second_column.at(2));
 }
+
+TEST(MatrixGetColumnVector, EmptyColumnCases)
+{
+    Matrix<int> matrix2x0 (2, 0, 1);
+    Matrix<int> matrix0x0 (0, 0);
+    
+    EXPECT_EQ(0, getColumnVector(matrix2x0, 0).size());
+    EXPECT_EQ(0, getColumnVector(matrix0x0, 0).size());
+}
