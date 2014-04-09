@@ -96,3 +96,28 @@ TEST(HaveZeroColumns, MatrixWithSeveralZeroColumns)
     matrix.setElement(2.2, 2, 2);
     EXPECT_TRUE(haveZeroColumns(matrix));
 }
+
+TEST(GetUpperTriangularMatrix, Matrix3x3)
+{
+    Matrix<int> matrix(3, 3);
+    matrix.setElement(2,    0, 0);
+    matrix.setElement(6,    0, 1);
+    matrix.setElement(-1,   0, 2);
+    matrix.setElement(0,    1, 0);
+    matrix.setElement(2,    1, 1);
+    matrix.setElement(1,    1, 2);
+    matrix.setElement(2,    2, 0);
+    matrix.setElement(-1,   2, 1);
+    matrix.setElement(0,    2, 2);
+    Matrix<double> upper_triangular_matrix = 
+        getUpperTriangularMatrix(matrix);
+    EXPECT_DOUBLE_EQ( 2,    upper_triangular_matrix.getElement(0, 0));
+    EXPECT_DOUBLE_EQ( 6,    upper_triangular_matrix.getElement(0, 1));
+    EXPECT_DOUBLE_EQ(-1,    upper_triangular_matrix.getElement(0, 2));
+    EXPECT_DOUBLE_EQ( 0,    upper_triangular_matrix.getElement(1, 0));
+    EXPECT_DOUBLE_EQ( 2,    upper_triangular_matrix.getElement(1, 1));
+    EXPECT_DOUBLE_EQ( 1,    upper_triangular_matrix.getElement(1, 2));
+    EXPECT_DOUBLE_EQ( 0,    upper_triangular_matrix.getElement(2, 0));
+    EXPECT_DOUBLE_EQ( 0,    upper_triangular_matrix.getElement(2, 1));
+    EXPECT_DOUBLE_EQ( 4.5,  upper_triangular_matrix.getElement(2, 2));
+}
