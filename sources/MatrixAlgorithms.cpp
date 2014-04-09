@@ -1,4 +1,5 @@
 #include "MatrixAlgorithms.h"
+#include <cmath>
 
 namespace MatrixAlgorithms
 {
