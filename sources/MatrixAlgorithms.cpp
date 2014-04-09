@@ -67,4 +67,23 @@ namespace MatrixAlgorithms
         }
         return determinant;
     }
+    
+    int defineSignForElement(const natural row_index, 
+                             const natural column_index)
+    {
+        int result = 1;
+        for(natural internal_row_index = 0; 
+            internal_row_index <= row_index;
+            ++internal_row_index)
+        {
+            int first_element_sign = pow(-1, internal_row_index);
+            for(natural internal_column_index = 0;
+                internal_column_index <= column_index;
+                ++internal_column_index)
+            {
+                result = first_element_sign * pow(-1, internal_column_index);
+            }
+        }
+        return result;
+    }
 }
