@@ -97,19 +97,6 @@ public:
         setElementsFromVector(vector_to_convert);
     }
     
-    void setColumnsNumber(const natural columns_number,
-                                  const ELEMENT_TYPE initialize_value = 0)
-    {
-        RowsIterator rows_iterator;
-        for(rows_iterator = elements_.begin(); 
-            rows_iterator != elements_.end(); 
-            ++rows_iterator)
-        {
-            rows_iterator->resize(columns_number, initialize_value);
-        }
-        columns_number_ = columns_number;
-    }
-    
     template<typename OPERAND_ELEMENT_TYPE>
     Matrix(const Matrix<OPERAND_ELEMENT_TYPE> &operand)
     {
@@ -128,6 +115,19 @@ public:
                            column_index);
             }
         }
+    }
+    
+    void setColumnsNumber(const natural columns_number,
+                                  const ELEMENT_TYPE initialize_value = 0)
+    {
+        RowsIterator rows_iterator;
+        for(rows_iterator = elements_.begin(); 
+            rows_iterator != elements_.end(); 
+            ++rows_iterator)
+        {
+            rows_iterator->resize(columns_number, initialize_value);
+        }
+        columns_number_ = columns_number;
     }
     
     natural getColumnsNumber() const
