@@ -122,19 +122,6 @@ TEST(GetUpperTriangularMatrix, Matrix3x3)
     EXPECT_DOUBLE_EQ( 4.5,  upper_triangular_matrix.getElement(2, 2));
 }
 
-TEST(DefineSignForElement, SeveralCases)
-{
-    EXPECT_EQ(1,  defineSignForElement(0, 0));
-    EXPECT_EQ(-1, defineSignForElement(0, 1));
-    EXPECT_EQ(1,  defineSignForElement(0, 2));
-    EXPECT_EQ(-1, defineSignForElement(1, 0));
-    EXPECT_EQ(1,  defineSignForElement(1, 1));
-    EXPECT_EQ(-1, defineSignForElement(1, 2));
-    EXPECT_EQ(1,  defineSignForElement(2, 0));
-    EXPECT_EQ(-1, defineSignForElement(2, 1));
-    EXPECT_EQ(1,  defineSignForElement(2, 2));
-}
-
 TEST(CalculateDeterminantViaTriangularMatrix, Matrix4x4)
 {
     Matrix<double> matrix(4, 4);
