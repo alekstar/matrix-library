@@ -8,6 +8,9 @@
 class ClassicDeterminantCalculator
 {
     FRIEND_TEST(DefineSignForElement, SeveralCases);
+    FRIEND_TEST(GetMinor, Minor0x0FromMatrix3x3);
+    FRIEND_TEST(GetMinor, Minor1x1FromMatrix3x3);
+    FRIEND_TEST(GetMinor, Minor0x1FromMatrix3x3);
 public:
 
     double calculate(const Matrix<double> &matrix)
