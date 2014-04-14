@@ -735,3 +735,41 @@ TEST(MatrixGetElementReference, SeveralCases)
     matrix3x3.getElementReference(1, 0) = 5;
     EXPECT_EQ(5, matrix3x3.getElement(1, 0));
 }
+
+TEST(MatrixAtMethod, Matrix3x3)
+{
+    Matrix<int> matrix3x3(3, 3);
+    matrix3x3.at(0, 0) = 7;
+    matrix3x3.at(0, 1) = 9;
+    matrix3x3.at(0, 2) = 1;
+    matrix3x3.at(1, 0) = 6;
+    matrix3x3.at(1, 1) = 5;
+    matrix3x3.at(1, 2) = 2;
+    matrix3x3.at(2, 0) = 4;
+    matrix3x3.at(2, 1) = 8;
+    matrix3x3.at(2, 2) = 3;
+    
+    EXPECT_EQ(3, matrix3x3.getColumnsNumber());
+    EXPECT_EQ(3, matrix3x3.getRowsNumber());
+    EXPECT_EQ(7, matrix3x3.getElement(0, 0));
+    EXPECT_EQ(9, matrix3x3.getElement(0, 1));
+    EXPECT_EQ(1, matrix3x3.getElement(0, 2));
+    EXPECT_EQ(6, matrix3x3.getElement(1, 0));
+    EXPECT_EQ(5, matrix3x3.getElement(1, 1));
+    EXPECT_EQ(2, matrix3x3.getElement(1, 2));
+    EXPECT_EQ(4, matrix3x3.getElement(2, 0));
+    EXPECT_EQ(8, matrix3x3.getElement(2, 1));
+    EXPECT_EQ(3, matrix3x3.getElement(2, 2));
+
+    EXPECT_EQ(7, matrix3x3.at(0, 0));
+    EXPECT_EQ(9, matrix3x3.at(0, 1));
+    EXPECT_EQ(1, matrix3x3.at(0, 2));
+    EXPECT_EQ(6, matrix3x3.at(1, 0));
+    EXPECT_EQ(5, matrix3x3.at(1, 1));
+    EXPECT_EQ(2, matrix3x3.at(1, 2));
+    EXPECT_EQ(4, matrix3x3.at(2, 0));
+    EXPECT_EQ(8, matrix3x3.at(2, 1));
+    EXPECT_EQ(3, matrix3x3.at(2, 2));
+    EXPECT_EQ(3, matrix3x3.getColumnsNumber());
+    EXPECT_EQ(3, matrix3x3.getRowsNumber());
+}
