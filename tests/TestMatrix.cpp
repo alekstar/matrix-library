@@ -773,3 +773,29 @@ TEST(MatrixAtMethod, Matrix3x3)
     EXPECT_EQ(3, matrix3x3.getColumnsNumber());
     EXPECT_EQ(3, matrix3x3.getRowsNumber());
 }
+
+TEST(MatrixAtMethod, ConstMatrix3x3)
+{
+    std::vector<int> values;
+    values.push_back(1);
+    values.push_back(2);
+    values.push_back(3);
+    values.push_back(4);
+    values.push_back(5);
+    values.push_back(6);
+    values.push_back(7);
+    values.push_back(8);
+    values.push_back(9);
+    const Matrix<int> matrix3x3(3, 3, values);
+    EXPECT_EQ(1, matrix3x3.at(0, 0));
+    EXPECT_EQ(2, matrix3x3.at(0, 1));
+    EXPECT_EQ(3, matrix3x3.at(0, 2));
+    EXPECT_EQ(4, matrix3x3.at(1, 0));
+    EXPECT_EQ(5, matrix3x3.at(1, 1));
+    EXPECT_EQ(6, matrix3x3.at(1, 2));
+    EXPECT_EQ(7, matrix3x3.at(2, 0));
+    EXPECT_EQ(8, matrix3x3.at(2, 1));
+    EXPECT_EQ(9, matrix3x3.at(2, 2));
+    EXPECT_EQ(3, matrix3x3.getColumnsNumber());
+    EXPECT_EQ(3, matrix3x3.getRowsNumber());
+}
