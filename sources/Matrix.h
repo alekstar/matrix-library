@@ -53,6 +53,7 @@ class Matrix {
     FRIEND_TEST(MatrixGetRowVector, Matrix0x0);
     FRIEND_TEST(MatrixGetRowVector, Matrix1x1);
     FRIEND_TEST(MatrixGetRowVector, Matrix2x2);
+    FRIEND_TEST(MatrixGetElementReference, SeveralCases);
     template <typename MATRIX_ELEMENT_TYPE>
     friend vector<MATRIX_ELEMENT_TYPE> 
         getRowVector(const Matrix<MATRIX_ELEMENT_TYPE> &matrix, 
@@ -390,6 +391,11 @@ private:
         return Matrix<ELEMENT_TYPE>();
     }
     
+    ELEMENT_TYPE& getElementReference(const natural row_index, 
+                                      const natural column_index)
+    {
+        return const_cast<ELEMENT_TYPE&>(getElement(row_index, column_index));
+    }
 };
 
 template <typename MATRIX_VALUE_TYPE>
