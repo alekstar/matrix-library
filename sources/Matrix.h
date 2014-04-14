@@ -169,7 +169,7 @@ public:
         }
     }
     
-    ELEMENT_TYPE getElement(const natural row_index, 
+    const ELEMENT_TYPE& getElement(const natural row_index, 
                                    const natural column_index) const
             throw(RowIndexOutOfRange, ColumnIndexOutOfRange)
     {
