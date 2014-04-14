@@ -719,7 +719,7 @@ TEST(MatrixGetColumnVector, EmptyColumnCases)
     EXPECT_EQ(0, getColumnVector(matrix0x0, 0).size());
 }
 
-TEST(MatrixGetElementReference, SeveralCases)
+TEST(MatrixGetElementReference, GetElement1x0InMatrix3x3)
 {
     Matrix<int> matrix3x3(3, 3);
     matrix3x3.setElement(7, 0, 0);
