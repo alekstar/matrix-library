@@ -718,3 +718,20 @@ TEST(MatrixGetColumnVector, EmptyColumnCases)
     EXPECT_EQ(0, getColumnVector(matrix2x0, 0).size());
     EXPECT_EQ(0, getColumnVector(matrix0x0, 0).size());
 }
+
+TEST(MatrixGetElementReference, SeveralCases)
+{
+    Matrix<int> matrix3x3(3, 3);
+    matrix3x3.setElement(7, 0, 0);
+    matrix3x3.setElement(9, 0, 1);
+    matrix3x3.setElement(1, 0, 2);
+    matrix3x3.setElement(6, 1, 0);
+    matrix3x3.setElement(5, 1, 1);
+    matrix3x3.setElement(2, 1, 2);
+    matrix3x3.setElement(4, 2, 0);
+    matrix3x3.setElement(8, 2, 1);
+    matrix3x3.setElement(3, 2, 2);
+    
+    matrix3x3.getElementReference(1, 0) = 5;
+    EXPECT_EQ(5, matrix3x3.getElement(1, 0));
+}
