@@ -326,6 +326,18 @@ public:
         return true;
     }
     
+    const ELEMENT_TYPE& at(const natural row_index,
+                           const natural column_index) const
+    {
+        return getElement(row_index, column_index);
+    }
+    
+    ELEMENT_TYPE& at(const natural row_index,
+                    const natural column_index)
+    {
+        return getElementReference(row_index, column_index);
+    }
+    
     vector<ELEMENT_TYPE> getColumnVector(const natural column_number) const
     {
         vector<ELEMENT_TYPE> result;
