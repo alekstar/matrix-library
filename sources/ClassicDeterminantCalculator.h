@@ -11,6 +11,8 @@ class ClassicDeterminantCalculator
     FRIEND_TEST(GetMinor, Minor0x0FromMatrix3x3);
     FRIEND_TEST(GetMinor, Minor1x1FromMatrix3x3);
     FRIEND_TEST(GetMinor, Minor0x1FromMatrix3x3);
+    FRIEND_TEST(GetMinor, Minor0x0FromMatrix1x1);
+    FRIEND_TEST(GetMinor, Minor0x0FromMatrix0x0);
 public:
 
     double calculate(const Matrix<double> &matrix)
