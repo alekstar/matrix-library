@@ -799,3 +799,23 @@ TEST(MatrixAtMethod, ConstMatrix3x3)
     EXPECT_EQ(3, matrix3x3.getColumnsNumber());
     EXPECT_EQ(3, matrix3x3.getRowsNumber());
 }
+
+TEST(MatrixThrowExceptionsIfIndexIsWrong, AllExcetions)
+{
+    Matrix<int> matrix3x3(3, 3);
+    EXPECT_THROW(matrix3x3.throwExceptionIfRowIndexIsWrong(3), 
+                 RowIndexOutOfRange);
+    EXPECT_THROW(matrix3x3.throwExceptionIfColumnIndexIsWrong(4),
+                 ColumnIndexOutOfRange);
+    EXPECT_NO_THROW(matrix3x3.throwExceptionIfRowIndexIsWrong(2));
+    EXPECT_NO_THROW(matrix3x3.throwExceptionIfColumnIndexIsWrong(1));
+    
+    const Matrix<int> matrix2x5(2, 5);
+    EXPECT_THROW(matrix2x5.throwExceptionIfRowIndexIsWrong(5), 
+                 RowIndexOutOfRange);
+    EXPECT_THROW(matrix2x5.throwExceptionIfColumnIndexIsWrong(7),
+                 ColumnIndexOutOfRange);
+    EXPECT_NO_THROW(matrix2x5.throwExceptionIfRowIndexIsWrong(1));
+    EXPECT_NO_THROW(matrix2x5.throwExceptionIfColumnIndexIsWrong(4));
+    
+}
