@@ -31,6 +31,10 @@ private:
         {
             return Matrix<ELEMENT_TYPE>(0, 0);
         }
+        if(!isSquare(matrix))
+        {
+            throw MatrixIsNotSquare();
+        }
         Matrix<ELEMENT_TYPE> minor(matrix.getRowsNumber()       - 1, 
                                    matrix.getColumnsNumber()    - 1);
         for(natural matrix_row_index = 0,
