@@ -19,9 +19,9 @@ private:
     int defineSignForElement(natural row_index, 
                              natural column_index);
     template<typename ELEMENT_TYPE>
-    Matrix<ELEMENT_TYPE> getMinorForElement(Matrix<ELEMENT_TYPE>& matrix,
-                                             natural row_index, 
-                                             natural column_index)
+    Matrix<ELEMENT_TYPE> getMinorMatrixForElement(Matrix<ELEMENT_TYPE>& matrix,
+                                                  natural row_index, 
+                                                  natural column_index)
     {
         if(isNull(matrix))
         {

@@ -29,7 +29,9 @@ TEST(GetMinor, Minor0x0FromMatrix3x3)
     matrix3x3.at(2, 2) = 9;
     
     Matrix<int> minor_for_0x0 = 
-        ClassicDeterminantCalculator().getMinorForElement(matrix3x3, 0, 0);
+        ClassicDeterminantCalculator().getMinorMatrixForElement(matrix3x3, 
+                                                                0, 
+                                                                0);
     
     EXPECT_EQ(2, minor_for_0x0.getRowsNumber());
     EXPECT_EQ(2, minor_for_0x0.getColumnsNumber());
@@ -53,7 +55,9 @@ TEST(GetMinor, Minor1x1FromMatrix3x3)
     matrix3x3.at(2, 2) = 9;
     
     Matrix<int> minor_for_1x1 = 
-        ClassicDeterminantCalculator().getMinorForElement(matrix3x3, 1, 1);
+        ClassicDeterminantCalculator().getMinorMatrixForElement(matrix3x3, 
+                                                                1, 
+                                                                1);
     
     EXPECT_EQ(1, minor_for_1x1.at(0, 0));
     EXPECT_EQ(3, minor_for_1x1.at(0, 1));
@@ -75,7 +79,9 @@ TEST(GetMinor, Minor0x1FromMatrix3x3)
     matrix3x3.at(2, 2) = 9;
     
     Matrix<int> minor_for_0x1 = 
-        ClassicDeterminantCalculator().getMinorForElement(matrix3x3, 0, 1);
+        ClassicDeterminantCalculator().getMinorMatrixForElement(matrix3x3, 
+                                                                0, 
+                                                                1);
     
     EXPECT_EQ(4, minor_for_0x1.at(0, 0));
     EXPECT_EQ(6, minor_for_0x1.at(0, 1));
