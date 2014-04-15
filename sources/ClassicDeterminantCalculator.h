@@ -24,12 +24,13 @@ private:
                                             natural row_index, 
                                             natural column_index)
     {
-        if(isNull(matrix))
+        matrix.throwExceptionIfColumnIndexIsWrong(column_index);
+        matrix.throwExceptionIfRowIndexIsWrong(row_index);
+        if(isNull(matrix) || 
+           (matrix.getRowsNumber() == 1 && matrix.getColumnsNumber() == 1))
         {
             return Matrix<ELEMENT_TYPE>(0, 0);
         }
-        matrix.throwExceptionIfColumnIndexIsWrong(column_index);
-        matrix.throwExceptionIfRowIndexIsWrong(row_index);
         Matrix<ELEMENT_TYPE> minor(matrix.getRowsNumber()       - 1, 
                                    matrix.getColumnsNumber()    - 1);
         for(natural matrix_row_index = 0,
