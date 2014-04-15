@@ -351,6 +351,24 @@ public:
         }
         return result;
     }
+    
+    void throwExceptionIfRowIndexIsWrong(natural row_index) const
+        throw(RowIndexOutOfRange)
+    {
+        if(row_index >= getRowsNumber())
+        {
+            throw RowIndexOutOfRange();
+        }
+    }
+    
+    void throwExceptionIfColumnIndexIsWrong(natural column_index) const
+        throw (ColumnIndexOutOfRange)
+    {
+        if(column_index >= getColumnsNumber())
+        {
+            throw ColumnIndexOutOfRange();
+        }
+    }
 private:
     natural rows_number_;
     natural columns_number_;
