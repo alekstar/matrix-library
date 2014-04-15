@@ -22,12 +22,12 @@ double ClassicDeterminantCalculator::
     }
     if (matrix.getColumnsNumber() == 1 && matrix.getRowsNumber() == 1)
     {
-        return matrix.getElement(0, 0);
+        return matrix.at(0, 0);
     }
     if (matrix.getColumnsNumber() == 2 && matrix.getRowsNumber() == 2)
     {
-        return matrix.getElement(0, 0) * matrix.getElement(1, 1) -
-            matrix.getElement(0, 1) * matrix.getElement(1, 0);
+        return matrix.at(0, 0) * matrix.at(1, 1) -
+            matrix.at(0, 1) * matrix.at(1, 0);
     }
 }
 
