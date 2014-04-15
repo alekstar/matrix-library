@@ -29,6 +29,20 @@ double ClassicDeterminantCalculator::
         return matrix.at(0, 0) * matrix.at(1, 1) -
             matrix.at(0, 1) * matrix.at(1, 0);
     }
+    double determinant = 0;
+    for(natural column_index = 0;
+        column_index < matrix.getColumnsNumber();
+        ++column_index)
+    {
+        int sign = defineSignForElement(0, column_index);
+        double current_element = matrix.at(0, column_index);
+        Matrix<double> minor = 
+            getMinorMatrixForElement(matrix, 0, column_index);
+        determinant +=  sign * 
+                        current_element * 
+                        calculate(minor);
+    }
+    return determinant;
 }
 
 int ClassicDeterminantCalculator::
