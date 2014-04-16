@@ -123,3 +123,19 @@ TEST(CalculateDeterminant, DoubleForMatrix3x3)
     
     EXPECT_DOUBLE_EQ(-99, ClassicDeterminantCalculator().calculate(matrix3x3));
 }
+
+TEST(CalculateDeterminant, IntegerForMatrix3x3)
+{
+    Matrix<int> matrix3x3(3, 3);
+    matrix3x3.at(0, 0) = 4;
+    matrix3x3.at(0, 1) = 3;
+    matrix3x3.at(0, 2) = 2;
+    matrix3x3.at(1, 0) = 9;
+    matrix3x3.at(1, 1) = 1;
+    matrix3x3.at(1, 2) = 8;
+    matrix3x3.at(2, 0) = 6;
+    matrix3x3.at(2, 1) = 5;
+    matrix3x3.at(2, 2) = 7;
+    
+    EXPECT_DOUBLE_EQ(-99, ClassicDeterminantCalculator().calculate(matrix3x3));
+}
