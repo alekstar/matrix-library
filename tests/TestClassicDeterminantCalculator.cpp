@@ -108,7 +108,7 @@ TEST(GetMinor, Minor0x0FromMatrix0x0)
                                              0), RangeError);
 }
 
-TEST(CalculateDeterminant, ForMatrix3x3)
+TEST(CalculateDeterminant, DoubleForMatrix3x3)
 {
     Matrix<double> matrix3x3(3, 3);
     matrix3x3.at(0, 0) = 4;
