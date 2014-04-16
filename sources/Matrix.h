@@ -101,6 +101,8 @@ public:
     template<typename OPERAND_ELEMENT_TYPE>
     Matrix(const Matrix<OPERAND_ELEMENT_TYPE> &operand)
     {
+        rows_number_    = 0;
+        columns_number_ = 0;
         setRowsNumber(operand.getRowsNumber());
         setColumnsNumber(operand.getColumnsNumber());
         for(natural row_index = 0;
