@@ -4,7 +4,6 @@
 #include "exceptions/MatrixIsNotSquare.h"
 #include <gtest/gtest_prod.h>
 
-
 class ClassicDeterminantCalculator
 {
     FRIEND_TEST(DefineSignForElement, SeveralCases);
@@ -28,14 +27,14 @@ private:
     {
         matrix.throwExceptionIfColumnIndexIsWrong(column_index);
         matrix.throwExceptionIfRowIndexIsWrong(row_index);
+        if(!isSquare(matrix))
+        {
+            throw MatrixIsNotSquare();
+        }
         if(isNull(matrix) || 
            (matrix.getRowsNumber() == 1 && matrix.getColumnsNumber() == 1))
         {
             return Matrix<ELEMENT_TYPE>(0, 0);
-        }
-        if(!isSquare(matrix))
-        {
-            throw MatrixIsNotSquare();
         }
         Matrix<ELEMENT_TYPE> minor(matrix.getRowsNumber()       - 1, 
                                    matrix.getColumnsNumber()    - 1);
