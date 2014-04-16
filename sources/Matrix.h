@@ -113,9 +113,8 @@ public:
                 column_index < getColumnsNumber();
                 ++column_index)
             {
-                setElement(operand.getElement(row_index, column_index), 
-                           row_index, 
-                           column_index);
+                at(row_index, column_index) = 
+                    (ELEMENT_TYPE)operand.at(row_index, column_index);
             }
         }
     }
