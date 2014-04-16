@@ -67,9 +67,9 @@ public:
     typedef typename vector<ELEMENT_TYPE>::const_iterator VectorConstIterator;
     
     
-    Matrix(const natural rows_number          = 0, 
-           const natural columns_number       = 0, 
-           const ELEMENT_TYPE initialize_value = 0)
+    Matrix(const natural rows_number            = 0, 
+           const natural columns_number         = 0, 
+           const ELEMENT_TYPE initialize_value  = 0)
     {
         rows_number_    = 0;
         columns_number_ = 0;
