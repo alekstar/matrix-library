@@ -89,7 +89,7 @@ public:
         setElementsFromVector(elements);
     }
     
-    Matrix(const vector<ELEMENT_TYPE> &vector_to_convert)
+    Matrix(const vector<ELEMENT_TYPE>& vector_to_convert)
     {
         rows_number_    = 0;
         columns_number_ = 0;
@@ -99,7 +99,7 @@ public:
     }
     
     template<typename OPERAND_ELEMENT_TYPE>
-    Matrix(const Matrix<OPERAND_ELEMENT_TYPE> &operand)
+    Matrix(const Matrix<OPERAND_ELEMENT_TYPE>& operand)
     {
         rows_number_    = 0;
         columns_number_ = 0;
@@ -190,7 +190,7 @@ public:
     }
     
     template<typename VECTOR_ELEMENT_TYPE>
-    void setElementsFromVector(const vector<VECTOR_ELEMENT_TYPE> &elements)
+    void setElementsFromVector(const vector<VECTOR_ELEMENT_TYPE>& elements)
     {
         VectorConstIterator elements_iterator = 
             elements.begin();
@@ -256,7 +256,7 @@ public:
         return result;
     }
     
-    Matrix<ELEMENT_TYPE> operator+(const Matrix<ELEMENT_TYPE> &operand) const
+    Matrix<ELEMENT_TYPE> operator+(const Matrix<ELEMENT_TYPE>& operand) const
         throw(MatricesCantBeAddedOrSubstracted)
     {
         if(!haveSameSize(*this, operand))
@@ -296,12 +296,12 @@ public:
         return result;
     }
     
-    Matrix<ELEMENT_TYPE> operator-(const Matrix<ELEMENT_TYPE> &operand) const
+    Matrix<ELEMENT_TYPE> operator-(const Matrix<ELEMENT_TYPE>& operand) const
     {
         return operator+(-operand);
     }
     
-    bool operator==(const Matrix<ELEMENT_TYPE> &operand) const
+    bool operator==(const Matrix<ELEMENT_TYPE>& operand) const
     {
         if(!haveSameSize(*this, operand))
         {
