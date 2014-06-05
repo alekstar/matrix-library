@@ -108,6 +108,15 @@ TEST(GetMinor, Minor0x0FromMatrix0x0)
                                              0), RangeError);
 }
 
+TEST(GetMinor, Minor1x1FromMatrix2x3)
+{
+    Matrix<int>matrix2x3(2, 3, 10);
+    EXPECT_THROW(ClassicDeterminantCalculator().
+                    getMinorMatrixForElement(matrix2x3, 
+                                             1, 
+                                             1), MatrixIsNotSquare);
+}
+
 TEST(CalculateDeterminant, DoubleForMatrix3x3)
 {
     Matrix<double> matrix3x3(3, 3);
