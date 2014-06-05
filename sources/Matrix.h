@@ -209,35 +209,6 @@ public:
         }
     }
     
-    Matrix<ELEMENT_TYPE> operator*(const Matrix<ELEMENT_TYPE> &operand) const
-        throw(MatricesCantBeMultiplied)
-    {
-        using VectorMathAlogirthms::makeScalarMultiplication;
-        if(!isMultiplyPossibleWith(operand))
-        {
-            throw MatricesCantBeMultiplied();
-        }
-        Matrix<ELEMENT_TYPE> result(getRowsNumber(), 
-                                    operand.getColumnsNumber());
-        for(natural row_index = 0; 
-            row_index < result.getRowsNumber(); 
-            ++row_index)
-        {
-            for(natural column_index = 0;
-                column_index < result.getColumnsNumber();
-                ++column_index)
-            {
-                result.setElement(
-                    makeScalarMultiplication(
-                        getRowVector(*this, row_index), 
-                        operand.getColumnVector(column_index)), 
-                    row_index, 
-                    column_index);
-            }
-        }
-        return result;
-    }
-    
     Matrix<ELEMENT_TYPE> operator+(const Matrix<ELEMENT_TYPE>& operand) const
         throw(MatricesCantBeAddedOrSubstracted)
     {
@@ -356,12 +327,6 @@ private:
     natural rows_number_;
     natural columns_number_;
     vector<vector<ELEMENT_TYPE> > elements_;
-    
-    bool isMultiplyPossibleWith(
-            const Matrix<ELEMENT_TYPE>& matrix_operand) const
-    {
-        return getColumnsNumber() == matrix_operand.getRowsNumber();
-    }
     
     bool isElementIndexInRange(const natural row_number, 
                                const natural column_number) const
@@ -536,4 +501,43 @@ Matrix<ELEMENT_TYPE> operator*(const Matrix<ELEMENT_TYPE>& matrix,
 
     return result;
 }
+
+template <typename ELEMENT_TYPE>
+bool isMultiplyPossible(const Matrix<ELEMENT_TYPE>& left_operand,
+                        const Matrix<ELEMENT_TYPE>& right_operand)
+{
+    return left_operand.getColumnsNumber() == right_operand.getRowsNumber();
+}
+
+template <typename ELEMENT_TYPE>
+Matrix<ELEMENT_TYPE> operator*(const Matrix<ELEMENT_TYPE>& left_operand,
+                               const Matrix<ELEMENT_TYPE>& right_operand)
+        throw (MatricesCantBeMultiplied)
+{
+    using VectorMathAlogirthms::makeScalarMultiplication;
+    if(!isMultiplyPossible(left_operand, right_operand))
+    {
+        throw MatricesCantBeMultiplied();
+    }
+    Matrix<ELEMENT_TYPE> result(left_operand.getRowsNumber(),
+                                right_operand.getColumnsNumber());
+    for(natural row_index = 0;
+        row_index < result.getRowsNumber();
+        ++row_index)
+    {
+        for(natural column_index = 0;
+            column_index < result.getColumnsNumber();
+            ++column_index)
+        {
+            result.setElement(
+                makeScalarMultiplication(
+                    getRowVector(left_operand, row_index),
+                    right_operand.getColumnVector(column_index)),
+                    row_index,
+                    column_index);
+        }
+    }
+    return result;
+}
+
 #endif	/* MATRIX_H */
