@@ -208,24 +208,6 @@ public:
             elements_iterator += elements_to_copy;
         }
     }
-        
-    Matrix<ELEMENT_TYPE> operator*(const ELEMENT_TYPE value) {
-        Matrix<ELEMENT_TYPE> result(getRowsNumber(),
-                                         getColumnsNumber());
-        for(natural row_index = 0; row_index < getRowsNumber(); ++row_index) {
-            for(natural column_index = 0;
-                column_index < getColumnsNumber();
-                ++column_index) {
-                ELEMENT_TYPE current_element =
-                    getElement(row_index, column_index);
-                result.setElement(current_element * value, 
-                                  row_index, 
-                                  column_index);
-            }
-        }
-
-        return result;
-    }
     
     Matrix<ELEMENT_TYPE> operator*(const Matrix<ELEMENT_TYPE> &operand) const
         throw(MatricesCantBeMultiplied)
@@ -532,4 +514,26 @@ vector<ELEMENT_TYPE> getColumnVector(const Matrix<ELEMENT_TYPE> &matrix,
     return result;
 }
 
+template <typename ELEMENT_TYPE>
+Matrix<ELEMENT_TYPE> operator*(const Matrix<ELEMENT_TYPE>& matrix, 
+                               const ELEMENT_TYPE value)
+{
+    Matrix<ELEMENT_TYPE> result(matrix.getRowsNumber(),
+                                matrix.getColumnsNumber());
+    for(natural row_index = 0; row_index < matrix.getRowsNumber(); ++row_index)
+    {
+        for(natural column_index = 0;
+            column_index < matrix.getColumnsNumber();
+            ++column_index)
+        {
+            ELEMENT_TYPE current_element =
+                matrix.getElement(row_index, column_index);
+            result.setElement(current_element * value,
+                              row_index,
+                              column_index);
+        }
+    }
+
+    return result;
+}
 #endif	/* MATRIX_H */
