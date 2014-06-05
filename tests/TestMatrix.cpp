@@ -247,8 +247,8 @@ TEST(MatrixIsMultiplyPossible, AllCasesWithVector)
     Matrix<int> matrix2x2(2, 2);
     std::vector<int> vector_with_size2(2);
     std::vector<int> vector_with_size3(3);
-    EXPECT_TRUE(matrix2x2.isMultiplyPossibleWith(vector_with_size2));
-    EXPECT_FALSE(matrix2x2.isMultiplyPossibleWith(vector_with_size3));
+    EXPECT_TRUE(isMultiplyPossible(matrix2x2, (Matrix<int>)vector_with_size2));
+    EXPECT_FALSE(isMultiplyPossible(matrix2x2, (Matrix<int>)vector_with_size3));
 }
 
 TEST(MatrixConstructor, ConstructorFromVectorOf5Elements)
@@ -817,5 +817,4 @@ TEST(MatrixThrowExceptionsIfIndexIsWrong, AllExcetions)
                  ColumnIndexOutOfRange);
     EXPECT_NO_THROW(matrix2x5.throwExceptionIfRowIndexIsWrong(1));
     EXPECT_NO_THROW(matrix2x5.throwExceptionIfColumnIndexIsWrong(4));
-    
 }
