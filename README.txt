@@ -10,4 +10,5 @@ Notes:
     columns (number of rows and columns is zero).
 
 Requirements:
-- Google C++ Testing Framework (now I use v1.7.0)
+- Google C++ Testing Framework (now I use v1.7.0);
+- Compiler with gnu11 or c++11 standart support.
