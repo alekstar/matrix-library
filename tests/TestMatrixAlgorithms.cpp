@@ -157,3 +157,19 @@ TEST(Transpose, Matrix1x2)
     EXPECT_EQ(matrix.at(0, 0), result.at(0, 0));
     EXPECT_EQ(matrix.at(0, 1), result.at(1, 0));
 }
+
+TEST(Transpose, Matrix2x2)
+{
+    Matrix<int> matrix(2, 2);
+    matrix.at(0, 0) = 1;
+    matrix.at(0, 1) = 2;
+    matrix.at(1, 0) = 3;
+    matrix.at(1, 1) = 4;
+    Matrix<int> result = transpose(matrix);
+    EXPECT_EQ(matrix.getColumnsNumber(),    result.getRowsNumber());
+    EXPECT_EQ(matrix.getRowsNumber(),       result.getColumnsNumber());
+    EXPECT_EQ(matrix.at(0, 0), result.at(0, 0));
+    EXPECT_EQ(matrix.at(0, 1), result.at(1, 0));
+    EXPECT_EQ(matrix.at(1, 0), result.at(0, 1));
+    EXPECT_EQ(matrix.at(1, 1), result.at(1, 1));
+}
