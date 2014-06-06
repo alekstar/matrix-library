@@ -51,6 +51,26 @@ namespace MatrixAlgorithms
 
     double calculateDeterminantViaTriangularMatrix(const Matrix<double> &matrix)
         throw(MatrixIsNotSquare);
+    
+    template <typename ELEMENT_TYPE>
+    Matrix<ELEMENT_TYPE> transpose(const Matrix<ELEMENT_TYPE>& operand)
+    {
+        Matrix<ELEMENT_TYPE> result(operand.getColumnsNumber(), 
+                                    operand.getRowsNumber());
+        for(natural row_index = 0;
+            row_index < result.getRowsNumber();
+            ++row_index)
+        {
+            for(natural column_index = 0;
+                column_index < result.getColumnsNumber();
+                ++column_index)
+            {
+                result.at(row_index, column_index) = 
+                    operand.at(column_index, row_index);
+            }
+        }
+        return result;
+    }
 }
 
 #endif	/* MATRIXALGORITHMS_H */
