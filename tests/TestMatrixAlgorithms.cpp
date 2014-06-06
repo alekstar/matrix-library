@@ -173,3 +173,60 @@ TEST(Transpose, Matrix2x2)
     EXPECT_EQ(matrix.at(1, 0), result.at(0, 1));
     EXPECT_EQ(matrix.at(1, 1), result.at(1, 1));
 }
+
+TEST(Transpose, Matrix4x4)
+{
+    Matrix<int> matrix(4, 4);
+    matrix.at(0, 0) = 1;
+    matrix.at(0, 1) = 11;
+    matrix.at(0, 2) = 185;
+    matrix.at(0, 3) = 13;
+    matrix.at(1, 0) = 5;
+    matrix.at(1, 1) = 12;
+    matrix.at(1, 2) = 9;
+    matrix.at(1, 3) = 26;
+    matrix.at(2, 0) = 6;
+    matrix.at(2, 1) = 9;
+    matrix.at(2, 2) = 19;
+    matrix.at(2, 3) = 21;
+    matrix.at(3, 0) = 10;
+    matrix.at(3, 1) = 14;
+    matrix.at(3, 2) = 13;
+    matrix.at(3, 3) = 2;
+    Matrix<int> result = transpose(matrix);
+    EXPECT_EQ(matrix.getColumnsNumber(),    result.getRowsNumber());
+    EXPECT_EQ(matrix.getRowsNumber(),       result.getColumnsNumber());
+    EXPECT_EQ(matrix.at(0, 0), result.at(0, 0));
+    EXPECT_EQ(matrix.at(0, 1), result.at(1, 0));
+    EXPECT_EQ(matrix.at(0, 2), result.at(2, 0));
+    EXPECT_EQ(matrix.at(0, 3), result.at(3, 0));
+    EXPECT_EQ(matrix.at(1, 0), result.at(0, 1));
+    EXPECT_EQ(matrix.at(1, 1), result.at(1, 1));
+    EXPECT_EQ(matrix.at(1, 2), result.at(2, 1));
+    EXPECT_EQ(matrix.at(1, 3), result.at(3, 1));
+    EXPECT_EQ(matrix.at(2, 0), result.at(0, 2));
+    EXPECT_EQ(matrix.at(2, 1), result.at(1, 2));
+    EXPECT_EQ(matrix.at(2, 2), result.at(2, 2));
+    EXPECT_EQ(matrix.at(2, 3), result.at(3, 2));
+    EXPECT_EQ(matrix.at(3, 0), result.at(0, 3));
+    EXPECT_EQ(matrix.at(3, 1), result.at(1, 3));
+    EXPECT_EQ(matrix.at(3, 2), result.at(2, 3));
+    EXPECT_EQ(matrix.at(3, 3), result.at(3, 3));
+
+    EXPECT_EQ(1,    result.at(0, 0));
+    EXPECT_EQ(5,    result.at(0, 1));
+    EXPECT_EQ(6,    result.at(0, 2));
+    EXPECT_EQ(10,   result.at(0, 3));
+    EXPECT_EQ(11,   result.at(1, 0));
+    EXPECT_EQ(12,   result.at(1, 1));
+    EXPECT_EQ(9,    result.at(1, 2));
+    EXPECT_EQ(14,   result.at(1, 3));
+    EXPECT_EQ(185,  result.at(2, 0));
+    EXPECT_EQ(9,    result.at(2, 1));
+    EXPECT_EQ(19,   result.at(2, 2));
+    EXPECT_EQ(13,   result.at(2, 3));
+    EXPECT_EQ(13,   result.at(3, 0));
+    EXPECT_EQ(26,   result.at(3, 1));
+    EXPECT_EQ(21,   result.at(3, 2));
+    EXPECT_EQ(2,    result.at(3, 3));
+}
