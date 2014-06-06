@@ -145,3 +145,15 @@ TEST(CalculateDeterminantViaTriangularMatrix, Matrix4x4)
     EXPECT_DOUBLE_EQ(810037.324, 
                      calculateDeterminantViaTriangularMatrix(matrix));
 }
+
+TEST(Transpose, Matrix1x2)
+{
+    Matrix<int> matrix(1, 2);
+    matrix.at(0, 0) = 1;
+    matrix.at(0, 1) = 2;
+    Matrix<int> result = transpose(matrix);
+    EXPECT_EQ(matrix.getColumnsNumber(),    result.getRowsNumber());
+    EXPECT_EQ(matrix.getRowsNumber(),       result.getColumnsNumber());
+    EXPECT_EQ(matrix.at(0, 0), result.at(0, 0));
+    EXPECT_EQ(matrix.at(0, 1), result.at(1, 0));
+}
