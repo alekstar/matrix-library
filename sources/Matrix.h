@@ -31,6 +31,10 @@ template<typename ELEMENT_TYPE>
 vector<ELEMENT_TYPE> getColumnVector(const Matrix<ELEMENT_TYPE> &matrix, 
                                      const natural column_number);
 
+template <typename ELEMENT_TYPE, typename VALUE_TYPE>
+Matrix<ELEMENT_TYPE> operator*(const Matrix<ELEMENT_TYPE>& matrix, 
+                               const VALUE_TYPE value);
+
 template<typename ELEMENT_TYPE>
 class Matrix {
     
@@ -446,9 +450,9 @@ vector<ELEMENT_TYPE> getColumnVector(const Matrix<ELEMENT_TYPE> &matrix,
     return result;
 }
 
-template <typename ELEMENT_TYPE>
+template <typename ELEMENT_TYPE, typename VALUE_TYPE>
 Matrix<ELEMENT_TYPE> operator*(const Matrix<ELEMENT_TYPE>& matrix, 
-                               const ELEMENT_TYPE value)
+                               const VALUE_TYPE value)
 {
     Matrix<ELEMENT_TYPE> result(matrix.getRowsNumber(),
                                 matrix.getColumnsNumber());
