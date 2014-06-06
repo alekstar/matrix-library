@@ -203,32 +203,6 @@ public:
         }
     }
     
-    bool operator==(const Matrix<ELEMENT_TYPE>& operand) const
-    {
-        if(!haveSameSize(*this, operand))
-        {
-            return false;
-        }
-        if(this == &operand)
-        {
-            return true;
-        }
-        for(natural row_index = 0; row_index < getRowsNumber(); ++row_index)
-        {
-            for(natural column_index = 0; 
-                column_index < getColumnsNumber(); 
-                ++column_index)
-            {
-                if(getElement(row_index, column_index) != 
-                        operand.getElement(row_index, column_index))
-                {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-    
     const ELEMENT_TYPE& at(const natural row_index,
                            const natural column_index) const
     {
@@ -528,6 +502,36 @@ template <typename ELEMENT_TYPE>
 Matrix<ELEMENT_TYPE> operator-(const Matrix<ELEMENT_TYPE>& operand)
 {
     return operand * -1;
+}
+
+template <typename ELEMENT_TYPE>
+bool operator==(const Matrix<ELEMENT_TYPE>& left_operand,
+                const Matrix<ELEMENT_TYPE>& right_operand)
+{
+    if(!haveSameSize(left_operand, right_operand))
+    {
+        return false;
+    }
+    if(&left_operand == &right_operand)
+    {
+        return true;
+    }
+    for(natural row_index = 0; 
+        row_index < left_operand.getRowsNumber();
+        ++row_index)
+    {
+        for(natural column_index = 0;
+            column_index < left_operand.getColumnsNumber();
+            ++column_index)
+        {
+            if(left_operand.getElement(row_index, column_index) !=
+                right_operand.getElement(row_index, column_index))
+            {
+                return false;
+            }
+        }
+    }
+    return true;
 }
 
 #endif	/* MATRIX_H */
