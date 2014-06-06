@@ -818,3 +818,18 @@ TEST(MatrixThrowExceptionsIfIndexIsWrong, AllExcetions)
     EXPECT_NO_THROW(matrix2x5.throwExceptionIfRowIndexIsWrong(1));
     EXPECT_NO_THROW(matrix2x5.throwExceptionIfColumnIndexIsWrong(4));
 }
+
+TEST(Constructor, StringMatrix)
+{
+    Matrix<std::string> matrix(5, 1, "");
+    matrix.at(0,0) = std::string("Let's");
+    matrix.at(1,0) = std::string("play");
+    matrix.at(2,0) = std::string("a");
+    matrix.at(3,0) = std::string("good");
+    matrix.at(4,0) = std::string("game");
+    EXPECT_EQ(std::string("Let's"),   matrix.at(0,0));
+    EXPECT_EQ(std::string("play"),    matrix.at(1,0));
+    EXPECT_EQ(std::string("a"),       matrix.at(2,0));
+    EXPECT_EQ(std::string("good"),    matrix.at(3,0));
+    EXPECT_EQ(std::string("game"),    matrix.at(4,0));
+}
