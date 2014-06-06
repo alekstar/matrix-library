@@ -31,10 +31,6 @@ template<typename ELEMENT_TYPE>
 vector<ELEMENT_TYPE> getColumnVector(const Matrix<ELEMENT_TYPE> &matrix, 
                                      const natural column_number);
 
-template <typename ELEMENT_TYPE, typename VALUE_TYPE>
-Matrix<ELEMENT_TYPE> operator*(const Matrix<ELEMENT_TYPE>& matrix, 
-                               const VALUE_TYPE value);
-
 template<typename ELEMENT_TYPE>
 class Matrix {
     
@@ -205,11 +201,6 @@ public:
                       rows_iterator->begin());
             elements_iterator += elements_to_copy;
         }
-    }
-    
-    Matrix<ELEMENT_TYPE> operator-() const
-    {
-        return *this * -1;
     }
     
     bool operator==(const Matrix<ELEMENT_TYPE>& operand) const
@@ -531,6 +522,12 @@ Matrix<ELEMENT_TYPE> operator-(const Matrix<ELEMENT_TYPE>& left_operand,
                                const Matrix<ELEMENT_TYPE>& right_operand)
 {
     return left_operand + (-right_operand);
+}
+
+template <typename ELEMENT_TYPE>
+Matrix<ELEMENT_TYPE> operator-(const Matrix<ELEMENT_TYPE>& operand)
+{
+    return operand * -1;
 }
 
 #endif	/* MATRIX_H */
