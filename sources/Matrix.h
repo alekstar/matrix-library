@@ -524,8 +524,8 @@ bool operator==(const Matrix<ELEMENT_TYPE>& left_operand,
             column_index < left_operand.getColumnsNumber();
             ++column_index)
         {
-            if(left_operand.getElement(row_index, column_index) !=
-                right_operand.getElement(row_index, column_index))
+            if(left_operand.at(row_index, column_index) !=
+                right_operand.at(row_index, column_index))
             {
                 return false;
             }
