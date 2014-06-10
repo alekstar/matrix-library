@@ -306,3 +306,27 @@ TEST(Transpose, TransposedMultiplicationOfMatrices)
     EXPECT_TRUE(reversed_multiplication_of_tranposed_matrices == 
                 transposed_multiplication_of_matrices);
 }
+
+TEST(Transpose, DoubleTransposedMustBeEqualToOriginal)
+{
+    Matrix<double> matrix(4, 4);
+    matrix.setElement(10,       0, 0);
+    matrix.setElement(20,       0, 1);
+    matrix.setElement(30,       0, 2);
+    matrix.setElement(40,       0, 3);
+    matrix.setElement(7,        1, 0);
+    matrix.setElement(4,        1, 1);
+    matrix.setElement(60,       1, 2);
+    matrix.setElement(41,       1, 3);
+    matrix.setElement(0.5,      2, 0);
+    matrix.setElement(0.15,     2, 1);
+    matrix.setElement(0.225,    2, 2);
+    matrix.setElement(100,      2, 3);
+    matrix.setElement(0.001,    3, 0);
+    matrix.setElement(20,       3, 1);
+    matrix.setElement(4,        3, 2);
+    matrix.setElement(8,        3, 3);
+    
+    Matrix<double> double_transposed_matrix = transpose(transpose(matrix));
+    EXPECT_TRUE(matrix == double_transposed_matrix);
+}
