@@ -256,3 +256,53 @@ TEST(Transpose, DeterminantsMustBeEqual)
     EXPECT_DOUBLE_EQ(calculateDeterminant(matrix),
                      calculateDeterminant(result));
 }
+
+// Transposed multiplication of matrices must be equal to multiplication
+// of transposed matrices in reversed order
+TEST(Transpose, TransposedMultiplicationOfMatrices)
+{
+    Matrix<int> matrix1(4, 4);
+    matrix1.at(0, 0) = 1;
+    matrix1.at(0, 1) = 11;
+    matrix1.at(0, 2) = 185;
+    matrix1.at(0, 3) = 13;
+    matrix1.at(1, 0) = 5;
+    matrix1.at(1, 1) = 12;
+    matrix1.at(1, 2) = 9;
+    matrix1.at(1, 3) = 26;
+    matrix1.at(2, 0) = 6;
+    matrix1.at(2, 1) = 9;
+    matrix1.at(2, 2) = 19;
+    matrix1.at(2, 3) = 21;
+    matrix1.at(3, 0) = 10;
+    matrix1.at(3, 1) = 14;
+    matrix1.at(3, 2) = 13;
+    matrix1.at(3, 3) = 2;
+    
+    
+    Matrix<int> matrix2(4, 4);
+    matrix2.at(0, 0) = 1;
+    matrix2.at(0, 1) = 2;
+    matrix2.at(0, 2) = 3;
+    matrix2.at(0, 3) = 4;
+    matrix2.at(1, 0) = 5;
+    matrix2.at(1, 1) = 6;
+    matrix2.at(1, 2) = 7;
+    matrix2.at(1, 3) = 8;
+    matrix2.at(2, 0) = 9;
+    matrix2.at(2, 1) = 10;
+    matrix2.at(2, 2) = 11;
+    matrix2.at(2, 3) = 12;
+    matrix2.at(3, 0) = 13;
+    matrix2.at(3, 1) = 14;
+    matrix2.at(3, 2) = 15;
+    matrix2.at(3, 3) = 16;
+    
+    Matrix<int> multiplication_of_matrices = matrix1 * matrix2;
+    Matrix<int> reversed_multiplication_of_tranposed_matrices = 
+        transpose(matrix2)* transpose(matrix1);
+    Matrix<int> transposed_multiplication_of_matrices = 
+        transpose(multiplication_of_matrices);
+    EXPECT_TRUE(reversed_multiplication_of_tranposed_matrices == 
+                transposed_multiplication_of_matrices);
+}
