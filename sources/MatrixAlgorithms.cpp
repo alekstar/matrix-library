@@ -1,4 +1,5 @@
 #include "MatrixAlgorithms.h"
+#include "ClassicDeterminantCalculator.h"
 
 namespace MatrixAlgorithms
 {
@@ -66,5 +67,11 @@ namespace MatrixAlgorithms
                 triangular_matrix.getElement(diagonal_index, diagonal_index);
         }
         return determinant;
+    }
+    
+    double calculateDeterminant(const Matrix<double> &matrix)
+        throw(MatrixIsNotSquare)
+    {
+        return ClassicDeterminantCalculator().calculate(matrix);
     }
 }

@@ -71,6 +71,9 @@ namespace MatrixAlgorithms
         }
         return result;
     }
+    
+    double calculateDeterminant(const Matrix<double> &matrix)
+       throw(MatrixIsNotSquare);
 }
 
 #endif	/* MATRIXALGORITHMS_H */
