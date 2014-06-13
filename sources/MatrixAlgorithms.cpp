@@ -104,4 +104,15 @@ namespace MatrixAlgorithms
         
         return result;
     }
+    
+    Matrix<double> getInvertedMatrix(const Matrix<double>& matrix)
+    {
+        double determinant = calculateDeterminant(matrix);
+        Matrix<double> matrix_of_algebraic_additions = 
+            getMatrixOfAlgebraicAdditions(matrix);
+        Matrix<double> inverted_matrix = 
+            transpose(matrix_of_algebraic_additions) * (1 / determinant);
+        
+        return inverted_matrix;
+    }
 }

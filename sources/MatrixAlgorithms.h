@@ -126,6 +126,7 @@ namespace MatrixAlgorithms
     }
     
     Matrix<double> getMatrixOfAlgebraicAdditions(const Matrix<double>& matrix);
+    Matrix<double> getInvertedMatrix(const Matrix<double>& matrix);
 }
 
 #endif	/* MATRIXALGORITHMS_H */
