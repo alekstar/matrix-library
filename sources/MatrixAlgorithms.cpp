@@ -80,4 +80,28 @@ namespace MatrixAlgorithms
     {
         return pow(-1, (row_index + 1 + column_index + 1));
     }
+    
+    Matrix<double> getMatrixOfAlgebraicAdditions(const Matrix<double>& matrix)
+    {
+        Matrix<double> result(matrix.getRowsNumber(), 
+                              matrix.getColumnsNumber());
+        for(natural row_index = 0; 
+            row_index < result.getRowsNumber(); 
+            ++row_index)
+        {
+            for(natural column_index = 0;
+                column_index < result.getColumnsNumber();
+                ++column_index)
+            {
+                result.at(row_index, column_index) = 
+                    defineSignForElement(row_index, column_index) * 
+                    calculateDeterminant(
+                            getMinorMatrixForElement(matrix,
+                                                     row_index, 
+                                                     column_index));
+            }
+        }
+        
+        return result;
+    }
 }

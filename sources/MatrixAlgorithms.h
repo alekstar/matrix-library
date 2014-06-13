@@ -124,6 +124,8 @@ namespace MatrixAlgorithms
         
         return minor;
     }
+    
+    Matrix<double> getMatrixOfAlgebraicAdditions(const Matrix<double>& matrix);
 }
 
 #endif	/* MATRIXALGORITHMS_H */
