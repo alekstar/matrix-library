@@ -427,3 +427,23 @@ TEST(GetMinor, Minor1x1FromMatrix2x3)
     Matrix<int>matrix2x3(2, 3, 10);
     EXPECT_THROW(getMinorMatrixForElement(matrix2x3, 1, 1), MatrixIsNotSquare);
 }
+
+TEST(Invert, Matrix2x2)
+{
+    Matrix<double> matrix(2, 2);
+    matrix.at(0, 0) = 1;
+    matrix.at(0, 1) = 2;
+    matrix.at(1, 0) = 3;
+    matrix.at(1, 1) = 4;
+    
+    Matrix<double> inverted_matrix = getInvertedMatrix(matrix);
+    Matrix<double> multiplication = matrix * inverted_matrix;
+    Matrix<double> idetity_matrix4x4(4, 4);
+    idetity_matrix4x4.at(0, 0) = 1;
+    idetity_matrix4x4.at(1, 1) = 1;
+    
+    EXPECT_DOUBLE_EQ(idetity_matrix4x4.at(0, 0), multiplication.at(0, 0));
+    EXPECT_DOUBLE_EQ(idetity_matrix4x4.at(0, 1), multiplication.at(0, 1));
+    EXPECT_DOUBLE_EQ(idetity_matrix4x4.at(1, 0), multiplication.at(1, 0));
+    EXPECT_DOUBLE_EQ(idetity_matrix4x4.at(1, 1), multiplication.at(1, 1));
+}
