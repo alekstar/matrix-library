@@ -330,3 +330,17 @@ TEST(Transpose, DoubleTransposedMustBeEqualToOriginal)
     Matrix<double> double_transposed_matrix = transpose(transpose(matrix));
     EXPECT_TRUE(matrix == double_transposed_matrix);
 }
+
+TEST(DefineSignForElement, SeveralCases)
+{
+    EXPECT_EQ(1,  defineSignForElement(0, 0));
+    EXPECT_EQ(-1, defineSignForElement(0, 1));
+    EXPECT_EQ(1,  defineSignForElement(0, 2));
+    EXPECT_EQ(-1, defineSignForElement(1, 0));
+    EXPECT_EQ(1,  defineSignForElement(1, 1));
+    EXPECT_EQ(-1, defineSignForElement(1, 2));
+    EXPECT_EQ(1,  defineSignForElement(2, 0));
+    EXPECT_EQ(-1, defineSignForElement(2, 1));
+    EXPECT_EQ(1,  defineSignForElement(2, 2));
+}
+

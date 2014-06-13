@@ -6,7 +6,6 @@
 
 class ClassicDeterminantCalculator
 {
-    FRIEND_TEST(DefineSignForElement, SeveralCases);
     FRIEND_TEST(GetMinor, Minor0x0FromMatrix3x3);
     FRIEND_TEST(GetMinor, Minor1x1FromMatrix3x3);
     FRIEND_TEST(GetMinor, Minor0x1FromMatrix3x3);
@@ -18,8 +17,6 @@ public:
     double calculate(const Matrix<double> &matrix)
         throw(MatrixIsNotSquare);
 private:
-    int defineSignForElement(natural row_index, 
-                             natural column_index);
     template<typename ELEMENT_TYPE>
     Matrix<ELEMENT_TYPE> getMinorMatrixForElement(
                                             const Matrix<ELEMENT_TYPE>& matrix,

@@ -74,6 +74,9 @@ namespace MatrixAlgorithms
     
     double calculateDeterminant(const Matrix<double> &matrix)
        throw(MatrixIsNotSquare);
+    int defineSignForElement(natural row_index, 
+                             natural column_index);
+    
 }
 
 #endif	/* MATRIXALGORITHMS_H */

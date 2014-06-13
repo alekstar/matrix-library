@@ -1,5 +1,6 @@
 #include "MatrixAlgorithms.h"
 #include "ClassicDeterminantCalculator.h"
+#include <cmath>
 
 namespace MatrixAlgorithms
 {
@@ -73,5 +74,10 @@ namespace MatrixAlgorithms
         throw(MatrixIsNotSquare)
     {
         return ClassicDeterminantCalculator().calculate(matrix);
+    }
+    int defineSignForElement(const natural row_index,
+                             const natural column_index) 
+    {
+        return pow(-1, (row_index + 1 + column_index + 1));
     }
 }

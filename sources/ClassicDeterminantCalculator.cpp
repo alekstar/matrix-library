@@ -1,5 +1,4 @@
 #include "ClassicDeterminantCalculator.h"
-#include <cmath>
 #include "MatrixAlgorithms.h"
 #include "natural_type.h"
 using namespace MatrixAlgorithms;
@@ -43,11 +42,4 @@ double ClassicDeterminantCalculator::
                         calculate(minor);
     }
     return determinant;
-}
-
-int ClassicDeterminantCalculator::
-    defineSignForElement(const natural row_index,
-                         const natural column_index)
-{
-    return pow(-1, (row_index + 1 + column_index + 1));
 }
