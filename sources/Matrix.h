@@ -372,6 +372,10 @@ bool isZeroMatrix(const Matrix<ELEMENT_TYPE>& operand)
 template<typename ELEMENT_TYPE>
 bool isIdentityMatrix(const Matrix<ELEMENT_TYPE>& operand)
 {
+    if(!isSquare(operand))
+    {
+        return false;
+    }
     for(natural row_index = 0; row_index < operand.getRowsNumber(); ++row_index) 
     {
         for(natural column_index = 0;
