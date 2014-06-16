@@ -115,4 +115,14 @@ namespace MatrixAlgorithms
         
         return inverted_matrix;
     }
+    
+    Matrix<double> getIdentityMatrix(const natural size)
+    {
+        Matrix<double> matrix(size, size);
+        for(natural diagonal_index = 0; diagonal_index < size; ++diagonal_index)
+        {
+            matrix.at(diagonal_index, diagonal_index) = 1;
+        }
+        return matrix;
+    }
 }
