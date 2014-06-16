@@ -447,3 +447,28 @@ TEST(Invert, Matrix2x2)
     EXPECT_DOUBLE_EQ(idetity_matrix4x4.at(1, 0), multiplication.at(1, 0));
     EXPECT_DOUBLE_EQ(idetity_matrix4x4.at(1, 1), multiplication.at(1, 1));
 }
+
+TEST(getIdentityMatrix, SizeIsZeroShouldReturnException)
+{
+    EXPECT_THROW(getIdentityMatrix(0), 
+                 WrongSize);
+}
+
+TEST(getIdentityMatrix, 1x1)
+{
+    Matrix<double> matrix = getIdentityMatrix(1);
+    EXPECT_TRUE(isIdentityMatrix(matrix));
+    EXPECT_EQ(1, matrix.at(0, 0));
+    EXPECT_EQ(1, matrix.getRowsNumber());
+    EXPECT_EQ(1, matrix.getColumnsNumber());
+}
+
+TEST(getIdentityMatrix, 2x2)
+{
+    Matrix<double> matrix = getIdentityMatrix(2);
+    EXPECT_TRUE(isIdentityMatrix(matrix));
+    EXPECT_EQ(1, matrix.at(0, 0));
+    EXPECT_EQ(1, matrix.at(1, 1));
+    EXPECT_EQ(2, matrix.getRowsNumber());
+    EXPECT_EQ(2, matrix.getColumnsNumber());
+}
