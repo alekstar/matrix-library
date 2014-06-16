@@ -833,3 +833,24 @@ TEST(Constructor, StringMatrix)
     EXPECT_EQ(std::string("good"),    matrix.at(3,0));
     EXPECT_EQ(std::string("game"),    matrix.at(4,0));
 }
+
+TEST(isIdentityMatrix, ForIntegerIdentityMatrix1x1)
+{
+    Matrix<int> matrix(1, 1, 1);
+    EXPECT_TRUE(isIdentityMatrix(matrix));
+}
+
+TEST(isIdentityMatrix, ForDoubleIdentityMatrix1x1)
+{
+    Matrix<double> matrix(1, 1, 1.0);
+    EXPECT_TRUE(isIdentityMatrix(matrix));
+}
+
+TEST(isIdentityMatrix, ForIntegerIdentityMatrix3x3)
+{
+    Matrix<int> matrix(3, 3);
+    matrix.at(0, 0) = 1;
+    matrix.at(1, 1) = 1;
+    matrix.at(2, 2) = 1;
+    EXPECT_TRUE(isIdentityMatrix(matrix));
+}
