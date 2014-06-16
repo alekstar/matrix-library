@@ -117,7 +117,12 @@ namespace MatrixAlgorithms
     }
     
     Matrix<double> getIdentityMatrix(const natural size)
+        throw(WrongSize)
     {
+        if(size < 1)
+        {
+            throw WrongSize("Identity matrix can't have size less than 1.");
+        }
         Matrix<double> matrix(size, size);
         for(natural diagonal_index = 0; diagonal_index < size; ++diagonal_index)
         {

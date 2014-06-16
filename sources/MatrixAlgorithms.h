@@ -7,6 +7,7 @@
 #include "exceptions/MatrixIsNotSquare.h"
 #include "VectorMathAlgorithms.h"
 #include "natural_type.h"
+#include "exceptions/WrongSize.h"
 
 namespace MatrixAlgorithms
 {
@@ -127,7 +128,8 @@ namespace MatrixAlgorithms
     
     Matrix<double> getMatrixOfAlgebraicAdditions(const Matrix<double>& matrix);
     Matrix<double> getInvertedMatrix(const Matrix<double>& matrix);
-    Matrix<double> getIdentityMatrix(const natural size);
+    Matrix<double> getIdentityMatrix(const natural size)
+        throw(WrongSize);
 }
 
 #endif	/* MATRIXALGORITHMS_H */
