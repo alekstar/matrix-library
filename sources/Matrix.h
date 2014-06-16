@@ -358,10 +358,39 @@ bool isZeroMatrix(const Matrix<ELEMENT_TYPE>& operand)
     {
         for(natural column_index = 0;
             column_index < operand.getColumnsNumber();
-            ++column_index) {
+            ++column_index) 
+        {
             if(operand.getElement(row_index, column_index) != 0) 
             {
                 return false;
+            }
+        }
+    }
+    return true;
+}
+
+template<typename ELEMENT_TYPE>
+bool isIdentityMatrix(const Matrix<ELEMENT_TYPE>& operand)
+{
+    for(natural row_index = 0; row_index < operand.getRowsNumber(); ++row_index) 
+    {
+        for(natural column_index = 0;
+            column_index < operand.getColumnsNumber();
+            ++column_index) 
+        {
+            if(row_index == column_index)
+            {
+                if(operand.at(row_index, column_index) != 1)
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                if(operand.at(row_index, column_index) != 0)
+                {
+                    return false;
+                }
             }
         }
     }
