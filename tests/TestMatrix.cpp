@@ -854,3 +854,24 @@ TEST(isIdentityMatrix, ForIntegerIdentityMatrix3x3)
     matrix.at(2, 2) = 1;
     EXPECT_TRUE(isIdentityMatrix(matrix));
 }
+
+TEST(isIdentityMatrix, ForIntegerNotIdentityMatrix1x1)
+{
+    Matrix<int> matrix(1, 1, 0);
+    EXPECT_FALSE(isIdentityMatrix(matrix));
+}
+
+TEST(isIdentityMatrix, ForIntegerNotIdentityMatrix3x3)
+{
+    Matrix<int> matrix(3, 3, 0);
+    matrix.at(0, 0) = 1;
+    matrix.at(0, 1) = 2;
+    matrix.at(0, 2) = 3;
+    matrix.at(1, 0) = 4;
+    matrix.at(1, 1) = 5;
+    matrix.at(1, 1) = 6;
+    matrix.at(2, 0) = 7;
+    matrix.at(2, 1) = 8;
+    matrix.at(2, 1) = 9;
+    EXPECT_FALSE(isIdentityMatrix(matrix));
+}
