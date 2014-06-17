@@ -438,7 +438,15 @@ TEST(Invert, Matrix2x2)
     
     Matrix<double> inverted_matrix = getInvertedMatrix(matrix);
     Matrix<double> multiplication = matrix * inverted_matrix;
-    Matrix<double> idetity_matrix4x4 = getIdentityMatrix(2);
+    Matrix<double> idetity_matrix2x2 = getIdentityMatrix(2);
+    
+    EXPECT_DOUBLE_EQ(idetity_matrix2x2.at(0, 0), multiplication.at(0, 0));
+    EXPECT_DOUBLE_EQ(idetity_matrix2x2.at(0, 1), multiplication.at(0, 1));
+    EXPECT_DOUBLE_EQ(idetity_matrix2x2.at(1, 0), multiplication.at(1, 0));
+    EXPECT_DOUBLE_EQ(idetity_matrix2x2.at(1, 1), multiplication.at(1, 1));
+    EXPECT_TRUE(idetity_matrix2x2 == multiplication);
+    EXPECT_EQ(idetity_matrix2x2, multiplication);
+}
     
     EXPECT_DOUBLE_EQ(idetity_matrix4x4.at(0, 0), multiplication.at(0, 0));
     EXPECT_DOUBLE_EQ(idetity_matrix4x4.at(0, 1), multiplication.at(0, 1));
