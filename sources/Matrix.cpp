@@ -22,7 +22,8 @@ bool operator==<double>(const Matrix<double>& left_operand,
             ++column_index)
         {
             if(!areAlmostEqual(left_operand.at(row_index, column_index), 
-                         right_operand.at(row_index, column_index)))
+                               right_operand.at(row_index, column_index),
+                               EPSILON_FOR_DOUBLE_COMPARISON))
             {
                 return false;
             }
