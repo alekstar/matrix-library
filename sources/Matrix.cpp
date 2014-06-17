@@ -1,5 +1,4 @@
-#include <limits>
-#include <cmath>
+#include "AreAlmostEqual.h"
 #include "Matrix.h"
 
 template<>
@@ -22,9 +21,8 @@ bool operator==<double>(const Matrix<double>& left_operand,
             column_index < left_operand.getColumnsNumber();
             ++column_index)
         {
-            if(fabs(left_operand.at(row_index, column_index) - 
-                        right_operand.at(row_index, column_index)) >= 
-                            std::numeric_limits<double>::epsilon())
+            if(!areAlmostEqual(left_operand.at(row_index, column_index), 
+                         right_operand.at(row_index, column_index)))
             {
                 return false;
             }
