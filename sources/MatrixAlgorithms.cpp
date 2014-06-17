@@ -110,7 +110,7 @@ namespace MatrixAlgorithms
         throw(DeterminantIsZero)
     {
         double determinant = calculateDeterminantViaTriangularMatrix(matrix);
-        if(areAlmostEqual(determinant, 0.0))
+        if(areAlmostEqual(determinant, 0.0, EPSILON_FOR_DOUBLE_COMPARISON))
         {
             throw DeterminantIsZero(
                 "Matrix with determinant equals to zero can't be inverted.");
