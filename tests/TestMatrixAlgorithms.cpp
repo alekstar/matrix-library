@@ -472,3 +472,19 @@ TEST(getIdentityMatrix, 2x2)
     EXPECT_EQ(2, matrix.getRowsNumber());
     EXPECT_EQ(2, matrix.getColumnsNumber());
 }
+
+TEST(getIdentityMatrix, 
+     MultiplyOfMatrixAndIdentityMatrixShouldReturnOriginalMatrix)
+{
+    Matrix<double> matrix(2, 2);
+    matrix.at(0, 0) = 1;
+    matrix.at(0, 1) = 2;
+    matrix.at(1, 0) = 3;
+    matrix.at(1, 1) = 4;
+    
+    Matrix<double> multiply_of_matrix_and_identity_matrix = 
+        matrix * getIdentityMatrix(2);
+    
+    EXPECT_TRUE(matrix == multiply_of_matrix_and_identity_matrix);
+    EXPECT_EQ(matrix, multiply_of_matrix_and_identity_matrix);
+}
