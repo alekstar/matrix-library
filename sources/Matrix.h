@@ -567,4 +567,8 @@ bool operator==(const Matrix<ELEMENT_TYPE>& left_operand,
     return true;
 }
 
+template<>
+bool operator==<double>(const Matrix<double>& left_operand,
+                        const Matrix<double>& right_operand);
+
 #endif	/* MATRIX_H */
