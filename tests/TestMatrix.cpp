@@ -582,6 +582,106 @@ TEST(MatrixOperatorPlus, SizesAreNotEqual)
     EXPECT_THROW(matrix2x3 + matrix3x3, MatricesCantBeAddedOrSubstracted);
 }
 
+TEST(MatrixOperatorPlus, OperatorPlusIsComutaive)
+{
+    Matrix<double> matrix1(4, 4);
+    matrix1.at(0, 0) = 10;
+    matrix1.at(0, 1) = 20;
+    matrix1.at(0, 2) = 30;
+    matrix1.at(0, 3) = 40;
+    matrix1.at(1, 0) = 7;
+    matrix1.at(1, 1) = 4;
+    matrix1.at(1, 2) = 60;
+    matrix1.at(1, 3) = 41;
+    matrix1.at(2, 0) = 0.5;
+    matrix1.at(2, 1) = 0.15;
+    matrix1.at(2, 2) = 0.225;
+    matrix1.at(2, 3) = 100;
+    matrix1.at(3, 0) = 0.001;
+    matrix1.at(3, 1) = 20;
+    matrix1.at(3, 2) = 4;
+    matrix1.at(3, 3) = 8;
+    
+    Matrix<double> matrix2(4, 4);
+    matrix2.at(0, 0) = 1.45;
+    matrix2.at(0, 1) = 54;
+    matrix2.at(0, 2) = 0.54;
+    matrix2.at(0, 3) = 6547;
+    matrix2.at(1, 0) = 89;
+    matrix2.at(1, 1) = 147;
+    matrix2.at(1, 2) = 347;
+    matrix2.at(1, 3) = 951;
+    matrix2.at(2, 0) = 357;
+    matrix2.at(2, 1) = 654;
+    matrix2.at(2, 2) = 456;
+    matrix2.at(2, 3) = 9.17;
+    matrix2.at(3, 0) = 12.34;
+    matrix2.at(3, 1) = 0.005;
+    matrix2.at(3, 2) = 0.005;
+    matrix2.at(3, 3) = 0.001;
+    
+    EXPECT_EQ(matrix1 + matrix2, matrix2 + matrix1);
+}
+
+TEST(MatrixOperatorPlus, OperatorPlusIsAssociative)
+{
+    Matrix<double> matrix1(4, 4);
+    matrix1.at(0, 0) = 10;
+    matrix1.at(0, 1) = 20;
+    matrix1.at(0, 2) = 30;
+    matrix1.at(0, 3) = 40;
+    matrix1.at(1, 0) = 7;
+    matrix1.at(1, 1) = 4;
+    matrix1.at(1, 2) = 60;
+    matrix1.at(1, 3) = 41;
+    matrix1.at(2, 0) = 0.5;
+    matrix1.at(2, 1) = 0.15;
+    matrix1.at(2, 2) = 0.225;
+    matrix1.at(2, 3) = 100;
+    matrix1.at(3, 0) = 0.001;
+    matrix1.at(3, 1) = 20;
+    matrix1.at(3, 2) = 4;
+    matrix1.at(3, 3) = 8;
+    
+    Matrix<double> matrix2(4, 4);
+    matrix2.at(0, 0) = 1.45;
+    matrix2.at(0, 1) = 54;
+    matrix2.at(0, 2) = 0.54;
+    matrix2.at(0, 3) = 6547;
+    matrix2.at(1, 0) = 89;
+    matrix2.at(1, 1) = 147;
+    matrix2.at(1, 2) = 347;
+    matrix2.at(1, 3) = 951;
+    matrix2.at(2, 0) = 357;
+    matrix2.at(2, 1) = 654;
+    matrix2.at(2, 2) = 456;
+    matrix2.at(2, 3) = 9.17;
+    matrix2.at(3, 0) = 12.34;
+    matrix2.at(3, 1) = 0.005;
+    matrix2.at(3, 2) = 0.005;
+    matrix2.at(3, 3) = 0.001;
+    
+    Matrix<double> matrix3(4, 4);
+    matrix3.at(0, 0) = 0.1;
+    matrix3.at(0, 1) = 0.5;
+    matrix3.at(0, 2) = 0.4;
+    matrix3.at(0, 3) = 0.1;
+    matrix3.at(1, 0) = 0.7;
+    matrix3.at(1, 1) = 0.9;
+    matrix3.at(1, 2) = 0.8;
+    matrix3.at(1, 3) = 0.9;
+    matrix3.at(2, 0) = 0.8;
+    matrix3.at(2, 1) = 0.6;
+    matrix3.at(2, 2) = 0.7;
+    matrix3.at(2, 3) = 0.8;
+    matrix3.at(3, 0) = 0.9;
+    matrix3.at(3, 1) = 0.1;
+    matrix3.at(3, 2) = 0.4;
+    matrix3.at(3, 3) = 0.3;
+    
+    EXPECT_TRUE(((matrix1 + matrix2) + matrix3) == (matrix1 + (matrix2 + matrix3)));
+}
+
 TEST(MatrixOperatorMinus, Matrix3x3MinusMatrix3x3)
 {
     Matrix<int> first_matrix3x3(3, 3, 2);
