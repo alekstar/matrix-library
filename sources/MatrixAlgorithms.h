@@ -8,6 +8,7 @@
 #include "VectorMathAlgorithms.h"
 #include "natural_type.h"
 #include "exceptions/WrongSize.h"
+#include "exceptions/DeterminantIsZero.h"
 
 namespace MatrixAlgorithms
 {
@@ -127,7 +128,8 @@ namespace MatrixAlgorithms
     }
     
     Matrix<double> getMatrixOfAlgebraicAdditions(const Matrix<double>& matrix);
-    Matrix<double> getInvertedMatrix(const Matrix<double>& matrix);
+    Matrix<double> getInvertedMatrix(const Matrix<double>& matrix)
+        throw(DeterminantIsZero);
     Matrix<double> getIdentityMatrix(const natural size)
         throw(WrongSize);
 }

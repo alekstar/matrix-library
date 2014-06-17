@@ -1,6 +1,7 @@
+#include <cmath>
 #include "MatrixAlgorithms.h"
 #include "ClassicDeterminantCalculator.h"
-#include <cmath>
+#include "AreAlmostEqual.h"
 
 namespace MatrixAlgorithms
 {
@@ -106,8 +107,14 @@ namespace MatrixAlgorithms
     }
     
     Matrix<double> getInvertedMatrix(const Matrix<double>& matrix)
+        throw(DeterminantIsZero)
     {
-        double determinant = calculateDeterminant(matrix);
+        double determinant = calculateDeterminantViaTriangularMatrix(matrix);
+        if(areAlmostEqual(determinant, 0.0))
+        {
+            throw DeterminantIsZero(
+                "Matrix with determinant equals to zero can't be inverted.");
+        }
         Matrix<double> matrix_of_algebraic_additions = 
             getMatrixOfAlgebraicAdditions(matrix);
         Matrix<double> inverted_matrix = 
