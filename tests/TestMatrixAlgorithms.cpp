@@ -464,6 +464,22 @@ TEST(getInvertedMatrix, MatrixWithDeterminantEqualsToZeroCantBeInverted)
     EXPECT_THROW(getInvertedMatrix(matrix), DeterminantIsZero);
 }
 
+TEST(getInvertedMatrix, MatrixWithDeterminantAlmostEqualsToZeroCantBeInverted)
+{
+    Matrix<double> matrix(3, 3);
+    matrix.at(0, 0) = 1.23;
+    matrix.at(0, 1) = 4.56;
+    matrix.at(0, 2) = 7.89;
+    matrix.at(1, 0) = 10.11;
+    matrix.at(1, 1) = 12.13;
+    matrix.at(1, 2) = 14.15;
+    matrix.at(2, 0) = 16.17;
+    matrix.at(2, 1) = 18.19;
+    matrix.at(2, 2) = 20.21;
+
+    EXPECT_THROW(getInvertedMatrix(matrix), DeterminantIsZero);
+}
+
 TEST(Invert, Matrix4x4)
 {
     Matrix<double> matrix(4, 4);
