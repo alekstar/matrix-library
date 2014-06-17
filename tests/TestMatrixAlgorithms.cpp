@@ -447,11 +447,47 @@ TEST(Invert, Matrix2x2)
     EXPECT_TRUE(idetity_matrix2x2 == multiplication);
     EXPECT_EQ(idetity_matrix2x2, multiplication);
 }
+
+TEST(getInvertedMatrix, MatrixWithDeterminantEqualsToZeroCantBeInverted)
+{
+    Matrix<double> matrix(3, 3);
+    matrix.at(0, 0) = 1;
+    matrix.at(0, 1) = 2;
+    matrix.at(0, 2) = 3;
+    matrix.at(1, 0) = 4;
+    matrix.at(1, 1) = 5;
+    matrix.at(1, 2) = 6;
+    matrix.at(2, 0) = 7;
+    matrix.at(2, 1) = 8;
+    matrix.at(2, 2) = 9;
+
+    EXPECT_THROW(getInvertedMatrix(matrix), DeterminantIsZero);
+}
+
+TEST(Invert, Matrix4x4)
+{
+    Matrix<double> matrix(4, 4);
+    matrix.at(0, 0) = 10;
+    matrix.at(0, 1) = 20;
+    matrix.at(0, 2) = 30;
+    matrix.at(0, 3) = 40;
+    matrix.at(1, 0) = 7;
+    matrix.at(1, 1) = 4;
+    matrix.at(1, 2) = 60;
+    matrix.at(1, 3) = 41;
+    matrix.at(2, 0) = 0.5;
+    matrix.at(2, 1) = 0.15;
+    matrix.at(2, 2) = 0.225;
+    matrix.at(2, 3) = 100;
+    matrix.at(3, 0) = 0.001;
+    matrix.at(3, 1) = 20;
+    matrix.at(3, 2) = 4;
+    matrix.at(3, 3) = 8;
     
-    EXPECT_DOUBLE_EQ(idetity_matrix4x4.at(0, 0), multiplication.at(0, 0));
-    EXPECT_DOUBLE_EQ(idetity_matrix4x4.at(0, 1), multiplication.at(0, 1));
-    EXPECT_DOUBLE_EQ(idetity_matrix4x4.at(1, 0), multiplication.at(1, 0));
-    EXPECT_DOUBLE_EQ(idetity_matrix4x4.at(1, 1), multiplication.at(1, 1));
+    Matrix<double> inverted_matrix = getInvertedMatrix(matrix);
+    Matrix<double> multiplication = matrix * inverted_matrix;
+    Matrix<double> idetity_matrix4x4 = getIdentityMatrix(4);
+    
     EXPECT_TRUE(idetity_matrix4x4 == multiplication);
     EXPECT_EQ(idetity_matrix4x4, multiplication);
 }
