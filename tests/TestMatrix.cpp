@@ -679,7 +679,8 @@ TEST(MatrixOperatorPlus, OperatorPlusIsAssociative)
     matrix3.at(3, 2) = 0.4;
     matrix3.at(3, 3) = 0.3;
     
-    EXPECT_TRUE(((matrix1 + matrix2) + matrix3) == (matrix1 + (matrix2 + matrix3)));
+    EXPECT_TRUE(((matrix1 + matrix2) + matrix3) == 
+                    (matrix1 + (matrix2 + matrix3)));
 }
 
 TEST(MatrixOperatorMinus, Matrix3x3MinusMatrix3x3)
