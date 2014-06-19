@@ -402,6 +402,27 @@ bool isIdentityMatrix(const Matrix<ELEMENT_TYPE>& operand)
 }
 
 template<typename ELEMENT_TYPE>
+bool isDiagonalMatrix(const Matrix<ELEMENT_TYPE>& operand)
+{
+    for(natural row_index = 0;
+        row_index < operand.getRowsNumber();
+        ++row_index)
+    {
+        for(natural column_index = 0;
+            column_index < operand.getColumnsNumber();
+            ++column_index)
+        {
+            if((row_index != column_index) && 
+                (operand.at(row_index, column_index) != 0))
+            {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+template<typename ELEMENT_TYPE>
 std::vector<ELEMENT_TYPE> getRowVector(const Matrix<ELEMENT_TYPE>& matrix, 
                                        const natural row_number)
 {
