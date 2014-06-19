@@ -1,11 +1,12 @@
 #include <gtest/gtest.h>
-#include "../sources/Matrix.h"
+#include <vector>
+#include <string>
+#include "sources/Matrix.h"
 #include "sources/exceptions/ColumnIndexOutOfRange.h"
 #include "sources/exceptions/MatricesCantBeMultiplied.h"
 #include "sources/exceptions/RangeError.h"
 #include "sources/exceptions/RowIndexOutOfRange.h"
-#include <vector>
-#include <string>
+#include "sources/MatrixAlgorithms.h"
 
 TEST(MatrixConstructor, DefaultConstructor)
 {
@@ -984,4 +985,87 @@ TEST(isIdentityMatrix, ForIntegerNotSquareMatrix3x4)
     matrix.at(1, 1) = 1;
     matrix.at(2, 2) = 1;
     EXPECT_FALSE(isIdentityMatrix(matrix));
+}
+
+TEST(isDiagonalMatrix, ForIdentityMatrixShouldReturnTrue)
+{
+    Matrix<double> matrix = MatrixAlgorithms::getIdentityMatrix(10);
+    EXPECT_TRUE(isDiagonalMatrix(matrix));
+}
+
+TEST(isDiagonalMatrix, ForDiagonalMatrixWithoutZerosAtDiagonalShouldReturnTrue)
+{
+    Matrix<double> matrix(4, 4);
+    matrix.at(0, 0) = 43.13;
+    matrix.at(1, 1) = 17;
+    matrix.at(2, 2) = 0.247;
+    matrix.at(3, 3) = 14579.1354;
+    EXPECT_TRUE(isDiagonalMatrix(matrix));
+}
+
+TEST(isDiagonalMatrix, ForDiagonalMatrixWithZerosAtDiagonalShouldReturnTrue)
+{
+    Matrix<double> matrix(4, 4);
+    matrix.at(0, 0) = 43.13;
+    matrix.at(1, 1) = 17;
+    matrix.at(2, 2) = 0;
+    matrix.at(3, 3) = 0;
+    EXPECT_TRUE(isDiagonalMatrix(matrix));
+}
+
+TEST(isDiagonalMatrix, ForZeroMatrixShouldReturnTrue)
+{
+    Matrix<double> matrix(4, 4);
+    EXPECT_TRUE(isDiagonalMatrix(matrix));
+}
+
+TEST(isDiagonalMatrix, ForRectangularDiagonalMatrixShouldReturnTrue)
+{
+    Matrix<double> matrix(4, 5);
+    matrix.at(0, 0) = 43.13;
+    matrix.at(1, 1) = 17;
+    matrix.at(2, 2) = 0.247;
+    matrix.at(3, 3) = 14579.1354;
+    EXPECT_TRUE(isDiagonalMatrix(matrix));
+}
+
+TEST(isDiagonalMatrix, ForNullMatrixShouldReturnTrue)
+{
+    Matrix<double> matrix(0, 0);
+    EXPECT_TRUE(isDiagonalMatrix(matrix));
+}
+
+TEST(isDiagonalMatrix, ForMatrix1x1ShouldReturnTrue)
+{
+    Matrix<double> matrix(1, 1);
+    matrix.at(0, 0) = 15;
+    EXPECT_TRUE(isDiagonalMatrix(matrix));
+}
+
+TEST(isDiagonalMatrix, ForZeroMatrix1x1ShouldReturnTrue)
+{
+    Matrix<double> matrix(1, 1);
+    EXPECT_TRUE(isDiagonalMatrix(matrix));
+}
+
+TEST(isDiagonalMatrix, ForNotDiagonalSquareMatrixShouldReturnFalse)
+{
+    Matrix<int> matrix(2, 2);
+    matrix.at(0, 0) = 1;
+    matrix.at(0, 1) = 2;
+    matrix.at(1, 0) = 3;
+    matrix.at(1, 1) = 4;
+    EXPECT_FALSE(isDiagonalMatrix(matrix));
+}
+
+TEST(isDiagonalMatrix, ForNotDiagonalRectangularMatrixShouldReturnFalse)
+{
+    Matrix<int> matrix(2, 3);
+    matrix.at(0, 0) = 1;
+    matrix.at(0, 1) = 2;
+    matrix.at(0, 2) = 3;
+    matrix.at(1, 0) = 4;
+    matrix.at(1, 1) = 5;
+    matrix.at(1, 2) = 7;
+    EXPECT_FALSE(isDiagonalMatrix(matrix));
 }
